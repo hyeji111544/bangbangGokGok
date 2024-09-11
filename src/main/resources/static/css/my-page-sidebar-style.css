@@ -1,0 +1,55 @@
+.profile-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-name {
+    font-weight: bold;
+}
+
+.sidebar__box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 10px;
+    color: gray;
+}
+
+.sidebar__hr {
+    border: 1px solid #ddd;
+}
+
+.sidebar__profile {
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar__container {
+    width: 180px;
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar__box__text:hover {
+    background-color: #bfc1c7;
+    color: white;
+    transition: 0.7s;
+    cursor: pointer;
+}

@@ -1,0 +1,241 @@
+   /*메인 body*/
+   .container {
+       margin-top: 100px;
+       padding: 10px 50px 50px 50px;
+       background: rgba(255, 255, 255, 0.2);
+       /* 밝은 하늘색에 어울리는 반투명 흰색 */
+       backdrop-filter: blur(10px);
+       /* 블러 효과 */
+       -webkit-backdrop-filter: blur(10px);
+   }
+
+   .placeInfo__box {
+       border-bottom: 5px solid rgba(255, 255, 255, 0.3);
+       /* Lighter border to match the overall aesthetic */
+       margin-top: 20px;
+       padding: 20px;
+       font-family: "Noto Sans KR", sans-serif;
+       /* Subtle background for added contrast */
+       border-radius: 10px;
+       /* Rounded corners for a modern look */
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+       /* Soft shadow for subtle depth */
+   }
+
+   .place_title {
+       display: grid;
+       grid-template-columns: 1fr 5fr;
+       padding: 15px 20px;
+       height: auto;
+       display: flex;
+       flex-direction: column;
+       gap: 5px;
+       align-items: self-start;
+       font-family: "Noto Sans KR", sans-serif;
+       font-size: 1.5em;
+       font-weight: bold;
+       color: black;
+       border-radius: 10px;
+       text-align: center;
+   }
+
+   .nav__content {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       padding: 30px 0 10px 0;
+       list-style: none;
+       margin: 10px 0;
+       font-size: 15px;
+   }
+
+   .nav__item {
+       margin: 0 15px;
+   }
+
+   .nav__link {
+       text-decoration: none;
+       color: rgb(0, 0, 0);
+       font-family: "Noto Sans KR", sans-serif;
+       font-size: 16px;
+       padding: 10px 15px;
+       border-radius: 5px;
+       position: relative;
+   }
+
+   .nav__link::before {
+       content: '•';
+       position: absolute;
+       right: 5px;
+       top: 15%;
+       transform: translateY(-50%);
+       font-size: 18px;
+       color: #000000;
+       opacity: 0;
+       transition: opacity 0.3s;
+   }
+
+   .nav__link:hover {
+       color: #000000;
+       font-weight: bold;
+   }
+
+   .nav__link:hover::before {
+       opacity: 1;
+   }
+
+   .image__gallery {
+       display: flex;
+       gap: 20px;
+       justify-content: center;
+       align-items: center;
+       margin-top: 20px;
+   }
+
+   .image__card {
+       position: relative;
+       flex: 1;
+       border-radius: 10px;
+       overflow: hidden;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+       transition: transform 0.3s;
+   }
+
+   .image__card:hover {
+       transform: scale(1.05);
+   }
+
+   .image__gallery img {
+       width: 100%;
+       height: 200px;
+       object-fit: cover;
+   }
+
+   .card__text {
+       position: absolute;
+       bottom: 15px;
+       left: 15px;
+       color: white;
+       background: rgba(0, 0, 0, 0.5);
+       padding: 10px 15px;
+       border-radius: 5px;
+       font-weight: bold;
+       font-size: 1em;
+   }
+
+   .see__more {
+       text-align: right;
+       margin-top: 20px;
+       cursor: pointer;
+       color: rgb(0, 0, 0);
+       transition: color 0.3s;
+   }
+
+   .see__more:hover {
+       font-weight: bold;
+   }
+
+   /*어떤 페이지 하지*/
+   .travel__info {
+       margin: 100px 0 50px 0;
+   }
+
+   .travel__title {
+       padding: 0 20px 30px 0;
+       display: flex;
+       flex-direction: column;
+       gap: 5px;
+       align-items: self-start;
+       font-family: "Noto Sans KR", sans-serif;
+       font-size: 1.5em;
+       font-weight: bold;
+       color: black;
+       border-radius: 10px;
+       text-align: center;
+   }
+
+   .travel__content__box {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr 1fr;
+       gap: 10px;
+   }
+
+   .travel__content1,
+   .travel__content2,
+   .travel__content3 {
+       background-color: #f0f0f0;
+       position: relative;
+       border: 1px solid #ccc;
+       height: 100%;
+       width: 100%;
+   }
+
+   .travel__content1 {
+       height: 610px;
+       grid-column: 1 /1 span;
+       grid-row: 1 / 2 span;
+   }
+
+   .travel__content2 {
+       height: 300px;
+       grid-column: 2 /3 span;
+   }
+
+   .travel__content3 {
+       height: 300px;
+       grid-column: 2 /3 span;
+   }
+
+   .travel__content1 img,
+   .travel__content2 img,
+   .travel__content3 img {
+       object-fit: cover;
+       width: 100%;
+       height: 100%;
+   }
+
+   .travel__side__box {
+       position: absolute;
+       bottom: 15px;
+       left: 15px;
+       color: white;
+       padding: 10px 15px;
+       border-radius: 5px;
+       font-family: "Noto Sans KR", sans-serif;
+   }
+
+   .travel__text1 {
+       font-size: 20px;
+   }
+
+   .travel__text2 {
+       font-size: 25px;
+   }
+
+   /* 이미지슬라이드 스타일 */
+   #demo {
+       font-family: "Noto Sans KR", sans-serif;
+   }
+
+   .carousel-caption {
+       font-family: "Noto Sans KR", sans-serif;
+       color: white;
+       padding: 15px 20px;
+       border-radius: 10px;
+       max-width: 80%;
+       margin-bottom: 20px;
+       text-align: center;
+       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+   }
+
+   .carousel-caption h5 {
+       margin: 0 0 10px;
+       font-size: 26px;
+       font-weight: 700;
+   }
+
+   .carousel-caption p {
+       margin: 0;
+       font-size: 18px;
+       line-height: 1.4;
+   }

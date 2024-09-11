@@ -1,0 +1,141 @@
+.main__container {
+    width: 80%;
+    margin: auto;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.header {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 0;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.activity-box {
+    background-color: #e9ecef;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.content-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.content-box h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+.icon-box {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: inline-block;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.icon-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    /* 부드러운 애니메이션 */
+}
+
+.myboard__img:hover {
+    transform: scale(1.3);
+    /* 이미지가 10% 확대 */
+}
+
+.myboard-box {
+    width: 100%;
+    display: inline-block;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.myboard__img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+
+.btn-custom {
+    background-color: #17a2b8;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background-color: #138496;
+    color: white;
+}
+
+.paging__box {
+    display: grid;
+    justify-content: center;
+}
+
+
+
+.myboard__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-bottom: 20px;
+}
+
+.myboard__card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 5px;
+    position: relative;
+}
+
+.card__title,
+.card__content {
+    margin-left: 10px;
+}
+
+.good {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.good img {
+    width: 85%;
+    height: 85%;
+}

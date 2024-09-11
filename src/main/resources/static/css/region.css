@@ -1,0 +1,537 @@
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    }
+
+
+/* 지역별 아이콘 */
+
+
+
+.region__box {
+    display: grid;
+    justify-content: center;
+    background-color: rgb(197, 212, 240);
+    padding-bottom: 30px;
+}
+
+
+
+
+.sec__title{
+    display: grid;
+    align-items:end;
+    height: 220px;
+    margin-bottom: 50px;
+}
+
+.icon__box{
+    display: grid;
+    width: 1000px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.icon__box a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.icon {
+    display: grid;
+    justify-content: center;
+    
+}
+
+
+.icon__img__box > img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+  
+}
+
+.icon__img__box > img:hover{
+    box-shadow: 0px 8px 8px 1px grey;
+    border-radius: 50%;
+
+}
+
+
+
+.region__name {
+    text-align: center;
+}
+
+
+
+/* 지역 정보 */
+.region__info__box {
+    display: grid;
+    justify-content: center;
+    background-color: rgb(197, 212, 240);
+    background: linear-gradient(to bottom, rgb(197, 212, 240) 50%, transparent 50%)
+}
+
+.region__link__box {
+    width: 100%;    
+    display: flex;
+    justify-content: space-between;
+}
+
+.region__card__box {
+    width: 1000px;
+    
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-right: -33px;
+}
+
+
+
+.region__card {
+    width: 300px;
+    height: 270px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding : 30px;
+}
+
+.region__card__subject {
+    width: 40%;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.region__card_title{
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.region__card_description {
+    font-size: 18px;
+    height: 110px;
+}
+
+.region__card__link {
+    text-align: right;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: grey;
+    color: grey;
+}
+
+.region__card__link a {
+    
+        text-decoration: none;
+        color: grey;
+        
+   
+}
+
+.region__culture__box {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding : 26px
+}
+
+.sub__region__box a{
+    text-decoration: none;
+    color: grey;
+}
+
+.culture__link{
+    margin-bottom: 15px;
+}
+
+.culture__link >span{
+    font-size: 18px;
+    font-weight: 800;    
+}
+
+
+.sub__region__box {
+    display: flex;
+}
+
+.sub_region {
+    padding: 0 15px;
+    margin-right: 12px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: grey
+}
+
+/* 우리지역 핫플이 궁금해? */
+
+.region__rec__info__box {
+    padding-top: 60px;
+    height: 650px;
+    display: grid;
+    justify-content: center;
+    background: linear-gradient(to bottom, white 18%, transparent 0%);
+    background-color: rgb(211, 211, 211);
+    
+}
+
+.rec__text{
+    width: 1000px;
+    height: 50px;
+    font-weight: 1000px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding: 0 10px
+}
+
+
+.rec__place__link__box{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px
+}
+
+.rec__place__link__box a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-weight: 800;
+
+}
+
+
+
+.rec__place__card__box {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+}
+
+.rec__place__card__box a{
+    text-decoration: none;
+    color : black;    
+}
+
+
+
+.rec__place__img__box > img{
+    width: 220px;   
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+    
+}
+
+.rec__place__text {
+    margin-bottom: 10px;
+   
+}
+
+
+.rec__place__card {
+    width: 220px;
+    height: 200px;
+    background-color: white;
+    margin-left: 8px;
+    border-radius: 8px;
+    
+}
+
+.rec__place__img__box {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    
+}
+
+.rec__place__card div {
+    text-align: center;
+}
+
+
+
+.rec__food__link__box{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px
+}
+
+.rec__food__link__box a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-weight: 800;
+
+}
+
+.rec__food__card__box {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+    
+}
+
+.rec__food__card__box a{
+    text-decoration: none;
+    color : black;    
+}
+
+
+
+
+
+.rec__food__img__box > img{
+    width: 220px;   
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+    
+}
+
+.rec__food__text {
+    margin-bottom: 10px;
+   
+}
+
+
+.rec__food__card {
+    width: 220px;
+    height: 200px;
+    background-color: white;
+    margin-left: 8px;
+    border-radius: 8px;
+    
+    
+    
+}
+
+.rec__food__img__box {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.rec__food__card div {
+    text-align: center;
+   
+}
+
+
+
+
+.region__festival__info__box {
+    padding-top: 70px;
+    
+    display: grid;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.region__festival__info__text {
+    padding-left: 20px;
+    width: 1000px;
+    height: 50px;
+}
+
+
+
+
+
+
+/*달력 시작 */
+
+.festival__calendar__box {   
+    height: 110px;    
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-container {
+    width: 980px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+}
+
+.year {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.calendar-dates {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+}
+
+.date-item {
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.date-item:hover {
+    background-color: #e0e0e0;
+}
+
+.date-item .date {
+    display: block;
+    font-size: 20px;
+}
+
+.date-item .day {
+    font-size: 12px;
+    color: gray;
+}
+
+.selected {
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.selected:hover {
+    background-color: #555;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
+.prev, .next{
+    width: 40px;
+    font-size: 40px;
+}
+
+/*  달력 끝 */
+
+
+
+
+.festival__card__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1000px;
+    margin-top: 30px;
+    padding-left: 20px;
+}
+
+.festival__card {
+    position: relative;
+    width: 300px;
+    margin-right: 40px;
+}
+
+.festival__img__box img{
+    width: 300px;
+}
+
+.festival__info__box {
+    opacity: 0;
+    justify-content: center;
+    position: absolute;
+    width: 300px;
+    bottom: 0;
+    left: 0;
+    
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 50px 0px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    pointer-events: none; /* 마우스 이벤트가 슬라이드 박스에 걸리지 않도록 설정 */
+    }
+    
+    .festival__card:hover .festival__info__box {
+    transform: translateY(0);
+    opacity: 0.8;
+    pointer-events: auto; /* 마우스가 올라가면 슬라이드 박스에도 마우스 이벤트가 적용되도록 설정 */
+    }
+
+
+.festival__link{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    
+
+}
+
+.festival__link div{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid white;
+    font-size: 12px;
+    padding-top: 24px;
+   
+}
+
+.festival__link div a{
+    text-decoration: none;
+    color: white;
+}
+
+.fistival__page__link__box {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+  
+}
+
+.fistival__page__link__box a{
+text-decoration: none;
+font-size: 20px;
+color: grey;   
+}
+
+.festival__page__link{
+    width: 300px;
+    height: 50px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+   
+}

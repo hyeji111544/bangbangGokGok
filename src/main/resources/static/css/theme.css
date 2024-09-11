@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 100px;
+    /* 헤더 높이만큼 패딩 추가 */
+}
+
+.div-title {
+    text-align: center;
+    padding: 100px 0px;
+    background-color: #fdd835;
+    position: relative;
+    z-index: 900;
+    /* 헤더보다 낮지만 다른 요소들 위에 위치하도록 설정 */
+}
+
+.theme-description p {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #007bff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, color 0.2s;
+    position: relative;
+    z-index: 800;
+    /* 헤더보다 낮은 z-index 설정 */
+
+    text-decoration: none;
+}
+
+.theme-description p:hover {
+    transform: scale(1.1);
+    color: #0056b3;
+}
+
+.theme-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 220px;
+    height: 300px;
+    position: relative;
+    z-index: 700;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.theme-card {
+    border-radius: 10%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 600;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.theme-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.theme-description {
+    text-align: center;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.travel-map-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    position: relative;
+    z-index: 500;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.map-image {
+    width: 60%;
+    max-width: 600px;
+    position: relative;
+    z-index: 400;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.travel-recommendations {
+    width: 35%;
+    padding-left: 20px;
+    position: relative;
+    z-index: 300;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.travel-recommendations h4 {
+    font-weight: bold;
+}
+
+.recommendation-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 200;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.recommendation-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.recommendation-item div {
+    flex: 1;
+}
+
+.divider {
+    margin: 40px 0;
+    border-top: 2px solid #ddd;
+    position: relative;
+    z-index: 100;
+    /* 다른 요소들보다 낮은 z-index 설정 */
+}

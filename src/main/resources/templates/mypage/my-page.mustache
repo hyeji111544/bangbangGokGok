@@ -1,0 +1,187 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/my-page-style.css">
+
+    <div class="main__container">
+
+        <!--Sidebar Section -->
+        {{>layout/sidebar}}
+
+        <div class="container">
+            <!-- Profile Section -->
+
+            <div class="my-activities">
+                <h4>나의 활동</h4>
+                <div class="activity-grid">
+                    <div class="activity-item">
+                        <div class="activity-icon">💙</div>
+                        <div class="activity-label">나의 등급</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">✏️</div>
+                        <div class="activity-label">내가 쓴 글</div>
+                        <div class="activity-badge">15</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">📝</div>
+                        <div class="activity-label">내가 쓴 후기</div>
+                        <div class="activity-badge">7</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">📓</div>
+                        <div class="activity-label">스크랩</div>
+                        <div class="activity-badge">8</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Content Sections -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="content-box">
+                        <div class="myWrite__title">
+                            <div>
+                                <h4>내가 쓴 글</h4>
+                            </div>
+                            <div onclick="location.href=`/`;">▶</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/images/1.JPG">
+                                </div>
+                                <div class="img__detail">여수 반짝이</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/images/2.JPG">
+                                </div>
+                                <div class="img__detail">공주 연못</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/images/3.JPG">
+                                </div>
+                                <div class="img__detail">해운대 해수욕장</div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/images/4.JPG">
+                                </div>
+                                <div class="img__detail">광안리 해수욕장</div>
+                            </div>
+                        </div>
+                        <div class="btn__box">
+                            <button class="btn btn-success float-right mb-3">글쓰기</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div>
+                            <h4>스크랩</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <div class="icon-box">
+                                    <img src="/images/5.JPG">
+                                </div>
+                                <div class="img__detail">부산 과학관</div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="icon-box">
+                                    <img src="/images/6.JPG">
+                                </div>
+                                <div class="img__detail">대원사</div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="icon-box">
+                                    <img src="/images/7.JPG">
+                                </div>
+                                <div class="img__detail">절</div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="icon-box">
+                                    <img src="/images/8.JPG">
+                                </div>
+                                <div class="img__detail">호텔</div>
+                            </div>
+                        </div>
+                        <div class="btn__box">
+                            <button class="btn btn-primary mt-3">더보기</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div>
+                            <h4>내가 쓴 후기</h4>
+                        </div>
+                        <div>
+                            <table class="review__box">
+                                <tr>
+                                    <td>번호</td>
+                                    <td>제목</td>
+                                    <td>내용</td>
+                                    <td>날짜</td>
+                                    <td>별점</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>제목:1</td>
+                                    <td>내용:1</td>
+                                    <td>2024-09-04</td>
+                                    <td>★★★★★</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>제목:2</td>
+                                    <td>내용:2</td>
+                                    <td>2024-09-04</td>
+                                    <td>★★★★★</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>제목:3</td>
+                                    <td>내용:3</td>
+                                    <td>2024-09-04</td>
+                                    <td>★★★★★</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>제목:4</td>
+                                    <td>내용:4</td>
+                                    <td>2024-09-04</td>
+                                    <td>★★★★★</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="btn__box">
+                            <button class="btn btn-primary mt-3">더보기</button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div>
+                            <h4>최근 본 글</h4>
+                        </div>
+                        <div class="row recent-items">
+                            <div class="col-md-3">
+                                <img src="/images/9.jpg" alt="최근 본 글 1">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/images/10.jpg" alt="최근 본 글 2">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/images/11.jpg" alt="최근 본 글 3">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/images/12.jpg" alt="최근 본 글 4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{{>layout/footer}}

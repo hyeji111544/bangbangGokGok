@@ -1,0 +1,142 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/index-style.css">
+    <section class="container">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel"
+            style="margin-top: 30px; border: 5px solid rgba(255, 255, 255, 0.3)">
+
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="https://example.com/link1" target="_blank">
+                        <div class="carousel-caption">
+                            <h5>봄철 인생사진 맛집</h5>
+                            <p>부산 사상구 삼락공원</p>
+                        </div>
+                        <img src="/images/slide1.jpg" alt="Los Angeles" class="d-block"
+                            style="width:100%; height:380px;">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://example.com/link1" target="_blank">
+                        <div class="carousel-caption">
+                            <h5>여름철 바다 여행</h5>
+                            <p>제주도 해변</p>
+                        </div>
+                        <img src="/images/slide2.png" alt="Chicago" class="d-block" style="width:100%; height:380px;">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://example.com/link1" target="_blank">
+                        <div class="carousel-caption">
+                            <h5>가을산단풍 즐기기</h5>
+                            <p>남해 금산</p>
+                        </div>
+                        <img src="/images/slide3.png" alt="New York" class="d-block" style="width:100%; height:380px;">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <div class="placeInfo__box">
+            <div class="place_title">
+                <div>Today's</div>
+                <div> 추천 여행지 </div>
+            </div>
+            <ul class="nav__content" style="margin: 10px;">
+                <li class="nav__item">
+                    <a class="nav__link" href="#">전국</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">서울</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">인천</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">인천</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">대전</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">대구</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">광주</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">부산</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">대구</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">울산</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="#">제주</a>
+                </li>
+            </ul>
+            <div class="image__gallery">
+                <div class="image__card">
+                    <img src="/images/maincard1.jpg" alt="Card 1">
+                    <div class="card__text">서울 경복궁</div>
+                </div>
+                <div class="image__card">
+                    <img src="/images/maincard2.jpg" alt="Card 2">
+                    <div class="card__text">바람의언덕</div>
+                </div>
+                <div class="image__card">
+                    <img src="/images/maincard3.PNG" alt="Card 3">
+                    <div class="card__text">부산 어쩌구</div>
+                </div>
+            </div>
+            <div class="see__more">
+                더보기 +
+            </div>
+        </div>
+        <div class="travel__info">
+            <div class="travel__title">이 섹션 제목은 뭐라고 하지 대체</div>
+            <div class="travel__content__box">
+
+                <div class="travel__content1">
+                    <img src="/images/maincard1.jpg">
+                    <div class="travel__side__box">
+                        <div class="travel__text1">전주 수목원</div>
+                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
+                    </div>
+                </div>
+                <div class="travel__content2">
+                    <img src="/images/maincard2.jpg">
+                    <div class="travel__side__box">
+                        <div class="travel__text1">전주 수목원</div>
+                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
+                    </div>
+                </div>
+                <div class="travel__content3">
+                    <img src="/images/maincard3.PNG">
+                    <div class="travel__side__box">
+                        <div class="travel__text1">전주 수목원</div>
+                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{{>layout/footer}}

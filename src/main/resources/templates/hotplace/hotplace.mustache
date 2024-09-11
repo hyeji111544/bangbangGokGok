@@ -1,0 +1,886 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/hotplace.css">
+    <div class="main__container">
+        <section>
+            <div class="hotplace__box">
+                <div class="sec__title">
+                    <div>
+                        <h1>대한민국 핫플! </h1>
+                    </div>
+                    <br>
+                    <div>
+                        <h6> 사용자 활동 데이터 기반의<br>
+                            지역별 인기 여행지와 맛집을 확인해보세요!</h6>
+                    </div>
+                </div>
+                <hr>
+                <div class="hot__place__box">
+
+                    <div class="hot__place">
+                        <a href="#"> 인기 여행지</a>
+                    </div>
+
+                    <span>|</span>
+
+                    <div class="hot__food"><a href="#">인기 맛집</a></div>
+
+
+                </div>
+
+                <!-- 모달창 시작-->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>서울</h2>
+                        <div class="area-selection" id="area-selection">
+                            <!-- 버튼들이 여기에 동적으로 생성됨 -->
+                        </div>
+                        <button id="searchBtn" class="search-btn">검색</button>
+                    </div>
+                </div>
+                <!-- 모달창 끝-->
+
+
+
+                <div class="icon__box">
+
+                    <a href="#">
+                        <div class="icon" id="openModal">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">서울</div>
+
+
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">인천</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">대전</div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">대구</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">광주</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">부산</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">울산</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">경기</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">강원</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">충북</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">충남</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">경북</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">경남</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">전북</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">전남</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">제주</div>
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="icon">
+                            <div class="icon__img__box"><img src="/images/icon1.png">
+                            </div>
+                            <div class="hotplace__name">세종</div>
+                        </div>
+                    </a>
+
+                </div>
+        </section>
+
+        <section>
+            <div class="hotplace__rec__info__box">
+                <div class="rec__text">인기 여행지</div>
+
+                <div class="rec__place__box">
+
+
+                    <div class="hot__place__card__box">
+
+
+
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <!--       hot place card 반복 삭제  시작   -->
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+                        <div class="hot__place__card">
+
+                            <a href="#">
+                                <div class="hot__place__img__box">
+                                    <img src="/images/img2.jpg" class="active" alt="이미지 1">
+                                    <img src="/images/img3.jpg" alt="이미지 2">
+                                    <img src="/images/img1.jpg" alt="이미지 3">
+                                </div>
+                            </a>
+
+                            <button class="like-btn" onclick="toggleLike(this)">
+                                <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <div class="dots">
+                                <button class="active" onclick="showSlide(0, this)"></button>
+                                <button onclick="showSlide(1, this)"></button>
+                                <button onclick="showSlide(2, this)"></button>
+                            </div>
+
+                            <div class="hot__place__description">
+                                <p class="hot__place__name">국립중앙박물관</p>
+                                <p class="hot__place__location">서울 용산구</p>
+                            </div>
+                        </div>
+
+
+
+
+                        <!--       hot place card 반복 삭제 끝    -->
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                    <div class="page__box">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">&gt;</a></li>
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <script>
+
+
+
+        //사진 슬라이드 & 좋아요
+        function toggleLike(button) {
+            const svg = button.querySelector('svg');
+            const isLiked = svg.style.fill === "red";
+            if (isLiked) {
+                svg.style.fill = "none";
+                console.log("좋아요 해제됨");
+            } else {
+                svg.style.fill = "red";
+                console.log("좋아요 체크됨");
+            }
+        }
+
+        function showSlide(index, button) {
+            console.log('Button clicked:', button);  // 클릭된 버튼 확인
+            const card = button.closest('.hot__place__card');
+            if (!card) {
+                console.error('Card not found');
+                return;
+            }
+
+            console.log('Card found:', card);  // 찾은 카드 확인
+            const images = card.querySelectorAll('img');
+            const dots = card.querySelectorAll('.dots button');
+
+            if (images.length === 0 || dots.length === 0) {
+                console.error('Images or dots not found in the card.');
+                return;
+            }
+
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+                dots[i].classList.toggle('active', i === index);
+            });
+        }
+
+
+
+        //모달창
+
+        // 지역 데이터
+        const areas = [
+            '전체', '강남구', '도봉구', '동대문구', '동작구', '마포구', '서대문구',
+            '서초구', '성동구', '성북구', '송파구', '양천구', '강동구', '영등포구',
+            '용산구', '은평구', '종로구', '중구', '중랑구', '강북구', '강서구',
+            '관악구', '광진구', '구로구', '금천구', '노원구'
+        ];
+
+        // 모달 관련 요소들
+        const modal = document.getElementById("modal");
+        const openModalBtn = document.getElementById("openModal");
+        const closeModal = document.querySelector(".close");
+        const areaSelectionDiv = document.getElementById("area-selection");
+        const searchBtn = document.getElementById("searchBtn");
+
+        // 모달 열기
+        openModalBtn.onclick = function () {
+            modal.style.display = "block";
+
+            // 모달이 열릴 때 기본적으로 "전체"가 선택된 상태로 만듬
+            document.querySelectorAll(".area-btn").forEach(button => {
+                button.classList.remove("selected");
+                if (button.textContent === '전체') {
+                    button.classList.add("selected");
+                }
+            });
+        }
+
+        // 모달 닫기 (X 버튼 클릭 시)
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // 화면 클릭 시 모달 닫기
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 지역 버튼 동적으로 생성
+        areas.forEach(area => {
+            const button = document.createElement("button");
+            button.classList.add("area-btn");
+            button.textContent = area;
+
+            // "전체"를 기본적으로 선택된 상태로 설정
+            if (area === '전체') {
+                button.classList.add("selected");
+            }
+
+            // 버튼 선택/해제 기능 (토글)
+            button.addEventListener("click", () => {
+                // "전체" 버튼을 클릭한 경우
+                if (button.textContent === '전체') {
+                    document.querySelectorAll(".area-btn").forEach(btn => {
+                        if (btn.textContent !== '전체') {
+                            btn.classList.remove("selected"); // 나머지 해제
+                        }
+                    });
+                    button.classList.add("selected"); // "전체" 선택
+                }
+                // "전체" 이외의 버튼을 클릭한 경우
+                else {
+                    button.classList.toggle("selected"); // 해당 버튼 토글
+                    document.querySelector(".area-btn:first-child").classList.remove("selected"); // "전체" 해제
+
+                    // 아무 버튼도 선택되지 않은 경우 "전체" 선택
+                    const selectedAreas = document.querySelectorAll(".area-btn.selected");
+                    if (selectedAreas.length === 0) {
+                        document.querySelector(".area-btn:first-child").classList.add("selected"); // "전체" 다시 선택
+                    }
+                }
+            });
+
+            areaSelectionDiv.appendChild(button);
+        });
+
+        // 검색 버튼 클릭 시 선택된 지역 반환
+        searchBtn.addEventListener("click", () => {
+            const selectedAreas = [];
+            document.querySelectorAll(".area-btn.selected").forEach(button => {
+                selectedAreas.push(button.textContent);
+            });
+
+            // 선택된 지역 반환
+            alert(`선택된 지역: ${selectedAreas.join(', ')}`);
+            modal.style.display = "none"; // 검색 후 모달 닫기
+        });
+    </script>
+{{>layout/footer}}

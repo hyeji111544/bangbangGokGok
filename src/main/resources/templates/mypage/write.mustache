@@ -1,0 +1,100 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/write-style.css">
+    <div class="main__container">
+
+        <!--Sidebar Section -->
+        {{>layout/sidebar}}
+
+        <!-- Content Sections -->
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="content-box">
+                        <h4>관광정보 신규요청</h4>
+                        <form>
+                            <table class="write__box">
+                                <tr>
+                                    <td class="write__title">
+                                        제목(관광지/업소명등)
+                                    </td>
+                                    <td>
+                                        <input class="write__context__box" type="text" placeholder="관광지명, 업소명등을 기입해주세요">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="write__title">
+                                        상세정보
+                                    </td>
+                                    <td>
+                                        <textarea class="write__context__box" rows="5" placeholder="대한민국 구석구석에 소개되고 있지 않은 관광지의 정보를 제보해주세요.
+(위 정보제공양식에 맞춰 작성 후 파일첨부 해주시면 확인 후 순차적으로 등록될 예정입니다.)"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="write__title">
+                                        정보제공양식/사진첨부
+                                    </td>
+                                    <td>
+                                        <input type="file">
+                                    </td>
+                                    <td>
+                                        <div class="file__caution">
+                                            [사진 파일 첨부 시 유의사항]
+                                            사진활용에 저작권 문제가 없는 사진만을 첨부 부탁드립니다.
+                                            상표권 및 초상권에 문제가 없는 직접촬영한 사진만을 등록 부탁드립니다. (인물, 얼굴 노출 삼가 )
+                                            사진 파일은 5장까지 등록 가능하며 총 200mb 이하로 등록 가능합니다. (파일형식 jpg, gif, png, bmp, zip,
+                                            xls,
+                                            xlsx)
+                                            PC사양 및 첨부파일의 용량에 따라 업로드 시간이 다소 소요될 수 있습니다.
+                                            기존에 등록된 관광정보 사진의 변경요청은 각 관광정보 하단의 '관광정보 수정/신규 요청'을 통해 요청 바랍니다.
+                                            ※ 사진의 사이즈는 긴축 기준 940px 이상의 사진만 사용 가능합니다.
+                                            ※ 다수의 파일을 첨부할 경우 압축하여 첨부해주세요.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="write__title">
+                                        해시태그
+                                    </td>
+                                    <td class="hash__checkbox__box">
+                                        <div><input class="hash__checkbox" type="checkbox" value="여행">여행</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="축제">축제</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="자유">자유</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="힐링">힐링</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="맛집">맛집</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="자연">자연</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="체험">체험</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="쇼핑">쇼핑</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="관광지">관광지</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="레포츠">레포츠</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="문화시설">문화시설</div>
+                                        <div><input class="hash__checkbox" type="checkbox" value="전통시장">전통시장</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="write__title">
+                                        기타 정보
+                                    </td>
+                                    <td>
+                                        <textarea class="write__context__box" rows="5" placeholder="홈페이지 주소 :
+이용시간: 09:00 ~ 18:00
+요금: 18000원"></textarea>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </form>
+                        <div class="btn__box2">
+                            <button class="btn btn-danger mb-3">취소</button>
+                            <button class="btn btn-primary mb-3">등록</button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{{>layout/footer}}

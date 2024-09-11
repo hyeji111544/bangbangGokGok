@@ -1,0 +1,75 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/my-info.css">
+    <div class="main__container">
+
+        <!--Sidebar Section -->
+        {{>layout/sidebar}}
+
+        <div class="container">
+
+            <!-- Content Sections -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="content-box">
+                        <div class="container">
+                            <div class="container__title">
+                                <h2>회원 정보 수정</h2>
+                            </div>
+                            <div>
+                                <form action="#" method="POST">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6"><label for="name">이름</label>
+                                                <input class="name__text" type="text" id="name" name="name"
+                                                    placeholder="이름을 입력하세요" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="profile__img">사진</label>
+                                                <input class="profile__box" type="file" id="profile_img"
+                                                    name="profile_img" placeholder="사진을 첨부하세요">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email">이메일</label>
+                                        <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">비밀번호</label>
+                                        <input type="password" id="password" name="password"
+                                            placeholder="새 비밀번호를 입력하세요">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="confirm-password">비밀번호 확인</label>
+                                        <input type="password" id="confirm-password" name="confirm-password"
+                                            placeholder="비밀번호를 다시 입력하세요">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone">전화번호</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address">주소</label>
+                                        <input type="text" id="address" name="address" placeholder="주소를 입력하세요">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit">저장하기</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{{>layout/footer}}

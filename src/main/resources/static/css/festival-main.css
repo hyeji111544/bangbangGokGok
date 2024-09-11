@@ -1,0 +1,137 @@
+.festival__main__header__container {
+    margin-top: 100px;
+    padding: 10px 150px 50px 150px;
+    background: rgba(255, 255, 255, 0.2);
+    /* 밝은 하늘색에 어울리는 반투명 흰색 */
+    backdrop-filter: blur(10px);
+    /* 블러 효과 */
+    -webkit-backdrop-filter: blur(10px);
+    /*폰트*/
+    font-family: "Noto Sans KR", sans-serif
+}
+
+.festival__main__main__container {
+    padding: 10px 150px 150px 150px;
+    background: rgba(255, 255, 255, 0.2);
+    /* 밝은 하늘색에 어울리는 반투명 흰색 */
+    backdrop-filter: blur(10px);
+    /* 블러 효과 */
+    -webkit-backdrop-filter: blur(10px);
+    /*폰트*/
+    font-family: "Noto Sans KR", sans-serif
+}
+
+nav {
+    display: flex;
+    padding: 20px;
+    justify-content: space-evenly;
+}
+
+.festival__logo {
+    display: flex;
+    padding: 20px;
+}
+
+.festival__logo>svg {
+    width: 50px;
+    height: 50px;
+    color: black;
+    margin-right: 30px;
+}
+
+.bottom__box {
+    /*grid 는 부모에게 적용*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /*몇 개씩 걸건지*/
+    grid-gap: 10px;
+}
+
+.bottom__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bottom__info1 {
+    /*축제 이름*/
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(60, 60, 60);
+}
+
+.bottom__info2 {
+    /*축제 기간*/
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(60, 60, 60);
+}
+
+.bottom__info3 {
+    /*축제 지역*/
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(60, 60, 60);
+}
+
+.dropdown {
+    display: flex;
+    margin-bottom: 30px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.dropdown-toggle {
+    /*dropdown-toggle은 부트스트랩이라, 자동적용된 css 변경 위함*/
+    color: black;
+    background-color: white;
+    border-color: grey;
+    width: 300px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.dropdown-toggle:hover {
+    color: black;
+    background-color: white;
+    border-color: blue;
+}
+
+.btn-search {
+    color: black;
+    border-color: grey;
+    width: 200px;
+}
+
+.btn-search:hover {
+    color: black;
+    border-color: grey;
+}
+
+/* 이미지슬라이드 스타일 */
+#demo {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.carousel-caption {
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption h5 {
+    margin: 0 0 10px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.carousel-caption p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+}

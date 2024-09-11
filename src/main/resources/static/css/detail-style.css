@@ -1,0 +1,344 @@
+.container {
+    font-family: "Noto Sans KR", sans-serif;
+    margin-top: 150px;
+    padding: 10px;
+}
+
+.content__title__box {
+    text-align: center;
+}
+
+.content__title__1 {
+    font-size: 36px;
+}
+
+.content__title__2 {
+    margin-bottom: 20px;
+}
+
+.content__title__3 {
+    font-size: 24px;
+}
+
+.content__share__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    margin: 30px 0 10px 0;
+}
+
+
+.share__box__1 {
+    display: flex;
+    /* 왼쪽 정렬 */
+    gap: 10px;
+}
+
+.share__box__2 {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+article {}
+
+.article__title__box {
+    border-top: 2px solid rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+.article__title__box>div {
+    position: relative;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+.article__title__box>div:hover {
+    color: #333;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #333;
+}
+
+.article__img__box {
+    margin: 10px 0 30px 0;
+    width: 100%;
+    height: 650px;
+
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.article__img__1 {
+    grid-column: 1 / 3 span;
+    grid-row: 1 / 2 span;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.article__img__2 {
+    grid-row: 3 / 1 span;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.article__img__3 {
+    grid-row: 3 / 1 span;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.article__img__4 {
+    grid-row: 3 / 1 span;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.article__info__box {
+    padding: 0 10px 0 10px;
+    margin: 30px 0 80px 0;
+}
+
+.article__info__box>div:nth-child(1) {
+    font-size: 24px;
+}
+
+.article__info__box>div:nth-child(2) {
+    margin: 10px 0 20px 0;
+}
+
+.article__info__map {
+    border: 1px solid blue;
+    width: 100%;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+/* 두 열로 정렬 */
+.info__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info__item {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 5px 0;
+}
+
+.info__item strong {
+    font-weight: bold;
+}
+
+.info__item span {
+    text-align: left;
+}
+
+.article__like {
+    width: 100%;
+    height: 80px;
+    margin: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.like__buttons {
+    display: flex;
+    justify-items: flex-end;
+    gap: 10px;
+    margin-left: 10px;
+    position: absolute;
+    right: 10px;
+}
+
+.like__button,
+.dislike__button {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.like__button:hover,
+.dislike__button:hover {
+    background-color: #e0e0e0;
+    border-color: #888;
+}
+
+.like__button:active,
+.dislike__button:active {
+    /* 클릭 시 색상 바뀜! */
+    background-color: #d4d4d4;
+    border-color: #666;
+}
+
+.comment__box {
+    padding: 10px;
+}
+
+.comment__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.comment__write {
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.form__control {
+    width: 100%;
+    height: 150px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form__control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.button__area {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+/*댓글 출력 부분*/
+.comment__content {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.comment__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.comment__wrapper {
+    flex: 1;
+}
+
+.comment__text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.comment__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #888;
+}
+
+.comment__username {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment__date {
+    color: #888;
+}
+
+.button__area1 {
+    display: flex;
+    gap: 10px;
+}
+
+
+.button__area1 {
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 페이지네이션 링크 스타일 */
+.pagination .page-link {
+    color: black;
+    margin-top: 10px;
+}
+
+.pagination .page-link:hover {
+    color: #333;
+}

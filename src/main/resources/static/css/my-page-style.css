@@ -1,0 +1,236 @@
+.main__container {
+    width: 80%;
+    margin: auto;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+
+.profile-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.profile-info h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.activity-box {
+    background-color: #e9ecef;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.content-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.content-box h4,
+.my-activities h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+.thumbnail {
+    width: auto;
+    height: auto;
+    background-color: #007bff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.thumbnail img,
+.icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    /* 부드러운 애니메이션 */
+}
+
+.thumbnail img:hover,
+.icon-box img:hover {
+    transform: scale(1.3);
+    /* 이미지가 10% 확대 */
+}
+
+.icon-box {
+    width: auto;
+    height: auto;
+    background-color: #17a2b8;
+    display: inline-block;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.recent-items img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.btn__box {
+    display: grid;
+    justify-content: end;
+}
+
+.myWrite__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 테이블 기본 스타일 */
+.review__box {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    /* 중복되는 경계선을 하나로 합침 */
+    margin: 20px 0;
+    /* 테이블 위아래 여백 */
+    font-family: Arial, sans-serif;
+    /* 폰트 설정 */
+}
+
+/* 테이블 헤더 스타일 */
+.review__box th {
+    background-color: #4CAF50;
+    /* 헤더 배경색 */
+    color: white;
+    /* 헤더 텍스트 색상 */
+    padding: 12px 15px;
+    /* 셀 내부 여백 */
+    text-align: center;
+    /* 텍스트 정렬 */
+}
+
+/* 테이블 본문 스타일 */
+.review__box td {
+    padding: 12px 15px;
+    /* 셀 내부 여백 */
+    border-bottom: 1px solid #ddd;
+    /* 셀 아래쪽 경계선 */
+    text-align: left;
+    /* 텍스트 정렬 */
+}
+
+/* 짝수 행 배경색 변경 */
+.review__box tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* 짝수 행 배경색 */
+}
+
+/* 마우스 호버 시 행 배경색 변경 */
+.review__box tr:hover {
+    background-color: #ddd;
+    /* 호버 시 배경색 */
+}
+
+/* 테이블 마지막 행의 경계선 없애기 */
+.review__box tr:last-child td {
+    border-bottom: none;
+}
+
+.my-activities {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.my-activities h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.activity-item {
+    width: 120px;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f5f8fa;
+}
+
+.activity-icon {
+    font-size: 24px;
+    background-color: #e0e7ef;
+    padding: 20px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.activity-label {
+    font-size: 14px;
+    color: #333;
+}
+
+.activity-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #4169e1;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 50%;
+}
+
+
+
+.img__detail {
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 20px;
+}

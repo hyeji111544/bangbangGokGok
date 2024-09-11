@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 100px;
+    /* 헤더 높이만큼 패딩 추가 */
+}
+
+.sidebar {
+    height: calc(100vh - 100px);
+    /* 헤더 높이만큼 빼서 사이드바 높이 설정 */
+    background-color: #f8f9fa;
+    padding: 15px;
+    position: fixed;
+    top: 100px;
+    /* 헤더 아래에 오도록 설정 */
+    left: 0;
+    width: 220px;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    /* 헤더보다 위에 오도록 설정 */
+}
+
+.content {
+    margin-left: 240px;
+    /* 사이드바 너비에 맞춰 조정 */
+    padding: 20px;
+}
+
+.insider {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.insider li {
+    margin-bottom: 10px;
+}
+
+.insider a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.insider a:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.place-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.place-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.footer__info,
+.footer_make {
+    text-align: center;
+    padding: 10px 0;
+}

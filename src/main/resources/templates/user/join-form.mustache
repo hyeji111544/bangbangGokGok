@@ -1,0 +1,92 @@
+{{>layout/header}}
+<link rel="stylesheet" href="/css/join-form.css" >
+
+<body>
+    <div class="aaa">
+
+
+        <div class="signup-container">
+            <h2>회원가입</h2>
+            <form id="signup-form">
+                <!-- 아이디 입력 및 중복확인 -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="user_id" placeholder="아이디 입력">
+                    <button type="button" class="btn btn-secondary duplicate-check"
+                        onclick="checkDuplicate('user_id')">중복확인</button>
+                </div>
+
+                <!-- 비밀번호 입력 -->
+                <div class="form-group">
+                    <input type="password" class="form-control" id="user_password" placeholder="비밀번호 입력">
+                    <button type="button" class="btn btn-secondary duplicate-check invisible">중복확인</button>
+                </div>
+
+                <!-- 닉네임 입력 및 중복확인 -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="user_nickname" placeholder="닉네임 입력">
+                    <button type="button" class="btn btn-secondary duplicate-check"
+                        onclick="checkDuplicate('user_nickname')">중복확인</button>
+                </div>
+
+                <!-- 이메일 입력 및 도메인 선택 -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="user_email" placeholder="이메일 입력">
+                    <select class="form-control" id="email_domain" onchange="toggleCustomEmail(this)">
+                        <option value="">도메인 선택</option>
+                        <option value="@naver.com">@naver.com</option>
+                        <option value="@google.com">@google.com</option>
+                        <option value="@nate.com">@nate.com</option>
+                        <option value="custom">직접 입력</option>
+                    </select>
+                    <button type="button" class="btn btn-secondary duplicate-check"
+                        onclick="checkDuplicate('user_email')">중복확인</button>
+                </div>
+
+                <!-- 전화번호 입력 및 중복확인 -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="user_phone" placeholder="전화번호 입력">
+                    <button type="button" class="btn btn-secondary duplicate-check"
+                        onclick="checkDuplicate('user_phone')">중복확인</button>
+                </div>
+
+                <!-- 회원가입 버튼 -->
+                <button type="submit" class="btn btn-primary btn-block mt-4">회원가입</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- javaScript 입니다. 기능이 제대로 작동하지 않아 일단 주석 처리 하겠습니다.
+    <script>
+        // 중복확인이 완료된 상태를 저장할 객체
+        const duplicateCheckStatus = {
+            user_id: false,
+            user_nickname: false,
+            user_email: false,
+            user_phone: false
+        };
+
+        // 중복확인 함수
+        function checkDuplicate(field) {
+            alert(field + ' 중복확인 완료!');
+            duplicateCheckStatus[field] = true;
+            document.getElementById(field).setAttribute('data-checked', 'true');
+        }
+
+        // 이메일 도메인 선택 시 동작
+        function toggleCustomEmail(selectElement) {
+            const emailInput = document.getElementById('email_domain');
+
+            if (selectElement.value === 'custom') {
+                selectElement.value = ''; // 'custom'을 선택했을 때, 셀렉트 박스를 빈칸으로 설정
+                emailInput.focus(); // 이메일 입력란으로 포커스 이동
+            } else if (selectElement.value !== "") {
+                emailInput.value = emailInput.value.split('@')[0] + selectElement.value; // 선택된 도메인 추가
+            }
+        }
+
+    </script> -->
+
+    <!-- Bootstrap JS and dependencies -->
+{{>layout/footer}}

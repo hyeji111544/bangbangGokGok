@@ -1,0 +1,92 @@
+{{>layout/header}}
+    <link rel="stylesheet" href="/css/tourmap.css">
+
+    <!-- 사이드바 -->
+    <div class="sidebar">
+        <div class="loactionwe">
+            <h4>지역(ex: 부산진구 38도)</h4>
+        </div>
+
+        <ul class="insider">
+            <li>
+                <a href="#">
+                    <div class="icon">&#127759;</div>
+                    <div class="text">주변여행지</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#127828;</div>
+                    <div class="text">음식점</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#9749;</div>
+                    <div class="text">카페</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#127970;</div>
+                    <div class="text">숙소</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#9889;</div>
+                    <div class="text">전기차충전소</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#127881;</div>
+                    <div class="text">여행테마</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#128200;</div>
+                    <div class="text">나의여행</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#127973;</div>
+                    <div class="text">주유소</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="icon">&#127968;</div>
+                    <div class="text">편의점</div>
+                </a>
+            </li>
+        </ul>
+
+        <!-- 장소 목록 -->
+        <div class="place-item">
+            <h3>놀이터</h3>
+            <p>주변 여행지 - 내 위치로부터 0.1 km</p>
+        </div>
+        <div class="place-item">
+            <h3>서면미술관</h3>
+            <p>주변 여행지 - 내 위치로부터 0.1 km</p>
+        </div>
+        <div class="place-item">
+            <h3>부산광역시립 부전도서관</h3>
+            <p>주변 여행지 - 내 위치로부터 0.2 km</p>
+        </div>
+
+
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div class="content">
+        <div class="map">
+            <img src="/images/지도.png" alt="지도" style="width: 1000px; height: auto;">
+        </div>
+    </div>
+
+    <!-- 부트스트랩 JS 및 Popper.js 링크 -->
+{{>layout/footer}}

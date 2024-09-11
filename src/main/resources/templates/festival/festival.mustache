@@ -1,0 +1,209 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/festival-main.css">
+
+    <section>
+        <div class="festival__main__header__container">
+            <nav>
+                <div class="festival__logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-music-note-list" viewBox="0 0 16 16">
+                        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2" />
+                        <path fill-rule="evenodd" d="M12 3v10h-1V3z" />
+                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z" />
+                        <path fill-rule="evenodd"
+                            d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                    <h1>전국 축제</h1>
+                </div>
+            </nav>
+            <section>
+                <div class="container mt-3">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-month"
+                            data-bs-toggle="dropdown">
+                            시기
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">개최중</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">개최예정</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">01월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">02월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">03월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">04월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">05월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">06월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">07월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">08월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">09월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">10월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">11월</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="month">12월</a></li>
+                        </ul>
+                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-city"
+                            data-bs-toggle="dropdown">
+                            지역
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">서울</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">인천</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">대전</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">대구</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">광주</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">부산</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">울산</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">세종시</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">경기도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">강원특별자치도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">충청북도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">충청남도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">경상북도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">경상남도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">전북특별자치도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">전라남도</a></li>
+                            <li><a class="dropdown-item" href="#" data-dropdown="city">제주도</a></li>
+                        </ul>
+                        <button type="button" class="btn btn-search">검색</button>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <!-- Carousel -->
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                    <!-- Indicators/dots -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    </div>
+
+                    <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/images/card1.jpg" alt="Los Angeles" class="d-block"
+                                style="width:100%; height:600px;">
+                            <div class="carousel-caption">
+                                <h5>축제이름</h5>
+                                    <p>기간</p>
+                                    <p>지역</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/images/card2.jpg" alt="Chicago" class="d-block"
+                                style="width:100%; height:600px;">
+                            <div class="carousel-caption">
+                                <h5>축제이름</h3>
+                                    <p>기간</p>
+                                    <p>지역</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/images/card3.jpg" alt="New York" class="d-block"
+                                style="width:100%; height:600px;">
+                            <div class="carousel-caption">
+                                <h5>축제이름</h3>
+                                    <p>기간</p>
+                                    <p>지역</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls/icons -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </section>
+    <main>
+        <div class="festival__main__main__container">
+            <div class="bottom__box">
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card1.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card2.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card3.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card1.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card2.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom__img">
+                        <img src="/images/card3.jpg">
+                    </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">축제 이름</div>
+                        <div class="bottom__info2">축제 기간</div>
+                        <div class="bottom__info3">축제 지역</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 드롭다운 항목들을 선택합니다.
+            const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+            // 각 드롭다운 항목에 대해 클릭 이벤트를 추가합니다.
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    // data-dropdown 속성 값에 따라 관련된 버튼을 선택합니다.
+                    const dropdownType = this.getAttribute('data-dropdown');
+                    const dropdownButton = document.getElementById(`dropdown-${dropdownType}`);
+
+                    // 선택된 항목의 텍스트를 버튼에 설정합니다.
+                    dropdownButton.textContent = this.textContent;
+                });
+            });
+        });
+    </script>
+{{>layout/footer}}

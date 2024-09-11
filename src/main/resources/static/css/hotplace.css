@@ -1,0 +1,315 @@
+
+
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    }
+
+
+/*------------------------ 지역별 아이콘----------------------- */
+
+
+
+
+.hotplace__box {
+    padding-top: 150px;
+    display: grid;
+    justify-content: center;    
+    padding-bottom: 30px;
+
+    background: linear-gradient(to Top, white 10%, transparent 50%);
+    background-color: rgb(222, 227, 243);
+
+}
+
+
+.sec__title{
+    display: grid;
+    align-items:end;        
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sec__title div:nth-child(3){
+    color: grey;
+}
+
+.hot__place__box {    
+    padding-top: 30px;
+    width : 320px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hot__place__box a, .hot__place__box span{    
+    text-decoration: none;
+    color: grey;
+    font-size: 30px;
+}
+
+
+.icon__box{
+    padding-top: 50px;
+    display: grid;
+    width: 1240px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.icon__box a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.icon {
+    display: grid;
+    justify-content: center;
+    
+}
+
+
+.icon__img__box > img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 8px;
+  
+}
+
+.icon__img__box > img:hover{
+    box-shadow: 0px 8px 8px 1px grey;
+    border-radius: 50%;
+
+}
+
+
+
+.hotplace__name {
+    text-align: center;
+}
+
+
+/*    -----------------------------  모달창--------------------------*/
+#openModal {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 스크롤이 필요한 경우 */
+    background-color: rgba(0, 0, 0, 0.4); /* 배경 어둡게 */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* 세로 가운데 정렬 */
+    padding: 20px;
+    border-radius: 10px;    
+    max-width: 30%; /* 화면 넘어가지 않게 */
+    position: relative;
+    box-sizing: border-box; /* 패딩과 너비 포함 */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.area-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.area-btn {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.area-btn.selected {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.search-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.search-btn:hover {
+    background-color: #555;
+}
+
+
+
+
+
+
+
+
+
+
+/* -------------------인기 여행지 or 맛집 -------------------- */
+
+.hotplace__rec__info__box {    
+    padding-top: 60px;
+    
+    display: grid;
+    justify-content: center;
+
+    
+}
+
+.rec__text{
+    width: 1240px;
+    height: 50px;
+    font-weight: 1000px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding: 0 10px
+}
+
+
+
+
+
+
+
+
+
+.hot__place__card__box {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+    padding-top: 20px;
+    padding-bottom: 80px;
+   
+}
+
+
+
+
+.hot__place__card__box a{
+    text-decoration: none;
+    color : black;    
+}
+
+
+.hot__place__card {
+    width: 280px;
+    
+    
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease; /* 이미지에 부드러운 확대 효과 적용 */
+    margin-bottom: 20px;
+}
+
+.hot__place__img__box{    
+    width: 280px;
+    height: 250px;
+    overflow: hidden;
+}
+
+
+.hot__place__card img {
+    object-fit: cover;
+    width: 280px;
+    height: 250px;
+    display: none;
+    transition: transform 0.8s ease;
+}
+
+.hot__place__card img:hover {
+    transform: scale(1.3); /* 마우스를 올렸을 때 1.05배 확대 */
+}
+
+
+.hot__place__card img.active {
+    display: block;
+}
+
+.like-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.like-btn img {
+    width: 100%;
+    height: 100%;
+}
+.dots {
+    text-align: center;
+    
+}
+.dots button {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border:1px solid rgb(148, 142, 243);
+    margin: 5px;
+    cursor: pointer;
+}
+.dots button.active {
+    background-color: #1c6de7;
+}
+.hot__place__description {    
+    text-align: center;
+}
+
+.hot__place__name {
+    font-size: 20px;
+    margin: 5px;
+}
+.hot__place__location {
+    font-size: 15px;
+    color: grey;
+}
+
+
+
+
+
+
+.page__box{
+    display: flex;
+    justify-content: center; 
+ }
+

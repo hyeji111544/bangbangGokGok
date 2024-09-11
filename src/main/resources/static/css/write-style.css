@@ -1,0 +1,85 @@
+.main__container {
+    width: 80%;
+    margin: auto;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+
+.header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.content-box h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn__box2 {
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+
+}
+
+
+tr>td {
+    display: flex;
+    flex-direction: row;
+}
+
+td:first-child {
+    margin-bottom: 10px;
+}
+
+td:last-child {
+    margin-bottom: 30px;
+}
+
+.write__box {
+    width: 100%;
+    display: grid;
+}
+
+.write__box>tr {
+    margin-bottom: 30px;
+}
+
+.write__title {
+    font-weight: 800;
+    font-size: 20px;
+    color: gray;
+}
+
+.write__context__box {
+    width: 100%;
+}
+
+.hash__checkbox__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.file__caution {
+    font-size: 13px;
+    color: gray;
+    font-weight: 200;
+}

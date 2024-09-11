@@ -1,0 +1,38 @@
+
+<footer>
+    <div style="border: 1px solid blue;">
+        <div class="footer__info" style="border: 1px solid rebeccapurple;">
+            <div><a href="#">개인정보 처리 방침</a></div>
+            <div><a href="#">이용약관</a></div>
+            <div><a href="#">위치기반서비스 이용약관</a></div>
+            <div><a href="#">저작권 정책</a></div>
+            <div><a href="#">Q&A</a></div>
+        </div>
+        <div class="footer_make">
+            카피라이트
+        </div>
+    </div>
+
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userImg = document.querySelector('.user__img');
+        const dropdownMenu = document.querySelector('.dropdown__menu');
+
+        userImg.addEventListener('click', function () {
+            // Toggle the dropdown menu visibility
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close the dropdown if clicking outside of it
+        document.addEventListener('click', function (event) {
+            if (!userImg.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
