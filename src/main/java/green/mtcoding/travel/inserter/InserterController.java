@@ -28,12 +28,7 @@ public class InserterController {
 
 
 
-    @ResponseBody
-    @GetMapping("/test")
-    public String jsonTest() throws Exception {
-        inserterService.jsonTest();
-        return "data insert ok";
-    }
+
 
 
 

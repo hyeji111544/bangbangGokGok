@@ -29,74 +29,64 @@ InserterService {
     private final InserterRepository inserterRepository;
     private final ObjectMapper objectMapper;
 
-
-
-
-
     @Transactional
     public void init() throws Exception {
-        //objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-
         // 엔티티와 파일 매핑 설정
-        Map<String, TypeReference<?>> fileToEntityMap = new HashMap<>();
+        Map<String, Class<?>> fileToEntityMap = new HashMap<>();
 
-        fileToEntityMap.put("/json/tourist+festival+food.json", new TypeReference<List<Content>>() {});
-        fileToEntityMap.put("/json/area.json", new TypeReference<List<Area>>() {});
+        // 파일 경로에 해당하는 엔티티 클래스 설정
+        fileToEntityMap.put("/json/tourist+festival+food.json", Content.class);
+        fileToEntityMap.put("/json/area.json", Area.class);
 
         // 파일별 처리
-        for (Map.Entry<String, TypeReference<?>> entry : fileToEntityMap.entrySet()) {
-            TypeReference<List<Object>> typeRef = (TypeReference<List<Object>>) entry.getValue();
-            saveEntities(entry.getKey(), typeRef);
+        for (Map.Entry<String, Class<?>> entry : fileToEntityMap.entrySet()) {
+            Class<?> entityClass = entry.getValue();
+            saveEntities(entry.getKey(), entityClass);
         }
-
     }
 
-
-
-    private <T> void saveEntities(String filePath, TypeReference<List<T>> typeReference) throws Exception {
+    private void saveEntities(String filePath, Class<?> entityClass) throws Exception {
         ClassPathResource resource = new ClassPathResource(filePath);
         try (InputStream inputStream = resource.getInputStream()) {
-            // JSON 데이터를 Map으로 읽기
-            Map<String, Object> jsonMap = objectMapper.readValue(inputStream, Map.class);
-            Map<String, Object> response = (Map<String, Object>) jsonMap.get("response");
-            Map<String, Object> header = (Map<String, Object>) response.get("header");
-            String resultMsg = (String) header.get("resultMsg");
+            // JSON 데이터를 JsonNode로 읽기
+            JsonNode rootNode = objectMapper.readTree(inputStream);
+            JsonNode response = rootNode.path("response");
+            JsonNode header = response.path("header");
+            String resultMsg = header.path("resultMsg").asText();
 
             // resultMsg가 "OK"일 때만 처리
             if (resultMsg.equals("OK")) {
-                Map<String, Object> body = (Map<String, Object>) response.get("body");
-                Map<String, Object> items = (Map<String, Object>) body.get("items");
-                List<T> entities = objectMapper.convertValue(items.get("item"), typeReference);
-                inserterRepository.saveAll(entities);
+                JsonNode items = response.path("body").path("items").path("item");
+
+                // Content 타입일 경우 contentId 설정 로직 추가
+                if (entityClass.equals(Content.class)) {
+                    List<Content> contentEntities = new ArrayList<>();
+                    for (JsonNode item : items) {
+                        Content content = objectMapper.convertValue(item, Content.class);
+
+                        // item에서 contentId 가져오기
+                        String contentId = item.path("contentid").asText();
+                        content.setContentId(contentId);
+
+                        contentEntities.add(content);
+                    }
+                    inserterRepository.saveAll(contentEntities);
+                }
+                // Area 타입 처리
+                else if (entityClass.equals(Area.class)) {
+                    List<Area> areaEntities = new ArrayList<>();
+                    for (JsonNode item : items) {
+                        Area area = objectMapper.convertValue(item, Area.class);
+                        areaEntities.add(area);
+                    }
+                    inserterRepository.saveAll(areaEntities);
+                }
             } else {
                 throw new Exception404("json 파일이 존재하지 않습니다.");
             }
         }
-
-
-
     }
 
-
-
-    @Transactional
-    public  void jsonTest() {
-        Area area = new Area();
-        area.setCode("1");
-        area.setName("서울");
-
-        em.persist(area);
-        System.out.println("area = " + area);
-
-        Sigungu sigungu = new Sigungu();
-        sigungu.setCode("1");
-        sigungu.setName("강남구");
-        sigungu.setArea(area);
-
-        em.persist(sigungu);
-        System.out.println("sigungu = " + sigungu);
-
-    }
 
 
         // 특정 경로의 json 파일 불러서 파싱
