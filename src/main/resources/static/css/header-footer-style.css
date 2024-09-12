@@ -152,39 +152,25 @@
  /*footer*/
  footer {
      padding: 20px 50px;
-     /* Adjust padding for better spacing */
      margin-top: 50px;
-     /* Space above the footer */
      background: rgba(0, 0, 0, 0.1);
-     /* Light background color for contrast */
      backdrop-filter: blur(10px);
-     /* Blurring effect */
      -webkit-backdrop-filter: blur(10px);
-     /* Safari support for blurring */
      border-top: 1px solid rgba(255, 255, 255, 0.3);
-     /* Top border for separation */
      color: rgb(0, 0, 0);
-     /* Text color */
      font-family: "Noto Sans KR", sans-serif;
-     /* Font */
      display: flex;
-     /* Flexbox container */
      flex-direction: column;
-     /* Vertical alignment */
      align-items: center;
-     /* Center horizontally */
      text-align: center;
-     /* Center text within the footer */
  }
 
  footer>div {
+     max-width: 1200px;
      width: 100%;
      display: flex;
-     /* 플렉스 박스 컨테이너로 설정 */
      flex-direction: column;
-     /* 수직으로 정렬 */
      align-items: center;
-     /* 수평 중앙 정렬 */
  }
 
  footer a {

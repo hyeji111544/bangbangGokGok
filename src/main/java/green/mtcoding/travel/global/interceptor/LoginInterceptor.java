@@ -1,7 +1,7 @@
 package green.mtcoding.travel.global.interceptor;
 
 import green.mtcoding.travel.global.error.ex.Exception401;
-import green.mtcoding.travel.inserter.entity.User;
+import green.mtcoding.travel.user.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

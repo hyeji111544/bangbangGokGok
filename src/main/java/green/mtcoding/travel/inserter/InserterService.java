@@ -1,14 +1,11 @@
 package green.mtcoding.travel.inserter;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import green.mtcoding.travel.global.error.ex.Exception404;
-import green.mtcoding.travel.inserter.entity.Area;
-import green.mtcoding.travel.inserter.entity.Sigungu;
-import green.mtcoding.travel.inserter.entity.Content;
+import green.mtcoding.travel.area.Area;
+import green.mtcoding.travel.sigungu.Sigungu;
+import green.mtcoding.travel.content.Content;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
