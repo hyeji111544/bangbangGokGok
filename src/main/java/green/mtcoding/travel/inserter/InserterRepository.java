@@ -1,7 +1,7 @@
 package green.mtcoding.travel.inserter;
 
-import green.mtcoding.travel.inserter.entity.Area;
-import green.mtcoding.travel.inserter.entity.Sigungu;
+import green.mtcoding.travel.area.Area;
+import green.mtcoding.travel.sigungu.Sigungu;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
