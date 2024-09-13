@@ -3,20 +3,22 @@
 
     <section class="container">
         <div class="place__box1">
-            <div class="place__box1__title"># 지역 이름</div>
+            <div class="place__box1__title"># 전국</div>
             <div class="place__inner__box">
-                <div class="place__box1__count">총 3941건</div>
+                <div class="place__box1__count">총 {{model.count}}건</div>
                 <div class="place__box1__content">
                     <span>최신순</span>
                     <span>인기순</span>
                 </div>
             </div>
             <!-- 내부 컨텐츠 반복하는 곳 -->
+            {{#model.contents}}
             <div class="place__content__box">
-                <img src="/images/maincard1.jpg">
+                <div style="display: none" name="contentId">{{contentId}}</div>
+                    <img src="{{firstImage}}">
                 <div class="place__content__wrapper">
-                    <div>할머니손두부</div>
-                    <div>경기 가평군</div>
+                    <div>{{title}}</div>
+                    <div>{{addr1}}</div>
                     <div>40년 전통의 손맛을 자랑하고 있는 손두부전문점</div>
                     <div>해시태그 # 해시 해시# 해시 </div>
                 </div>
@@ -28,6 +30,7 @@
                     </svg>
                 </div>
             </div>
+            {{/model.contents}}
             <!-- 이곳입니다 -->
 
             <ul class="pagination justify-content-center">
@@ -42,9 +45,9 @@
         <div class="place__box2">
             <div class="place__name1">
                 <div>#전국</div>
-                {{#model}}
-                <div>{{name}}</div>
-                {{/model}}
+                {{#model.areas}}
+                    <div name="code" value="{{code}}">#{{name}}</div>
+                {{/model.areas}}
             </div>
             <div class="place__name2">
                 <div>강화군</div>

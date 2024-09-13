@@ -9,7 +9,6 @@ import lombok.Data;
 @Table(name="content_tb")
 public class Content {
 
-
     @Id
     @JsonAlias("contendid")
     private String contentId;

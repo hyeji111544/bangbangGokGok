@@ -2,9 +2,11 @@ package green.mtcoding.travel.content;
 
 import green.mtcoding.travel.area.AreaService;
 import green.mtcoding.travel.sigungu.SigunguService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,7 +53,10 @@ public class ContentController {
 
     /*           info-start             */
     @GetMapping("/info")
-    public String info() {
+    public String info(HttpServletRequest request) {
+        ContentResponse.infoListDTO infoListDTO= contentService.infoContentList("12");
+        request.setAttribute("model", infoListDTO);
+        System.out.println(infoListDTO);
         return "/info/info";
     }
     /*           info-end             */
