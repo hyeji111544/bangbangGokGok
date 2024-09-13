@@ -3,13 +3,16 @@ package green.mtcoding.travel.user;
 import green.mtcoding.travel.review.Review;
 import green.mtcoding.travel.scrap.Scrap;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Data
 @Table(name="user_tb")
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -38,5 +41,16 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     List<Scrap> scraps;
+
+    @Builder
+    public User(Integer id, String loginId, String password, String img, String nickName, String email, String phone) {
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+        this.img = img;
+        this.nickName = nickName;
+        this.email = email;
+        this.phone = phone;
+    }
 
 }

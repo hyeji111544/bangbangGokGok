@@ -31,18 +31,22 @@
         <div><a href="/info">정보</a></div>
         <div><a href="/tourmap">지도</a></div>
     </div>
-    <div class="user__info">
-        <div class="info__login">
-            <div class="user__img" style="display: none;"><img src="/images/userImg1.png">
-                <div class="dropdown__menu">
-                    <div><a href="my-page">마이페이지</a></div>
-                    <div><a href="#">로그아웃</a></div>
-                </div>
+<div class="user__info">
+<div class="info__login">
+    {{#sessionUser}}
+        <div class="user__img"><img src="/images/userImg1.png">
+            <div class="dropdown__menu">
+                <div><a href="my-page">마이페이지</a></div>
+                <div><a href="/logout">로그아웃</a></div>
             </div>
         </div>
+    {{/sessionUser}}
+    {{^sessionUser}}
+    </div>
         <div class="info__logout">
             <div><a href="/login-form">로그인</a></div>
             <div><a href="/join-form">회원가입</a></div>
         </div>
     </div>
+    {{/sessionUser}}
 </header>

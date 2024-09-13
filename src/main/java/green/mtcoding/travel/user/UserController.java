@@ -1,13 +1,18 @@
 package green.mtcoding.travel.user;
 
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
+    private final HttpSession session;
     private final UserService userService;
 
     /*           main-start             */
@@ -36,6 +41,22 @@ public class UserController {
     @GetMapping("/login-form")
     public String loginForm() {
         return "/user/login-form";
+    }
+
+    //로그인 로직
+    @PostMapping("/login")
+    public String login(@Valid UserRequest.LoginDTO loginDTO, Errors errors){
+        //.setAttribute("-----------------0loginDTO", loginDTO);
+        User sessionUser = userService.login(loginDTO);
+        System.out.println("-----1"+ sessionUser.getLoginId());
+        session.setAttribute("sessionUser", sessionUser);
+        return "redirect:/";
+    }
+    //로그아웃
+    @GetMapping("/logout")
+    public String logout(){
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping("/join-form")
