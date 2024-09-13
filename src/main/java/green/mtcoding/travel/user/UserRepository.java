@@ -7,6 +7,8 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Repository
 public class UserRepository {
@@ -29,27 +31,27 @@ public class UserRepository {
     }
 
     //회원가입 중복확인(loignId)
-    public User findByUserId(String loginId) {
+    public Optional<User> findByUserId(String loginId) {
         Query query = em.createQuery("select u  from User u where u.loginId=:loginId", User.class);
         query.setParameter("loginId", loginId);
         try {
             User user = (User) query.getSingleResult();
-            return user;
+            return Optional.of(user);
         } catch (Exception e) {
 
-            return null;
+            return Optional.empty();
         }
     }
     //회원가입 중복확인(nickName)
-    public User findByUsernickName(String nickName) {
+    public Optional<User> findByUsernickName(String nickName) {
         Query query = em.createQuery("select u  from User u where u.nickName=:nickName", User.class);
         query.setParameter("nickName", nickName);
         try {
             User user = (User) query.getSingleResult();
-            return user;
+            return Optional.of(user);
         } catch (Exception e) {
 
-            return null;
+            return Optional.empty();
         }
     }
 

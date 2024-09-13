@@ -1,8 +1,10 @@
 package green.mtcoding.travel.user;
 
+import green.mtcoding.travel.global.util.Resp;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,7 +83,21 @@ public class UserController {
         return "redirect:/login-form";
 
     }
-    //헤더 프로필 사진 가져오기
+    //닉네임 중복확인 ㅋ컨트롤러
+    @GetMapping("/user/LoingIdCheck")
+    public ResponseEntity<Resp<Boolean>> LoingIdCheck(@RequestParam("loginId") String loginId) {
+        boolean isSameloginId = userService.loginIdcheck(loginId);
+        String message = isSameloginId ? "중복된 아이디입니다." : "사용할 수 있는 아이디입니다.";
+        return ResponseEntity.ok((Resp<Boolean>) Resp.ok(isSameloginId, message));
+    }
+    // 닉네임 중복확인 컨트롤러
+    @GetMapping("/user/NickNamecheck")
+    public ResponseEntity<Resp<Boolean>> NickNamecheck(@RequestParam("nickName") String nickName) {
+        boolean isSamenickName = userService.nickNamcheck(nickName);
+        String message = isSamenickName ? "중복된 닉네임입니다." : "사용할 수 있는 닉네임입니다.";
+        return ResponseEntity.ok((Resp<Boolean>) Resp.ok(isSamenickName, message));
+    }
+
 
 
 
@@ -107,3 +123,4 @@ public class UserController {
 
 
 }
+
