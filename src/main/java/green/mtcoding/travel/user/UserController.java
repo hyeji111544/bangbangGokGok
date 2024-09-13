@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,6 +30,7 @@ public class UserController {
     /*           hotPlace-end             */
 
     /*           festival-start             */
+
     /*           festival-end             */
 
     /*           info-start             */
@@ -59,10 +62,28 @@ public class UserController {
         return "redirect:/";
     }
 
+    //회원가입 폼으로
     @GetMapping("/join-form")
     public String joinForm() {
+
         return "/user/join-form";
     }
+    //회원가입
+    @PostMapping("/join")
+    public String join(@Valid UserRequest.JoinDTO joinDTO, @RequestParam("profile") MultipartFile profile , Errors errors) {
+        // Validation 에러 체크
+        if (errors.hasErrors()) {
+            return "redirect:/join-form"; // 유효성 검사가 실패하면 다시 회원가입 폼으로
+        }
+
+        //insert 하는 모든 것들은 toEntitiy로 하면 된다.
+        userService.registuser(joinDTO,profile);
+        return "redirect:/login-form";
+
+    }
+    //헤더 프로필 사진 가져오기
+
+
 
     /*           user-end             */
 

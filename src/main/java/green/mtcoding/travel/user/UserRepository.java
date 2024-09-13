@@ -13,21 +13,46 @@ public class UserRepository {
 
     private final EntityManager em;
 
-    //유저네임로 조회
-    public User findByLoginId(String loginId) {
+    //ID 레파지토리
+
+    public User findById(Integer id){
+        Query query = em.createQuery("SELECT u FROM User u WHERE u.id = :id");
+        query.setParameter("id", id);
+        try{
+            User user = (User) query.getSingleResult();
+            return user;
+        }
+        catch(Exception e){
+
+            return null;
+        }
+    }
+
+    //회원가입 중복확인(loignId)
+    public User findByUserId(String loginId) {
         Query query = em.createQuery("select u  from User u where u.loginId=:loginId", User.class);
         query.setParameter("loginId", loginId);
         try {
             User user = (User) query.getSingleResult();
             return user;
-
         } catch (Exception e) {
 
             return null;
         }
-
-
     }
+    //회원가입 중복확인(nickName)
+    public User findByUsernickName(String nickName) {
+        Query query = em.createQuery("select u  from User u where u.nickName=:nickName", User.class);
+        query.setParameter("nickName", nickName);
+        try {
+            User user = (User) query.getSingleResult();
+            return user;
+        } catch (Exception e) {
+
+            return null;
+        }
+    }
+
 
     //로그인(401 여기서 터트리기)
     public User findByLoginIdAndPassword(String loginId, String password) throws NoResultException {
@@ -48,7 +73,22 @@ public class UserRepository {
         }
     }
 
+    //회원가입
     public void save(User user) {
+        System.out.println("담기전"+user.getId());
+        System.out.println("담기전"+user.getPassword());
+        System.out.println("담기전"+user.getProfile());
+        System.out.println("담기전"+user.getNickName());
+        System.out.println("담기전"+user.getEmail());
+        System.out.println("담기전"+user.getPhone());
+        em.persist(user);
+        System.out.println("담기후"+user.getId());
+        System.out.println("담기후"+user.getPassword());
+        System.out.println("담기후"+user.getProfile());
+        System.out.println("담기후"+user.getNickName());
+        System.out.println("담기후"+user.getEmail());
+        System.out.println("담기후"+user.getPhone());
+
 
     }
 

@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Column(length = 255)
-    private String img;
+    private String profile;
 
     @Column(nullable = false, unique = true)
     private String nickName;
@@ -43,14 +43,25 @@ public class User {
     List<Scrap> scraps;
 
     @Builder
-    public User(Integer id, String loginId, String password, String img, String nickName, String email, String phone) {
+    public User(Integer id, String loginId, String password, String profile, String nickName, String email, String phone) {
         this.id = id;
         this.loginId = loginId;
         this.password = password;
-        this.img = img;
+        this.profile = profile;
         this.nickName = nickName;
         this.email = email;
         this.phone = phone;
     }
 
+    // 새로운 id 없는 생성자 추가
+    @Builder
+    public User(String loginId, String password, String profile, String nickName, String email, String phone) {
+        this.loginId = loginId;
+        this.password = password;
+        this.profile = profile;
+        this.nickName = nickName;
+        this.email = email;
+        this.phone = phone;
+
+    }
 }
