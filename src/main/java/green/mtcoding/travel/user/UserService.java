@@ -9,7 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,11 +54,16 @@ public class UserService {
     //회원가입
     @Transactional
     public void registuser(UserRequest.JoinDTO joinDTO, MultipartFile profile) {
-        User userid = userRepository.findByUserId(joinDTO.getLoginId());
-        User usernick = userRepository.findByUsernickName(joinDTO.getNickName());
+        Optional<User> loginId = userRepository.findByUserId(joinDTO.getLoginId());
+        Optional<User> nickName = userRepository.findByUsernickName(joinDTO.getNickName());
+        System.out.println("123123213132"+nickName.isPresent());
 
-        if (userid != null || usernick != null) {
-            throw new Exception400("이미 존재하고 있는 ID와 NICKNAME 입니다.");
+        if (loginId.isPresent()) {
+            throw new Exception400("이미 존재하는 ID 입니다.");
+        }
+
+        if (nickName.isPresent()) {
+            throw new Exception400("이미 존재하는 NICKNAME 입니다.");
         }
 
         User newUser = joinDTO.toEntity();
@@ -76,6 +84,27 @@ public class UserService {
         }
 
         userRepository.save(newUser);
+    }
+
+    //아이디 중복확인
+    public boolean loginIdcheck(String loginId) {
+        Optional<User> userOP = userRepository.findByUserId(loginId);
+        if (userOP.isPresent()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    //닉네임 중복확인
+    public boolean nickNamcheck(String nickName) {
+        Optional<User> userOP = userRepository.findByUsernickName(nickName);
+        if (userOP.isPresent()){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /*           user-end             */

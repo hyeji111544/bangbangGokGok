@@ -5,13 +5,11 @@
 <div class="aaa">
     <div class="signup-container">
         <h2>회원가입</h2>
-        <form action="/join" method="post" enctype="multipart/form-data" id="signup-form">
+        <form action="/join" method="post" enctype="multipart/form-data" id="signup-form" onsubmit="return valid()">
             <!-- 아이디 입력 및 중복확인 -->
             <div class="form-group">
-                <input type="text" class="form-control" name="loginId" placeholder="아이디 입력">
-               <!--
-                <button type="button" class="btn btn-secondary duplicate-check" onclick="checkDuplicate('loginId')">중복확인</button>
-                -->
+                <input type="text" class="form-control" name="loginId" id="loginId" placeholder="아이디 입력">
+                <button onclick="LoingIdCheck('loginId')" type="button" class="btn btn-outline-primary">중복체크</button>
             </div>
 
             <!-- 프로필 사진 등록 문구 -->
@@ -36,8 +34,8 @@
 
             <!-- 닉네임 입력 및 중복확인 -->
             <div class="form-group">
-                <input type="text" class="form-control" name="nickName" placeholder="닉네임 입력">
-               <!--  <button type="button" class="btn btn-secondary duplicate-check" onclick="checkDuplicate('nickname')">중복확인</button>-->
+                <input type="text" class="form-control" name="nickName" id="nickName" placeholder="닉네임 입력">
+                <button onclick="NickNamecheck('nickName')" type="button" class="btn btn-outline-primary">중복체크</button>
             </div>
 
             <!-- 이메일 입력 및 도메인 선택 -->
@@ -65,9 +63,6 @@
 </div>
 
 <script>
-
-
-
     //프로필 이미지 보이기
     function previewImage(event) {
         const imagePreview = document.getElementById('profileImagePreview');
@@ -79,6 +74,73 @@
                 imagePreview.style.display = 'block';
             };
             reader.readAsDataURL(file);
+        }
+    }
+    // loginId 중복체크
+    let isSameusername = true;
+
+
+   async function LoingIdCheck(){
+        let loginId = $("#loginId").val();
+        console.log(loginId)
+
+        let response = await fetch(`/user/LoingIdCheck?loginId=${loginId}`);
+       console.log(response)
+
+        let responseBody = await response.json();
+       console.log(responseBody)
+
+        if (responseBody.body){
+            isSameusername = true;
+            alert("중복된 아이디 입니다.");
+
+        } else {
+            isSameusername = false;
+            alert("사용할 수 있는 아이디 입니다.");
+            $('#loginId').attr("readOnly",true);
+        }
+
+        function valid(){
+            if (isSameusername){
+                alert("중복 체크를 꼭 하셔야 합니다.");
+                return false;
+            }else {
+                return true;
+            }
+        }
+    }
+
+    // nickName 중복체크
+    let isSameusernick = true;
+
+
+    async function NickNamecheck(){
+        let nickName = $("#nickName").val();
+        console.log(nickName)
+
+        let response = await fetch(`/user/NickNamecheck?nickName=${nickName}`);
+        console.log(response)
+
+        let responseBody = await response.json();
+        console.log(responseBody)
+
+        if (responseBody.body){
+            isSameusernick = true;
+            alert("중복된 닉네임 입니다.");
+
+        } else {
+            isSameusernick = false;
+            alert("사용할 수 있는 닉네임 입니다.");
+            $('#nickName').attr("readOnly",true);
+        }
+
+        function valid(){
+            if (isSameusernick){
+                alert("중복 체크를 꼭 하셔야 합니다.");
+                return false;
+            }else {
+                return true;
+            }
         }
     }
 </script>
