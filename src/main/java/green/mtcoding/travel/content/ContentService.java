@@ -1,13 +1,18 @@
 package green.mtcoding.travel.content;
 
+import green.mtcoding.travel.area.Area;
+import green.mtcoding.travel.area.AreaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class ContentService {
 
     private final ContentRepository contentRepository;
+    private final AreaRepository areaRepository;
 
     /*           main-start             */
     /*           main-end             */
@@ -25,6 +30,12 @@ public class ContentService {
     /*           festival-end             */
 
     /*           info-start             */
+    public ContentResponse.infoListDTO infoContentList(String contentTypeId){
+        long count = contentRepository.countByContentTypeId(contentTypeId);
+        List<Content> contentList = contentRepository.findByContentTypeId(contentTypeId);
+        List<Area> areaList = areaRepository.findAll();
+        return new ContentResponse.infoListDTO(contentList, count, areaList);
+    }
     /*           info-end             */
 
     /*           map-start             */
