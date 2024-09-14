@@ -131,30 +131,46 @@ function generateAreaButtons() {
         button.textContent = area.name; // 시군구 이름을 버튼에 표시
         button.setAttribute("data-code", area.code); // 시군구 코드 저장
 
-        button.addEventListener("click", function () {
-            if (button.textContent === '전체') {
-                document.querySelectorAll(".area-btn").forEach(function (btn) {
-                    if (btn.textContent !== '전체') {
-                        btn.classList.remove("selected");
-                    }
-                });
-                button.classList.add("selected");
-                sigunguCode = []; // 전체가 선택된 경우 시군구 코드를 비움
-            } else {
-                button.classList.toggle("selected");
-                document.querySelector(".area-btn:first-child").classList.remove("selected");
+        // 모든 버튼의 이벤트를 초기화하고 한 번만 설정
+        document.querySelectorAll('.area-btn').forEach(function (button) {
+            button.onclick = function () {
+                let allButton = document.querySelector(".area-btn:first-child"); // '전체' 버튼
 
-                let selectedAreas = document.querySelectorAll(".area-btn.selected");
-                if (selectedAreas.length === 0) {
-                    document.querySelector(".area-btn:first-child").classList.add("selected");
-                    sigunguCode = []; // 전체가 다시 선택되면 시군구 코드 비움
-                } else {
-                    // 시군구 버튼이 선택되었을 때만 sigunguCode 업데이트
-                    sigunguCode = Array.from(selectedAreas).map(function (area) {
-                        return area.getAttribute("data-code");
+                if (button.textContent === '전체') {
+                    // '전체' 버튼이 클릭되면 모든 하위지역 버튼들의 'selected' 클래스를 제거
+                    document.querySelectorAll(".area-btn").forEach(function (btn) {
+                        if (btn.textContent !== '전체') {
+                            btn.classList.remove("selected");
+                        }
                     });
+
+                    // '전체' 버튼에 'selected' 클래스 추가
+                    button.classList.add("selected");
+
+                    // 하위 지역 코드를 비움
+                    sigunguCode = [];
+
+                } else {
+                    // 하위지역 버튼 클릭 시 '전체' 버튼의 선택을 해제
+                    button.classList.toggle("selected");
+                    allButton.classList.remove("selected");
+
+                    // 선택된 하위지역 버튼들을 배열로 모음
+                    const selectedAreas = document.querySelectorAll(".area-btn.selected");
+
+                    // 선택된 하위지역이 없을 경우, '전체' 버튼을 다시 선택
+                    if (selectedAreas.length === 0) {
+                        allButton.classList.add("selected");
+                        sigunguCode = [];
+                    } else {
+                        // 선택된 하위지역 버튼들의 코드를 sigunguCode에 저장
+                        sigunguCode = Array.from(selectedAreas).map(function (area) {
+                            return area.getAttribute("data-code");
+                        });
+                    }
                 }
-            }
+            };
+
         });
 
         areaSelectionDiv.appendChild(button);
@@ -222,13 +238,13 @@ function loadHotPlace(response) {
     }
 }
 
-
 function printHotPlace(place) {
     return ` <div class="hot__place__card">
             <a href="/get-info/${place.contentId}">
                             <div class="hot__place__img__box">
                                 <img src="${place.firstImage}" class="active" alt="이미지 1">
-                                <img src="${place.firstImage2}" alt="이미지 2">                                
+                <img src="${place.firstImage}" alt="이미지 2">                              
+
                             </div>
                         </a>
 

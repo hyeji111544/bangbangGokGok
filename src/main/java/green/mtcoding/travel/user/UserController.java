@@ -73,7 +73,8 @@ public class UserController {
     }
     //회원가입
     @PostMapping("/join")
-    public String join(@Valid UserRequest.JoinDTO joinDTO, @RequestParam("profile") MultipartFile profile , Errors errors) {
+    public String join(@Valid UserRequest.JoinDTO joinDTO, @RequestParam(value = "profile", required = false) MultipartFile profile , Errors errors) {
+
         // Validation 에러 체크
         if (errors.hasErrors()) {
             return "redirect:/join-form"; // 유효성 검사가 실패하면 다시 회원가입 폼으로
@@ -84,7 +85,8 @@ public class UserController {
         return "redirect:/login-form";
 
     }
-    //닉네임 중복확인 ㅋ컨트롤러
+
+    //닉네임 중복확인 컨트롤러
     @GetMapping("/user/LoingIdCheck")
     public ResponseEntity<Resp<Boolean>> LoingIdCheck(@RequestParam("loginId") String loginId) {
         boolean isSameloginId = userService.loginIdcheck(loginId);

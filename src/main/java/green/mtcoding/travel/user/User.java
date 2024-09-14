@@ -52,7 +52,6 @@ public class User {
         this.loginId = loginId;
         this.password = password;
         this.profile = profile;
-
         this.nickName = nickName;
         this.email = email;
         this.phone = phone;

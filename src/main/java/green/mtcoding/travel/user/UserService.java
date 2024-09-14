@@ -49,7 +49,6 @@ public class UserService {
     //로그인
     @Transactional
     public User login(UserRequest.LoginDTO loginDTO) {
-
         User user = userRepository.findByLoginIdAndPassword(loginDTO.getLoginId(), loginDTO.getPassword());
         return user;
     }
