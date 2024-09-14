@@ -57,6 +57,7 @@ function showSlide(index, button) {
         return;
     }
 
+
     images.forEach(function (img, i) {
         img.classList.toggle('active', i === index);
         dots[i].classList.toggle('active', i === index);
