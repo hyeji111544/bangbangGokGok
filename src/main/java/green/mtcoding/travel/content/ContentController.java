@@ -44,6 +44,7 @@ public class ContentController {
     /*           region-end             */
 
 
+
     /*           hotPlace-start             */
     @GetMapping("/hotplace")
     public String hotPlace(
