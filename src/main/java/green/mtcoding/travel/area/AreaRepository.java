@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @RequiredArgsConstructor
 @Repository
 public class AreaRepository {
@@ -25,5 +26,6 @@ public class AreaRepository {
         System.out.println(query.getResultList());
         return query.getResultList();
     }
+
     
 }

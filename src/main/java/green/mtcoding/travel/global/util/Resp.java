@@ -25,4 +25,5 @@ public class Resp<T> {
         // 중복 여부와 메시지를 반환하는 응답 객체 생성
         return new Resp<>(200, s, isSameloginId);
     }
+
 }

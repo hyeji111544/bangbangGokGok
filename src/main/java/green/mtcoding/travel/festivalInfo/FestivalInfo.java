@@ -67,5 +67,8 @@ public class FestivalInfo {
     @JsonAlias("smallimageurl")
     private String smallImageUrl;
     private String cpyrhtDivCd;
+    private String viewCount;
+    private String likeCount;
+
 
 }

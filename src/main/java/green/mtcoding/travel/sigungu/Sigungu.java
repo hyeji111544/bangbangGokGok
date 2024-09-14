@@ -18,9 +18,8 @@ public class Sigungu {
 
 
 
-
     // 여러 Sigungu가 하나의 Region에 속함
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Area area;
 }
 

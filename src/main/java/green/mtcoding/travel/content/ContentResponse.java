@@ -1,5 +1,6 @@
 package green.mtcoding.travel.content;
 
+
 import green.mtcoding.travel.area.Area;
 import lombok.Data;
 
@@ -58,5 +59,34 @@ public class ContentResponse {
             }
         }
     }
+
+
+    /*           hotPlace-start             */
+    @Data
+    public static class HotPlaceDTO {
+
+        public String contentId;
+        public String contentTypeId;
+
+        public String title;
+        public String addr1;
+        public String firstImage;
+        public String viewCount;
+        public String likeCount;
+
+        public HotPlaceDTO(Content content) {
+            this.contentId = content.getContentId();
+            this.contentTypeId = content.getContentTypeId();
+            this.title = content.getTitle();
+            this.addr1 = content.getAddr1();
+            this.firstImage = content.getFirstImage();
+            if(firstImage == "") {
+                this.firstImage = "/images/hotplace/no-image.jpg";
+            }
+            this.viewCount = content.getViewCount();
+            this.likeCount = content.getLikeCount();
+        }
+    }
+    /*           hotPlace-end             */
 
 }

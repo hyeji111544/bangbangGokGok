@@ -1,5 +1,6 @@
 package green.mtcoding.travel.area;
 
+
 import green.mtcoding.travel.sigungu.Sigungu;
 import lombok.Data;
 
@@ -37,4 +38,5 @@ public class AreaResponse {
         }
 
     }
+
 }

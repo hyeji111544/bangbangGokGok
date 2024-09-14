@@ -20,4 +20,5 @@ public class Area {
     @OneToMany(mappedBy = "area", fetch = FetchType.LAZY)
     private List<Sigungu> sigungus;
 
+
 }

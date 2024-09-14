@@ -95,5 +95,8 @@ public class RestaurantInfo {
     private String smallImageUrl;
     @JsonAlias("serialnum")
     private String serialNum;
+    private String viewCount;
+    private String likeCount;
+
 
 }

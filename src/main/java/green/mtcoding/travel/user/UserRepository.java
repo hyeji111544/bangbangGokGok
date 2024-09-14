@@ -7,7 +7,9 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Repository
@@ -56,6 +58,7 @@ public class UserRepository {
     }
 
 
+
     //로그인(401 여기서 터트리기)
     public User findByLoginIdAndPassword(String loginId, String password) throws NoResultException {
         Query query = em.createQuery("select u from User u where u.loginId=:loginId and u.password=:password", User.class);
@@ -74,6 +77,7 @@ public class UserRepository {
 
         }
     }
+
 
     //회원가입
     public void save(User user) {

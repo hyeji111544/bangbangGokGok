@@ -1,12 +1,17 @@
 package green.mtcoding.travel.content;
 
 import green.mtcoding.travel.area.AreaService;
+
 import green.mtcoding.travel.sigungu.SigunguService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import green.mtcoding.travel.global.util.Resp;
+import green.mtcoding.travel.sigungu.SigunguService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,13 +40,35 @@ public class ContentController {
     public String area() {
         return "/region/region";
     }
+
     /*           region-end             */
+
+
 
     /*           hotPlace-start             */
     @GetMapping("/hotplace")
-    public String hotplace() {
+    public String hotPlace(
+            @RequestParam(value = "area", required = false) String area,
+            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
+            HttpServletRequest request) {
+        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
+        System.out.println(hotPlaceDtos);
+        request.setAttribute("models", hotPlaceDtos);
         return "/hotplace/hotplace";
     }
+
+
+
+   @GetMapping("/get-hotplace")
+    public ResponseEntity<?> hotPlaceFilter(
+           @RequestParam(value = "area", required = false) String area,
+           @RequestParam(value = "sigungu", required = false) List<String> sigungu
+            ) {
+        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
+        return ResponseEntity.ok(Resp.ok(hotPlaceDtos));
+
+    }
+
     /*           hotPlace-end             */
 
     /*           festival-start             */
@@ -57,6 +84,7 @@ public class ContentController {
         ContentResponse.infoListDTO infoListDTO= contentService.infoContentList("12");
         request.setAttribute("model", infoListDTO);
         System.out.println(infoListDTO);
+
         return "/info/info";
     }
     /*           info-end             */

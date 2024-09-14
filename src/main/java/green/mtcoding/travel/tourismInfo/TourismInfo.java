@@ -59,6 +59,7 @@ public class TourismInfo {
     @JsonAlias("smallimageurl")
     private String smallImageUrl;
     private String cpyrhtDivCd;
-
+    private String viewCount;
+    private String likeCount;
 
 }
