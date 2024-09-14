@@ -43,7 +43,10 @@ public class Content {
     private String tel;
     private String title;
     @JsonAlias("zipcode")
-    private String zipcode;
+    private String zipCode;
+    private String viewCount;
+    private String likeCount;
+
 }
 
 

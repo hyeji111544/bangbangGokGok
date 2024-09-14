@@ -1,5 +1,6 @@
 package green.mtcoding.travel.user;
 
+
 import green.mtcoding.travel.global.util.Resp;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -32,7 +33,6 @@ public class UserController {
     /*           hotPlace-end             */
 
     /*           festival-start             */
-
     /*           festival-end             */
 
     /*           info-start             */
@@ -63,6 +63,7 @@ public class UserController {
         session.invalidate();
         return "redirect:/";
     }
+
 
     //회원가입 폼으로
     @GetMapping("/join-form")
@@ -99,8 +100,6 @@ public class UserController {
     }
 
 
-
-
     /*           user-end             */
 
     /*           myPage-start             */
@@ -123,4 +122,3 @@ public class UserController {
 
 
 }
-

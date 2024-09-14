@@ -1,5 +1,6 @@
 package green.mtcoding.travel.user;
 
+
 import green.mtcoding.travel.global.error.ex.Exception400;
 import green.mtcoding.travel.global.error.ex.Exception404;
 import green.mtcoding.travel.global.util.MyFile;
@@ -21,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final EntityManager em;
+
 
     /*           main-start             */
     /*           main-end             */
@@ -47,9 +49,11 @@ public class UserService {
     //로그인
     @Transactional
     public User login(UserRequest.LoginDTO loginDTO) {
+
         User user = userRepository.findByLoginIdAndPassword(loginDTO.getLoginId(), loginDTO.getPassword());
         return user;
     }
+
 
     //회원가입
     @Transactional
@@ -106,6 +110,7 @@ public class UserService {
             return false;
         }
     }
+
 
     /*           user-end             */
 

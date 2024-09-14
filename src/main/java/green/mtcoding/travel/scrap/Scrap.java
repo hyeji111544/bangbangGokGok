@@ -18,7 +18,6 @@ public class Scrap {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Content content;
 

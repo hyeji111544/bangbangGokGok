@@ -26,7 +26,11 @@ public class User {
     private String password;
 
     @Column(length = 255)
+
     private String profile;
+
+    private String img;
+
 
     @Column(nullable = false, unique = true)
     private String nickName;
@@ -48,10 +52,12 @@ public class User {
         this.loginId = loginId;
         this.password = password;
         this.profile = profile;
+
         this.nickName = nickName;
         this.email = email;
         this.phone = phone;
     }
+
 
     // 새로운 id 없는 생성자 추가
     @Builder
@@ -64,4 +70,5 @@ public class User {
         this.phone = phone;
 
     }
+
 }

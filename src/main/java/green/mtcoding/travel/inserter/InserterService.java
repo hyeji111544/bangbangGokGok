@@ -8,6 +8,8 @@ import green.mtcoding.travel.sigungu.Sigungu;
 import green.mtcoding.travel.content.Content;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,14 +19,27 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+
 @RequiredArgsConstructor
 @Service
-public class
-InserterService {
+public class InserterService {
 
     private final EntityManager em;
     private final InserterRepository inserterRepository;
     private final ObjectMapper objectMapper;
+
+
+    @Transactional
+    @EventListener(ApplicationReadyEvent.class)
+    public void loadDataIntoDB() throws Exception{
+        System.out.println("애플리케이션이 시작된 후 데이터를 로드");
+        init();
+        init2();
+        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------db insert 완료------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+    }
+
 
     @Transactional
     public void init() throws Exception {
@@ -32,7 +47,9 @@ InserterService {
         Map<String, Class<?>> fileToEntityMap = new HashMap<>();
 
         // 파일 경로에 해당하는 엔티티 클래스 설정
-        fileToEntityMap.put("/json/tourist+festival+food.json", Content.class);
+
+        //fileToEntityMap.put("/json/travel-dummy.json", Content.class);
+
         fileToEntityMap.put("/json/area.json", Area.class);
 
         // 파일별 처리

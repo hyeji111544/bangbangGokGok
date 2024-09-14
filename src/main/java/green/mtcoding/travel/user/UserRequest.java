@@ -2,6 +2,7 @@ package green.mtcoding.travel.user;
 
 
 import jakarta.validation.constraints.NotEmpty;
+
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class UserRequest {
         @NotEmpty
         private String password;
     }
+
 
     //회원가입 기능 DTO
     @Data
@@ -37,4 +39,5 @@ public class UserRequest {
             return User.builder().loginId(loginId).password(password).nickName(nickName).email(email).phone(phone).build();
         }
     }
+
 }
