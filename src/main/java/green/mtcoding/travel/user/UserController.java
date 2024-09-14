@@ -99,7 +99,6 @@ public class UserController {
         return ResponseEntity.ok((Resp<Boolean>) Resp.ok(isSamenickName, message));
     }
 
-
     /*           user-end             */
 
     /*           myPage-start             */
