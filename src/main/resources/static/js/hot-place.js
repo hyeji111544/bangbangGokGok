@@ -1,7 +1,7 @@
 // 사진 슬라이드 & 좋아요
 function toggleLike(button) {
-    const svg = button.querySelector('svg');
-    const isLiked = svg.style.fill === "red";
+    let svg = button.querySelector('svg');
+    let isLiked = svg.style.fill === "red";
 
     if (isLiked) {
         svg.style.fill = "none";
@@ -17,7 +17,7 @@ function toggleLike(button) {
 // AJAX로 좋아요 상태 전송
 async function sendLikeStatus(id, isLiked) {
     try {
-        const response = await fetch('/like', {
+        let response = await fetch('/like', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ openModalBtns.forEach(function (button) {
             type: 'GET',
             dataType: 'json',
             success: function (response) {
-                areas = response.body; // 시군구 데이터를 areas에 추가
+                areas = response.body.sigunguDtos; // 시군구 데이터를 areas에 추가
                 generateAreaButtons(); // 받은 데이터를 이용해 버튼 생성
                 console.log(areas);
             },
@@ -327,7 +327,7 @@ async function fetchData(type) {
 
 
 // 컨텐츠 박스 전체를 a링크가 감싸고 있는데 내부에 좋아요 버튼과 사진 선택 dot 버튼은 a링크 영향 안 받게.
-$('.like__btn, .dots button').on('click', function(event) {
+$('.like__btn, .dot__btn').on('click', function(event) {
     event.preventDefault(); // 상위 <a> 태그의 기본 동작(링크 이동) 방지
 });
 

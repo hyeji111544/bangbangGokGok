@@ -1,5 +1,6 @@
 package green.mtcoding.travel.area;
 
+import green.mtcoding.travel.sigungu.Sigungu;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,15 @@ public class AreaRepository {
         System.out.println(query.getResultList());
         return query.getResultList();
     }
+
+
+    /*           hotPlace-start             */
+    public Area findByArea(String area) {
+        return em.createQuery("select a from Area a join fetch a.sigungus s where a.code =:area", Area.class)
+                .setParameter("area", area)
+                .getSingleResult();
+    }
+    /*           hotPlace-end             */
 
     
 }

@@ -14,19 +14,6 @@ class SigunguRepositoryTest {
 
 
 
-    @Test
-    public void findByArea_test() throws Exception {
-    //given
-    String area = "1";
-
-    //when
-    sigunguRepository.findByArea(area);
-    //eye
-
-
-
-    }
-
 
 
 

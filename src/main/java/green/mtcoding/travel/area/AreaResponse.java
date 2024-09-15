@@ -39,4 +39,35 @@ public class AreaResponse {
 
     }
 
+    /*           hotPlace-start             */
+    @Data
+    public static class AreaDTO {
+        private String code;
+        private String name;
+
+        private List<SigunguDTO> sigunguDtos = new ArrayList<>();
+
+        public AreaDTO(Area area) {
+            this.code = area.getCode();
+            this.name = area.getName();
+            for(Sigungu sigungu : area.getSigungus()) {
+                sigunguDtos.add(new SigunguDTO(sigungu));
+            }
+        }
+
+        @Data
+        public class SigunguDTO {
+            private Integer id;
+            private String code;
+            private String name;
+
+            public SigunguDTO(Sigungu sigungu) {
+                this.id = sigungu.getId();
+                this.code = sigungu.getCode();
+                this.name = sigungu.getName();
+            }
+        }
+    }
+    /*           hotPlace-end            */
+
 }
