@@ -74,8 +74,7 @@ let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
 let areaSelectionDiv = document.querySelector("#area-selection");
 let searchBtn = document.querySelector("#searchBtn");
-let areaCodeInput = document.querySelector(".area-code");
-let sigunguSelect = document.querySelector("#sigungu-select");
+
 
 // 모달 열기
 let openModalBtns = document.querySelectorAll(".open__modal");
@@ -94,7 +93,7 @@ openModalBtns.forEach(function (button) {
         allButton.textContent = "전체";
         areaSelectionDiv.appendChild(allButton);
 
-        areaCode = button.querySelector(".area-code").value;
+        areaCode = button.querySelector(".area__code").value;
 
         // AJAX로 시군구 데이터 가져오기
         $.ajax({
@@ -264,7 +263,7 @@ function printHotPlace(place) {
                             </div>
                         </a>
 
-                        <button class="like-btn" onclick="toggleLike(this)">
+                        <button class="like__btn" onclick="toggleLike(this)">
                             <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -327,7 +326,10 @@ async function fetchData(type) {
 
 
 
-
+// 컨텐츠 박스 전체를 a링크가 감싸고 있는데 내부에 좋아요 버튼과 사진 선택 dot 버튼은 a링크 영향 안 받게.
+$('.like__btn, .dots button').on('click', function(event) {
+    event.preventDefault(); // 상위 <a> 태그의 기본 동작(링크 이동) 방지
+});
 
 
 
