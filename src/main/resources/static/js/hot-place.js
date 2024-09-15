@@ -82,9 +82,6 @@ openModalBtns.forEach(function (button) {
     button.onclick = function () {
         modal.style.display = "block";
 
-        // 지역 이름 표시
-        let modalArea = button.querySelector(".hotplace__name").textContent;
-        document.querySelector(".modal__area").textContent = modalArea;
 
         // '전체' 버튼 추가
         areaSelectionDiv.innerHTML = ""; // 기존 버튼들을 초기화
@@ -102,7 +99,11 @@ openModalBtns.forEach(function (button) {
             dataType: 'json',
             success: function (response) {
                 areas = response.body.sigunguDtos; // 시군구 데이터를 areas에 추가
+                // 지역 이름 표시
+                $(".modal__area").text(response.body.name);
                 generateAreaButtons(); // 받은 데이터를 이용해 버튼 생성
+
+
                 console.log(areas);
             },
             error: function (error) {
