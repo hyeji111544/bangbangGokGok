@@ -66,7 +66,7 @@ function showSlide(index, button) {
 
 
 // 버튼 생성 후 검색
-let areas = [];
+let sigungus = [];
 let areaCode;
 let sigunguCode = [];
 
@@ -98,13 +98,13 @@ openModalBtns.forEach(function (button) {
             type: 'GET',
             dataType: 'json',
             success: function (response) {
-                areas = response.body.sigunguDtos; // 시군구 데이터를 areas에 추가
+                sigungus = response.body.sigunguDtos; // 시군구 데이터를 areas에 추가
                 // 지역 이름 표시
                 $(".modal__area").text(response.body.name);
                 generateAreaButtons(); // 받은 데이터를 이용해 버튼 생성
 
-
-                console.log(areas);
+                console.log(response);
+                console.log(sigungus);
             },
             error: function (error) {
                 console.error("에러 발생:", error);
@@ -154,7 +154,7 @@ function generateAreaButtons() {
     areaSelectionDiv.appendChild(allButton);
 
     // 그 다음에 하위지역 버튼들을 동적으로 생성 (전체 제외)
-    areas.forEach(function (area) {
+    sigungus.forEach(function (area) {
         let button = document.createElement("button");
         button.classList.add("area-btn");
         button.textContent = area.name; // 시군구 이름을 버튼에 표시
@@ -169,7 +169,7 @@ function generateAreaButtons() {
             button.classList.toggle("selected");
 
             // 선택된 하위지역 버튼을 확인하여 처리
-            const selectedAreas = document.querySelectorAll(".area-btn.selected:not(#all-btn)");
+            let selectedAreas = document.querySelectorAll(".area-btn.selected:not(#all-btn)");
 
             // 선택된 하위지역이 없으면 '전체' 버튼을 다시 선택
             if (selectedAreas.length === 0) {
@@ -206,7 +206,7 @@ searchBtn.addEventListener("click", function () {
         }).join('&');
     }
 
-    // URL 변수로 쿼리스트링을 깔끔하게 처리
+
     let url = `/get-hotplace?area=${areaCode}`;
     if (sigunguQueries) {
         url += `&${sigunguQueries}`;

@@ -32,7 +32,8 @@ public class AreaController {
     @GetMapping("/get-sigungu")
     public ResponseEntity<?> getSigungu(@RequestParam("area") String area) {
         AreaResponse.AreaDTO areaDTO = areaService.시군구리스트가져오기(area);
-        return ResponseEntity.ok(Resp.ok(areaDTO));  }
+        return ResponseEntity.ok(Resp.ok(areaDTO));
+    }
 
 
     /*           hotPlace-end             */
