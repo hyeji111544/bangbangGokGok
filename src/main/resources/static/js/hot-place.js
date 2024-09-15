@@ -124,59 +124,74 @@ window.onclick = function (event) {
     }
 }
 
+
+
 // 시군구 버튼 동적 생성
 function generateAreaButtons() {
+    // '전체' 버튼은 한 번만 생성
+    areaSelectionDiv.innerHTML = ""; // 기존 버튼들을 초기화
+    let allButton = document.createElement("button");
+    allButton.classList.add("area-btn", "selected");
+    allButton.textContent = "전체"; // '전체' 버튼 텍스트 설정
+    allButton.setAttribute("id", "all-btn"); // '전체' 버튼에 ID 추가
+
+    // '전체' 버튼 클릭 이벤트 설정
+    allButton.addEventListener("click", function () {
+        // 모든 하위지역 버튼의 'selected' 클래스를 제거
+        document.querySelectorAll(".area-btn").forEach(function (btn) {
+            if (btn !== allButton) { // '전체' 버튼은 제외
+                btn.classList.remove("selected");
+            }
+        });
+        // '전체' 버튼에 'selected' 클래스 추가
+        allButton.classList.add("selected");
+
+        // 하위 지역 코드를 비움
+        sigunguCode = [];
+    });
+
+    // '전체' 버튼을 DOM에 추가
+    areaSelectionDiv.appendChild(allButton);
+
+    // 그 다음에 하위지역 버튼들을 동적으로 생성 (전체 제외)
     areas.forEach(function (area) {
         let button = document.createElement("button");
         button.classList.add("area-btn");
         button.textContent = area.name; // 시군구 이름을 버튼에 표시
         button.setAttribute("data-code", area.code); // 시군구 코드 저장
 
-        // 모든 버튼의 이벤트를 초기화하고 한 번만 설정
-        document.querySelectorAll('.area-btn').forEach(function (button) {
-            button.onclick = function () {
-                let allButton = document.querySelector(".area-btn:first-child"); // '전체' 버튼
+        // 하위지역 버튼 클릭 이벤트 설정
+        button.addEventListener("click", function () {
+            // '전체' 버튼 선택 해제
+            allButton.classList.remove("selected");
 
-                if (button.textContent === '전체') {
-                    // '전체' 버튼이 클릭되면 모든 하위지역 버튼들의 'selected' 클래스를 제거
-                    document.querySelectorAll(".area-btn").forEach(function (btn) {
-                        if (btn.textContent !== '전체') {
-                            btn.classList.remove("selected");
-                        }
-                    });
+            // 현재 클릭한 하위지역 버튼의 선택 상태를 토글
+            button.classList.toggle("selected");
 
-                    // '전체' 버튼에 'selected' 클래스 추가
-                    button.classList.add("selected");
+            // 선택된 하위지역 버튼을 확인하여 처리
+            const selectedAreas = document.querySelectorAll(".area-btn.selected:not(#all-btn)");
 
-                    // 하위 지역 코드를 비움
-                    sigunguCode = [];
-
-                } else {
-                    // 하위지역 버튼 클릭 시 '전체' 버튼의 선택을 해제
-                    button.classList.toggle("selected");
-                    allButton.classList.remove("selected");
-
-                    // 선택된 하위지역 버튼들을 배열로 모음
-                    const selectedAreas = document.querySelectorAll(".area-btn.selected");
-
-                    // 선택된 하위지역이 없을 경우, '전체' 버튼을 다시 선택
-                    if (selectedAreas.length === 0) {
-                        allButton.classList.add("selected");
-                        sigunguCode = [];
-                    } else {
-                        // 선택된 하위지역 버튼들의 코드를 sigunguCode에 저장
-                        sigunguCode = Array.from(selectedAreas).map(function (area) {
-                            return area.getAttribute("data-code");
-                        });
-                    }
-                }
-            };
-
+            // 선택된 하위지역이 없으면 '전체' 버튼을 다시 선택
+            if (selectedAreas.length === 0) {
+                allButton.classList.add("selected");
+                sigunguCode = [];
+            } else {
+                // 선택된 하위지역 버튼들의 코드를 sigunguCode에 저장
+                sigunguCode = Array.from(selectedAreas).map(function (area) {
+                    return area.getAttribute("data-code");
+                });
+            }
         });
 
+        // 동적으로 생성된 하위지역 버튼을 DOM에 추가
         areaSelectionDiv.appendChild(button);
     });
 }
+
+
+
+
+
 
 // 검색 버튼 클릭 시 AJAX로 areaCode와 sigungu code 전송
 searchBtn.addEventListener("click", function () {
