@@ -22,4 +22,5 @@ public class Scrap {
     private Content content;
 
     private boolean  isScrap;
+
 }
