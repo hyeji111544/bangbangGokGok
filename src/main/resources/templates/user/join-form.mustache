@@ -30,29 +30,28 @@
 
             <!-- 비밀번호 입력 -->
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="비밀번호 입력" value="1234">
+                <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호 입력" value="1234">
             </div>
+
 
             <!-- 닉네임 입력 및 중복확인 -->
             <div class="form-group">
-                <input type="text" class="form-control" name="nickName" id="nickName" placeholder="닉네임 입력" value="비번1234">
+                <input type="text" class="form-control" name="nickName" id="nickName" placeholder="닉네임 입력">
 
                 <button onclick="NickNamecheck('nickName')" type="button" class="btn btn-outline-primary">중복체크</button>
             </div>
 
             <!-- 이메일 입력 및 도메인 선택 -->
             <div class="form-group">
-                <input type="text" class="form-control" name="email" placeholder="이메일 입력" value="green@hurk.com" >
-
-                <!--
+                <input type="text" class="form-control" name="email" id="email" placeholder="이메일 입력">
                 <select class="form-control" id="email_domain" onchange="toggleCustomEmail(this)">
-                 //   <option value="">도메인 선택</option>
-                  //  <option value="@naver.com">@naver.com</option>
-                   // <option value="@google.com">@google.com</option>
+                    <option value="">도메인 선택</option>
+                    <option value="@naver.com">@naver.com</option>
+                    <option value="@google.com">@google.com</option>
                     <option value="@nate.com">@nate.com</option>
                     <option value="custom">직접 입력</option>
                 </select>
-                -->
+                <input type="text" class="form-control mt-2" id="custom_email_domain" style="display:none;" placeholder="직접 입력">
             </div>
             <!-- 전화번호 입력 -->
             <div class="form-group">
@@ -100,7 +99,6 @@
         } else {
             isSameusername = false;
             alert("사용할 수 있는 아이디 입니다.");
-            $('#loginId').attr("readOnly",true);
         }
 
         function valid(){
@@ -134,7 +132,7 @@
         } else {
             isSameusernick = false;
             alert("사용할 수 있는 닉네임 입니다.");
-            $('#nickName').attr("readOnly",true);
+
         }
 
         function valid(){
@@ -146,6 +144,45 @@
             }
         }
     }
+    // email 입력 처리 함수
+    function toggleCustomEmail(selectElement) {
+        const customEmailDomain = document.getElementById('custom_email_domain');
+        const emailDomainSelect = document.getElementById('email_domain');  // 도메인 선택 select 요소
+
+        // '직접 입력'을 선택했을 때만 필드 보이기, 그 외에는 숨기기
+        if (selectElement.value === 'custom') {
+            customEmailDomain.style.display = 'block';  // 직접 입력 필드 보이기
+            customEmailDomain.value = '';  // 직접 입력 초기화
+            emailDomainSelect.style.display = 'none';  // 도메인 선택 select 숨기기
+        } else {
+            customEmailDomain.style.display = 'none';  // 직접 입력 필드 숨기기
+        }
+    }
+
+    // 이메일 값을 생성하는 함수
+    function getFullEmail() {
+        const emailField = document.getElementById('email').value;  // 아이디 부분
+        const emailDomainSelect = document.getElementById('email_domain').value;  // 도메인 선택 값
+        const customEmailDomain = document.getElementById('custom_email_domain').value;  // 직접 입력 도메인
+
+        // 삼항 연산자로 도메인 선택 및 빈 값 처리
+        const domain = emailDomainSelect === 'custom' ? customEmailDomain : emailDomainSelect;
+
+        // 템플릿 리터럴을 사용하여 이메일 완성
+        const fullEmail = `${emailField}${domain}`;
+        console.log('완성된 이메일: ' + fullEmail);
+
+        return fullEmail;  // 최종 이메일 반환
+    }
+
+    // 폼 제출 시 이메일 값을 업데이트하고 제출하는 로직
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        const fullEmail = getFullEmail();  // 이메일 값 생성
+        console.log('서버로 전송할 이메일: ' + fullEmail);
+        document.getElementById('email').value = fullEmail;  // 폼 제출 전에 이메일 필드에 최종 값 설정
+    });
+
+
 </script>
 </body>
 

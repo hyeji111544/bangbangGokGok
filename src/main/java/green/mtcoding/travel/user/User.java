@@ -29,9 +29,6 @@ public class User {
 
     private String profile;
 
-    private String img;
-
-
     @Column(nullable = false, unique = true)
     private String nickName;
 
