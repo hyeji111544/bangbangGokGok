@@ -51,7 +51,7 @@ public class ContentController {
             @RequestParam(value = "area", required = false) String area,
             @RequestParam(value = "sigungu", required = false) List<String> sigungu,
             HttpServletRequest request) {
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
+        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기("touristAttractions", area, sigungu);
         System.out.println(hotPlaceDtos);
         request.setAttribute("models", hotPlaceDtos);
         return "/hotplace/hotplace";
@@ -61,10 +61,14 @@ public class ContentController {
 
    @GetMapping("/get-hotplace")
     public ResponseEntity<?> hotPlaceFilter(
+           @RequestParam(value = "category", required = false) String category,
            @RequestParam(value = "area", required = false) String area,
            @RequestParam(value = "sigungu", required = false) List<String> sigungu
             ) {
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
+       System.out.println("category: " + category);
+       System.out.println("area = " + area);
+       System.out.println("sigungu = " + sigungu);
+        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(category, area, sigungu);
         return ResponseEntity.ok(Resp.ok(hotPlaceDtos));
 
     }

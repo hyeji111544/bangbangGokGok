@@ -1,3 +1,10 @@
+//핫플 기본상태는 인기 여행지 체크
+$(function() {
+    placeLink.classList.add("active");
+});
+
+
+
 // 사진 슬라이드 & 좋아요
 function toggleLike(button) {
     let svg = button.querySelector('svg');
@@ -6,10 +13,12 @@ function toggleLike(button) {
     if (isLiked) {
         svg.style.fill = "none";
         console.log("좋아요 해제됨");
+        console.log("contentId", button.dataset.id,);
         sendLikeStatus(button.dataset.id, false); // 좋아요 해제 요청
     } else {
         svg.style.fill = "red";
         console.log("좋아요 체크됨");
+        console.log("contentId", button.dataset.id,);
         sendLikeStatus(button.dataset.id, true); // 좋아요 체크 요청
     }
 }
@@ -69,6 +78,8 @@ function showSlide(index, button) {
 let sigungus = [];
 let areaCode;
 let sigunguCode = [];
+let category = '';
+let sigunguQueries = '';
 
 let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
@@ -199,15 +210,20 @@ searchBtn.addEventListener("click", function () {
     let isAllSelected = document.querySelector(".area-btn:first-child").classList.contains("selected");
 
     // 쿼리스트링을 만들기 위한 배열 생성
-    let sigunguQueries = '';
+    sigunguQueries = '';
     if (!isAllSelected && sigunguCode.length > 0) {
         sigunguQueries = sigunguCode.map(function (code) {
             return `sigungu=${code}`;
         }).join('&');
     }
 
+    if(placeLink.classList.contains("active")) {
+        category = 'touristAttractions';
+    }else if(foodLink.classList.contains("active")) {
+        category = 'restaurants';
+    }
 
-    let url = `/get-hotplace?area=${areaCode}`;
+    let url = `/get-hotplace?category=${category}&area=${areaCode}`;
     if (sigunguQueries) {
         url += `&${sigunguQueries}`;
     }
@@ -285,20 +301,29 @@ function printHotPlace(place) {
 }
 
 
+
 // 인기 여행지, 인기 맛집 클릭 시 AJAX 호출
 let placeLink = document.querySelector(".hotpl");
 let foodLink = document.querySelector(".hotf");
 
 placeLink.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleActive(placeLink, foodLink);
-    fetchData('place');
+    if (!placeLink.classList.contains("active")) {
+        toggleActive(placeLink, foodLink);
+        category = 'touristAttractions';
+        $(".rec__text").text("인기 여행지");
+        printList();
+    }
 });
 
 foodLink.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleActive(foodLink, placeLink);
-    fetchData('food');
+    if (!foodLink.classList.contains("active")) {
+        toggleActive(foodLink, placeLink);
+        category = 'restaurants';
+        $(".rec__text").text("인기 맛집");
+        printList();
+    }
 });
 
 function toggleActive(activeLink, inactiveLink) {
@@ -307,21 +332,28 @@ function toggleActive(activeLink, inactiveLink) {
 }
 
 // 인기 여행지, 맛집 데이터를 AJAX로 불러오기
-async function fetchData(type) {
-    try {
-        const response = await fetch(`/${type}`, {
-            method: 'GET'
-        });
-
-        if (!response.ok) {
-            throw new Error(`${type} 데이터 로드 실패`);
-        }
-
-        const data = await response.json();
-        console.log(`${type} 데이터:`, data);
-    } catch (error) {
-        console.error(`${type} 데이터 로드 중 오류:`, error);
+function printList() {
+    let url = `/get-hotplace?category=${category}&area=${areaCode}`;
+    if (sigunguQueries) {
+        url += `&${sigunguQueries}`;
     }
+    //지역, 시군구 코드가 정해지지 않았으면 지역 선택 안 한 것 -> 전체 리스트에서 카테고리만 변경
+    if(areaCode == undefined && sigunguQueries =='') {
+        url = `/get-hotplace?category=${category}`;
+    }
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            console.log("검색 결과:", response);
+            loadHotPlace(response);
+        },
+        error: function (error) {
+            console.error("검색 에러:", error);
+        }
+    });
 }
 
 

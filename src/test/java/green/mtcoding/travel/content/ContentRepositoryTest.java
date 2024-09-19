@@ -40,7 +40,7 @@ class ContentRepositoryTest {
 
         //when
 
-        List<Content> contents = contentRepository.findHotPlaceAll();
+        List<Content> contents = contentRepository.findHotFoodAll();
 
         //eye
         System.out.println(contents);
@@ -50,6 +50,7 @@ class ContentRepositoryTest {
     public void findHotPlaceByArea() throws Exception {
         //given
         String area = "1";
+        String cat1 = "A01";
 
         //when
         List<Content> contents = contentRepository.findHotPlaceByArea(area);
@@ -62,6 +63,7 @@ class ContentRepositoryTest {
     public void findHotPlaceByAreaAndSigungu() throws Exception {
         //given
         String area = "1";
+        String cat1 = "A01";
         List<String> sigungu = Arrays.asList("1", "2");
 
         //when

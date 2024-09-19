@@ -21,7 +21,7 @@ public class FestivalInfo {
     private List<Review> reviews;
 
     @JsonAlias("contenttypeid")
-    private String contenttypeid;
+    private String contentTypeId;
     private String sponsor1;
     @JsonAlias("sponsor1tel")
     private String sponsor1Tel;
@@ -29,11 +29,11 @@ public class FestivalInfo {
     @JsonAlias("sponsor2tel")
     private String sponsor2Tel;
     @JsonAlias("eventenddate")
-    private String eventenddate;
+    private String eventEndDate;
     @JsonAlias("playtime")
     private String playTime;
     @JsonAlias("eventplace")
-    private String eventplace;
+    private String eventPlace;
     @JsonAlias("eventhomepage")
     private String eventHomePage;
     @JsonAlias("agelimit")

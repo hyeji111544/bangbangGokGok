@@ -197,11 +197,10 @@
                                 <div class="hot__place__img__box">
                                     <img src="{{firstImage}}" class="active" alt="이미지 1">
                                     <img src="{{firstImage}}" alt="이미지 2">
-
                                 </div>
 
 
-                            <button class="like__btn" onclick="toggleLike(this)">
+                            <button class="like__btn" onclick="toggleLike(this)" data-id="{{contentId}}">
                                 <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
