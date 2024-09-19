@@ -21,12 +21,22 @@ public class ScrapRepositoryTest {
     private ScrapRepository scrapRepository;
 
     @Test
-    public void scrapUpdateById_test(){
-        int id = 2;
-        scrapRepository.scrapUpdateById(id);
-        int id2 = 1;
-        List<ScrapResponse.ScrapListDTO> scrapList = scrapRepository.scrapFindByUserId(id2);
+    public void scrapInsertById_test(){
+        int userId = 1;
+        String contentId = "602895";
+        scrapRepository.scrapInsertById(userId, contentId);
+        int id = 1;
+        List<ScrapResponse.ScrapListDTO> scrapList = scrapRepository.scrapFindByUserId(id);
         System.out.println(scrapList);
+    }
+
+    @Test
+    public void scrapFindByContentId_test(){
+
+        int userId = 1;
+        String contentId = "286396";
+        Boolean bl = scrapRepository.scrapFindByContentId(userId,contentId);
+        System.out.println(bl);
     }
 
     @Test

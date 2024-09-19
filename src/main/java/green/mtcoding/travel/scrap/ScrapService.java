@@ -48,15 +48,21 @@ public class ScrapService {
 
     }
 
-    // 마이페이지에서 스크랩 off 하기
-    @Transactional
-    public void mypageUpdateScrap(int id) {
-        scrapRepository.scrapUpdateById(id);
-    }
-
     // 스크랩 OnOff
+    @Transactional
+    public void scrapOnOff(User sessionUser, String contentId){
+        int userId = sessionUser.getId();
+
+        // 스크랩이 존재하는지
+        Boolean bl = scrapRepository.scrapFindByContentId(userId,contentId);
+        if (bl == true){
+            scrapRepository.scrapOffById(userId,contentId);
+        } else if (bl == false) {
+            scrapRepository.scrapOnById(userId,contentId);
+        } scrapRepository.scrapInsertById(userId, contentId);
+
+    }
     // 1. 유저 세션 체크
-    // 2.
 
     /*           myPage-end             */
 }

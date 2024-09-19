@@ -22,7 +22,7 @@
                                 <input type="hidden" value="{{contentTypeId}}">
                                 <div class="icon-box">
                                     <img class="scrab__img" src="{{firstImage}}" alt="그림없음">
-                                    <button onclick="scrapOff({{id}})">
+                                    <button onclick="scrapOff({{contentContentId}},{{id}})">
                                     <div class="good" ><img src="/images/heart_on.png"></div>
                                     </button>
                                 </div>
@@ -48,8 +48,8 @@
 
 <script>
     // 1. 스크랩 버튼을 누르면 scrap의 id를 가지고 update 요청하기
-    async function scrapOff(id){
-        let response = await fetch(`/api/my-scrapUpdate/${id}`,{
+    async function scrapOff(contentId,id){
+        let response = await fetch(`/api/my-scrapUpdate/${contentId}`,{
             method : 'post'
         });
         console.log(response);

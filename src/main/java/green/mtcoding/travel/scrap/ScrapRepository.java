@@ -2,6 +2,7 @@ package green.mtcoding.travel.scrap;
 
 import green.mtcoding.travel.content.Content;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.qlrm.mapper.JpaResultMapper;
@@ -18,10 +19,41 @@ public class ScrapRepository {
 
     private final EntityManager em;
 
-    // 스크랩 false로 업데이트하기
-    public void scrapUpdateById(int id){
-        Query query = em.createNativeQuery("update scrap_tb set is_scrap = false where id = ?1 ");
-        query.setParameter( 1, id);
+    // 기존 스크랩이 존재하는지 찾기
+    public Boolean scrapFindByContentId(int userId, String contentId) {
+        try {
+            Query query = em.createNativeQuery("select  is_scrap from scrap_tb where user_id = ? and content_content_id = ?");
+            query.setParameter(1, userId);
+            query.setParameter(2, contentId);
+            Boolean scrap = (Boolean) query.getSingleResult();
+            return scrap;
+        } catch (NoResultException e) {
+            return null;
+        }
+
+    }
+
+    // 기존 스크랩 상세보기에서 scrapId로 Off
+    public void scrapOffById(int userId, String contentId) {
+        Query query = em.createNativeQuery("update scrap_tb set is_scrap = false where user_id = ? and content_content_id = ?");
+        query.setParameter(1, userId);
+        query.setParameter(2, contentId);
+        query.executeUpdate();
+    }
+
+    // 기존 스크랩 상세보기에서 scrapId로 On
+    public void scrapOnById(int userId, String contentId) {
+        Query query = em.createNativeQuery("update scrap_tb set is_scrap = true where user_id = ? and content_content_id = ?");
+        query.setParameter(1, userId);
+        query.setParameter(2, contentId);
+        query.executeUpdate();
+    }
+
+    // 새로운 스크랩 상세보기에서 유저아이디 + contentId로 추가하기
+    public void scrapInsertById(int userId, String contentId){
+        Query query = em.createNativeQuery("insert into scrap_tb(is_scrap, user_id, content_content_id) values(true, ?, ?) ");
+        query.setParameter(1, userId);
+        query.setParameter(2, contentId);
         query.executeUpdate();
     }
 
