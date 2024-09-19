@@ -9,17 +9,18 @@ $(function() {
 function toggleLike(button) {
     let svg = button.querySelector('svg');
     let isLiked = svg.style.fill === "red";
+    let contentId = button.dataset.id;
 
     if (isLiked) {
         svg.style.fill = "none";
         console.log("좋아요 해제됨");
-        console.log("contentId", button.dataset.id,);
-        sendLikeStatus(button.dataset.id, false); // 좋아요 해제 요청
+        console.log("contentId", contentId);
+        sendLikeStatus(contentId, false); // 좋아요 해제 요청
     } else {
         svg.style.fill = "red";
         console.log("좋아요 체크됨");
-        console.log("contentId", button.dataset.id,);
-        sendLikeStatus(button.dataset.id, true); // 좋아요 체크 요청
+        console.log("contentId", contentId);
+        sendLikeStatus(contentId, true); // 좋아요 체크 요청
     }
 }
 
