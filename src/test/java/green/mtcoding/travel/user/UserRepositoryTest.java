@@ -37,4 +37,5 @@ public class UserRepositoryTest {
         // User 저장
         userRepository.save(user);
     }
+
 }

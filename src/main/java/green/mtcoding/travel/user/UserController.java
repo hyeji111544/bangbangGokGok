@@ -104,7 +104,7 @@ public class UserController {
     /*           user-end             */
 
     /*           myPage-start             */
-    @GetMapping("/my-page")  //이름은 임시로 달아놨습니다. 원하시는대로 바꾸시면 됩니다
+    @GetMapping("/api/my-page")  //이름은 임시로 달아놨습니다. 원하시는대로 바꾸시면 됩니다
     public String myPage() {
         return "/mypage/my-page";
     }
