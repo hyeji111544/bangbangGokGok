@@ -56,16 +56,18 @@ public class ScrapController {
     }
 
     // 마이페이지에서 스크랩 Off 하기
-    @PostMapping("/api/my-scrapUpdate/{id}")
-    public @ResponseBody Resp mypageUpdateScrap(@PathVariable int id) {
-        scrapService.mypageUpdateScrap(id);
+    @PostMapping("/api/my-scrapUpdate/{contentId}")
+    public @ResponseBody Resp mypageUpdateScrap(@PathVariable String contentId) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        scrapService.scrapOnOff(sessionUser, contentId);
         return Resp.ok("성공");
     }
 
     // 스크랩 온오프
-    @PostMapping("/api/scrapOnOff/{id}")
-    public @ResponseBody Resp scrapOnOff(@PathVariable int id, HttpServletRequest request) {
+    @PostMapping("/api/scrapOnOff/{contentId}")
+    public @ResponseBody Resp scrapOnOff(@PathVariable String contentId, HttpServletRequest request) {
         User user = (User) session.getAttribute("sessionUser");
+        scrapService.scrapOnOff(user, contentId);
         return Resp.ok("성공");
     }
 

@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.security.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Data
@@ -22,6 +23,7 @@ public class Review {
     @Column(nullable = false)
     private String content;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
     private byte rating;  // 리뷰 별점 (TINYINT에 해당)
