@@ -1,92 +1,56 @@
 {{>layout/header}}
-    <link rel="stylesheet" href="/css/tourmap.css">
-
-    <!-- 사이드바 -->
-    <div class="sidebar">
-        <div class="loactionwe">
-            <h4>지역(ex: 부산진구 38도)</h4>
-        </div>
-
-        <ul class="insider">
-            <li>
-                <a href="#">
-                    <div class="icon">&#127759;</div>
-                    <div class="text">주변여행지</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#127828;</div>
-                    <div class="text">음식점</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#9749;</div>
-                    <div class="text">카페</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#127970;</div>
-                    <div class="text">숙소</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#9889;</div>
-                    <div class="text">전기차충전소</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#127881;</div>
-                    <div class="text">여행테마</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#128200;</div>
-                    <div class="text">나의여행</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#127973;</div>
-                    <div class="text">주유소</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="icon">&#127968;</div>
-                    <div class="text">편의점</div>
-                </a>
-            </li>
-        </ul>
-
-        <!-- 장소 목록 -->
-        <div class="place-item">
-            <h3>놀이터</h3>
-            <p>주변 여행지 - 내 위치로부터 0.1 km</p>
-        </div>
-        <div class="place-item">
-            <h3>서면미술관</h3>
-            <p>주변 여행지 - 내 위치로부터 0.1 km</p>
-        </div>
-        <div class="place-item">
-            <h3>부산광역시립 부전도서관</h3>
-            <p>주변 여행지 - 내 위치로부터 0.2 km</p>
-        </div>
+<link rel="stylesheet" href="/css/tourmap.css">
 
 
+<body>
+<!-- 사이드바 -->
+<div class="sidebar">
+    <div class="loactionwe">
+        <h5>지역을 선택하세요</h5>
+        <!-- 지역 선택 -->
+        <select id="location-selector" class="location-select">
+            <option value="37.5665,126.9780">서울</option>
+            <option value="36.3504,127.3845">대전</option>
+            <option value="37.2752,127.0095">경기도</option>
+            <option value="36.6357,127.4917">충청도</option>
+            <option value="35.1796,129.0756">부산</option>
+            <option value="35.8722,128.6025">대구</option>
+            <option value="37.4563,126.7052">인천</option>
+            <option value="35.1601,126.8514">광주</option>
+        </select>
+
+        <!-- 날씨 정보 -->
+        <p id="weather-info" class="weather-info">날씨 정보를 불러오는 중...</p>
     </div>
 
-    <!-- 메인 콘텐츠 -->
-    <div class="content">
-        <div class="map">
-            <img src="/images/지도.png" alt="지도" style="width: 1000px; height: auto;">
+    <!-- 카테고리 선택 버튼을 사이드바 안에 포함 -->
+    <div class="category-container">
+        <h5>Category</h5>
+        <div class="category-grid">
+            <button onclick="selectCategory('MT1')">대형마트</button>
+            <button onclick="selectCategory('CS2')">편의점</button>
+            <button onclick="selectCategory('OL7')">주유소</button>
+            <button onclick="selectCategory('PK6')">주차장</button>
+            <button onclick="selectCategory('SW8')">지하철</button>
+            <button onclick="selectCategory('CT1')">문화시설</button>
+            <button onclick="selectCategory('AT4')">관광명소</button>
+            <button onclick="selectCategory('AD5')">숙박시설</button>
+            <button onclick="selectCategory('FD6')">음식점</button>
+            <button onclick="selectCategory('CE7')">카페</button>
+            <button onclick="selectCategory('HP8')">병원</button>
+            <button onclick="selectCategory('PM9')">약국</button>
         </div>
     </div>
+</div>
 
-    <!-- 부트스트랩 JS 및 Popper.js 링크 -->
+<!-- 메인 콘텐츠 -->
+<div class="content">
+    <!-- 지도 영역 -->
+    <div id="map" style="width:100%;height:500px;"></div>
+</div>
+
+<!-- 카카오맵 API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6019dbc4f1d181142bb8b9b106a214f9&libraries=services"></script>
+<script src="/js/tour-map.js"></script>
+</body>
 {{>layout/footer}}
