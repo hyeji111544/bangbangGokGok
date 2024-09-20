@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{>layout/header}}
 <link rel="stylesheet" href="/css/info-style.css">
 
@@ -78,4 +79,199 @@
         </div>
 
     </section>
+=======
+{{>layout/header}}
+<link rel="stylesheet" href="/css/info-style.css">
+
+    <section class="container">
+        <div class="place__box1">
+            <div class="place__box1__title"># 전국</div>
+            <div class="place__inner__box">
+                <div class="place__box1__count">총 {{model.count}}건</div>
+                <div class="place__box1__content">
+                    <span onclick="sortContent('createdTime')">최신순</span>
+                    <span onclick="sortContent('viewCount')">인기순</span>
+                </div>
+            </div>
+            <!-- 내부 컨텐츠 반복하는 곳 -->
+            <div class="content__box">
+            {{#model.contents}}
+            <div class="place__content__box">
+                <div style="display: none" name="contentId">{{contentId}}</div>
+                    <img src="{{firstImage}}">
+                <div class="place__content__wrapper">
+                    <div>{{title}}</div>
+                    <div>{{addr1}}</div>
+
+                </div>
+                <div class="place__content__more">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                        <path
+                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                    </svg>
+                </div>
+            </div>
+
+            {{/model.contents}}
+            </div>
+            <!-- 이곳입니다 -->
+
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" id="btn__prev" onclick="naviClick('prev')" href="javascript:void(0);">&lt;</a></li>
+                <li class="page-item"><a class="page-link" id="btn__next" onclick="naviClick('next')" href="javascript:void(0);">&gt;</a></li>
+            </ul>
+
+        </div>
+        <div class="place__box2">
+            <div class="place__name1">
+                <div id="defaultItem" class="place__name1__item" onclick="areaClick('all','전국',this)">#전국</div>
+                {{#model.areas}}
+                    <div class="place__name1__item" name="code" onclick="areaClick('{{code}}','{{name}}',this)" >#{{name}}</div>
+                {{/model.areas}}
+            </div>
+        </div>
+
+    </section>
+<script>
+    const defaultItem = document.getElementById("defaultItem");
+    defaultItem.classList.add("active");
+    let activeItem = defaultItem;
+    let activeSigunguItem = null;
+
+    let currentAreaCode = 'all';  // 기본값을 전국으로 설정
+    let currentSigunguCode = '';  // 기본값은 빈 값
+    let currentSortBy = '';
+    let currentPage = 0;
+
+    function naviClick(name){
+        if(name==='next'){
+            currentPage += 1;
+            console.log("next-currentPage"+ currentPage);
+        }else if(name==='prev') {
+            if (currentPage > 0) {
+                currentPage -= 1;
+                console.log("prev-CurrentPage"+ currentPage);
+            }
+        }
+        let url = `get-info?area=${currentAreaCode}&sigungu=${currentSigunguCode}&sortBy=${currentSortBy}&page=${currentPage}`;
+        fetchContent(url);
+    }
+
+    function sigunguItem(responseBody){
+        return ` <div onclick="sigunguClick('${responseBody.code}','${responseBody.area.code}',this)" class="place__name2__item">${responseBody.name}</div>`;
+    }
+
+    function renderContentItems(contentList) {
+        return contentList.map(content => `
+        <div class="place__content__box">
+            <div style="display: none" name="contentId">${content.contentId}</div>
+            <img src="${content.firstImage}" alt="${content.title}">
+            <div class="place__content__wrapper">
+                <div>${content.title}</div>
+                <div>${content.addr1}</div>
+            </div>
+            <div class="place__content__more">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path
+                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+            </div>
+        </div>
+    `).join('');
+    }
+
+    async function fetchContent(url){
+        let response = await fetch(url);
+        let responseBody = await response.json();
+        let contentList = responseBody.body;
+
+        let contentHtml = renderContentItems(contentList.contents);
+        $(".place__content__box").remove();
+        $(".content__box").append(contentHtml);
+        $(".place__box1__count").text(`총 ${contentList.count}건`);
+
+        if (contentList.contents.length < 16) {
+            $("#btn__next").addClass("disabled").css("pointer-events", "none");
+        } else {
+            $("#btn__next").removeClass("disabled").css("pointer-events", "auto");
+        }
+        console.log("fetchContent-currentPage", currentPage);
+    }
+
+    async function fetchArea(areaCode, areaName){
+        let response = await fetch(`get-sigungu?area=${areaCode}`);
+        let responseBody = await response.json();
+
+        $(".place__box1__title").text(`# ${areaName}`);
+
+        //2. 받아온 데이터로 div 만들기
+        let sigunguList = responseBody.body;
+        let placeName2Div = $("<div>").addClass("place__name2");
+
+        for(sigungu of sigunguList){
+            let dom = sigunguItem(sigungu);
+            placeName2Div.append(dom);
+        }
+
+        $(".place__name1").after(placeName2Div)
+        requestAnimationFrame(() => {placeName2Div.css({opacity: 1})});
+    }
+
+    async function fetchSigungu(areaCode, code){
+        let response = await fetch(`get-info?area=${areaCode}&sigungu=${code}`);
+        let responseBody = await response.json();
+        let contentList = responseBody.body;
+        return contentList;
+    }
+
+    async function sortContent(sortBy) {
+        currentSortBy = sortBy;  // 클릭된 정렬 기준 업데이트
+        console.log(currentSortBy);
+        let url = `get-info?area=${currentAreaCode}&sigungu=${currentSigunguCode}&sortBy=${currentSortBy}`;
+        fetchContent(url);
+    }
+
+    async function sigunguClick(code, areaCode, element){
+        currentPage = 0;
+        if (activeSigunguItem) {
+            activeSigunguItem.classList.remove("active");
+        }
+        element.classList.add("active");
+        activeSigunguItem = element;
+        currentSigunguCode = code;
+        console.log("sigunguClick------"+currentSigunguCode);
+        let contentBody = await fetchSigungu(areaCode, code);
+
+        let contentHtml = renderContentItems(contentBody.contents);
+        $(".place__content__box").remove();
+        $(".content__box").append(contentHtml);
+        $(".place__box1__count").text(`총 ${contentBody.count}건`);
+    }
+
+    async function areaClick(areaCode, areaName, element) {
+        currentPage = 0;
+        if (activeItem) {
+            activeItem.classList.remove("active");
+        }
+        // 현재 클릭한 요소에 'active' 클래스 추가
+        element.classList.add("active");
+
+        $(".place__name2").remove();
+
+        activeItem = element;
+        currentAreaCode = areaCode;  // 선택한 areaCode 업데이트
+        currentSigunguCode = '';
+        console.log("areacode : "+currentAreaCode+ " / sigungu :"+currentSigunguCode);
+        await fetchArea(areaCode, areaName);
+        let contentUrl = `get-info?area=${areaCode}`;
+        await fetchContent(contentUrl);
+        // "전국"을 클릭한 경우
+        if (areaCode === 'all') {
+            $(".place__box1__title").text("# 전국");
+        }
+    }
+</script>
+>>>>>>> 9752bb5 (feat : info리스트 동적 출력)
 {{>layout/footer}}

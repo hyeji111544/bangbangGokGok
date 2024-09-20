@@ -20,8 +20,10 @@ public class ContentResponse {
             for (Content content : contentList) {
                 this.contents.add(new ContentDTO(content));
             }
-            for(Area area : areaList) {
-                this.areas.add(new AreaDTO(area));
+            if (areaList != null) {
+                for (Area area : areaList) {
+                    this.areas.add(new AreaDTO(area));
+                }
             }
         }
 
@@ -32,7 +34,9 @@ public class ContentResponse {
 
             public AreaDTO(Area area) {
                 this.code = area.getCode();
-                this.name = area.getName();
+                this.name = area.getName() != null && area.getName().length() > 2 ?
+                        area.getName().substring(0, 2) :
+                        area.getName();
             }
         }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import green.mtcoding.travel.global.util.Resp;
 import green.mtcoding.travel.sigungu.SigunguService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
@@ -81,12 +82,32 @@ public class ContentController {
     /*           info-start             */
     @GetMapping("/info")
     public String info(HttpServletRequest request) {
-        ContentResponse.infoListDTO infoListDTO= contentService.infoContentList("12");
+        ContentRequest.InfoRequestDTO infoRequestDTO = new ContentRequest.InfoRequestDTO();
+        ContentResponse.infoListDTO infoListDTO= contentService.infoContentList(infoRequestDTO);
         request.setAttribute("model", infoListDTO);
         System.out.println(infoListDTO);
 
         return "/info/info";
     }
+/*
+    @GetMapping("/get-info")
+    public ResponseEntity<?> Infoilter(
+            @RequestParam(value = "area", required = false) String area,
+            @RequestParam(value = "sigungu", required = false) String sigungu,
+            @RequestParam(value = "sortBy", required = false) String sortBy
+    ) {
+        ContentResponse.infoListDTO infoListDTO= contentService.infoContentListWithArea("12", area, sigungu, sortBy);
+        return ResponseEntity.ok(Resp.ok(infoListDTO));
+    }
+
+ */
+
+    @GetMapping("/get-info")
+    public ResponseEntity<?> Infoilter(@ModelAttribute ContentRequest.InfoRequestDTO requestDTO) {
+        ContentResponse.infoListDTO infoListDTO= contentService.infoContentListWithArea(requestDTO);
+        return ResponseEntity.ok(Resp.ok(infoListDTO));
+    }
+
     /*           info-end             */
 
     /*           map-start             */
