@@ -29,73 +29,96 @@ public class ContentRepository {
     }
 
 
+
+
+
     /*           hotPlace-start             */
 
-    public List<Content> findHotPlaceByArea(String area) {
-        return em.createQuery("select c from Content c where c.areaCode =:area order by viewCount desc", Content.class)
-                .setParameter("area", area)
-                .setFirstResult(0)
-                .setMaxResults(20)
+
+    public List<Content> findHotTaAll(int first, int perPage) {
+        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) order by c.viewCount desc", Content.class)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
 
-    public List<Content> findHotPlaceByAreaAndSigungu(String area, List<String> sigungu) {
-        return  em.createQuery("select c from Content c where c.areaCode =:area and  c.sigunguCode in (:sigungu) order by viewCount desc", Content.class)
-                .setParameter("area", area)
-                .setParameter("sigungu", sigungu)
-                .setFirstResult(0)
-                .setMaxResults(20)
-                .getResultList();
+    public Long findHotTaAllCount() {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208')))", Long.class)
+                .getSingleResult();
     }
 
 
-    public List<Content> findHotTaAll() {
-        return em.createQuery("select c from Content c where c.cat1 = 'A01' and c.cat1='A01' and c.cat2<>'A208' order by c.viewCount desc", Content.class)
-                .setFirstResult(0)
-                .setMaxResults(20)
-                .getResultList();
-    }
 
-    public List<Content> findHotFoodAll() {
+    public List<Content> findHotFoodAll(int first, int perPage) {
         return em.createQuery("select c from Content c where c.cat1 = 'A05' order by c.viewCount desc", Content.class)
-                .setFirstResult(0)
-                .setMaxResults(20)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
 
-    public List<Content> findHotTaByArea(String area) {
-        return em.createQuery("select c from Content c where c.cat1 = 'A01' and c.cat1='A01' and c.cat2<>'A208' and c.areaCode=:area order by c.viewCount desc", Content.class)
+    public Long findHotFoodAllCount() {
+        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05'", Long.class)
+                .getSingleResult();
+    }
+
+    public List<Content> findHotTaByArea(String area, int first,  int perPage) {
+        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area order by c.viewCount desc", Content.class)
                 .setParameter("area", area)
-                .setFirstResult(0)
-                .setMaxResults(20)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
 
-    public List<Content> findHotFoodByArea(String area) {
+    public Long findHotTaByAreaCount(String area) {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area", Long.class)
+                .setParameter("area", area)
+                .getSingleResult();
+    }
+
+    public List<Content> findHotFoodByArea(String area, int first,  int perPage) {
         return em.createQuery("select c from Content c where c.cat1 = 'A05' and c.areaCode=:area order by c.viewCount desc", Content.class)
                 .setParameter("area", area)
-                .setFirstResult(0)
-                .setMaxResults(20)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
+    public Long findHotFoodByAreaCount(String area) {
+        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05' and c.areaCode=:area", Long.class)
+                .setParameter("area", area)
+                .getSingleResult();
+    }
 
-    public List<Content> findHotTaByAreaAndSigungu(String area, List<String> sigungu) {
-        return em.createQuery("select c from Content c where c.cat1 = 'A01' and c.cat1='A01' and c.cat2<>'A208' and c.areaCode=:area and c.sigunguCode in (:sigungu) order by c.viewCount desc", Content.class)
+    public List<Content> findHotTaByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage) {
+        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu) ", Content.class)
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
-                .setFirstResult(0)
-                .setMaxResults(20)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
+    public Long findHotTaByAreaAndSigunguCount(String area, List<String> sigungu) {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu)", Long.class)
+                .setParameter("area", area)
+                .setParameter("sigungu", sigungu)
+                .getSingleResult();
+    }
 
-    public List<Content> findHotFoodByAreaAndSigungu(String area, List<String> sigungu) {
+    public List<Content> findHotFoodByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage) {
         return em.createQuery("select c from Content c where c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)order by c.viewCount desc", Content.class)
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
-                .setFirstResult(0)
-                .setMaxResults(20)
+                .setFirstResult(first)
+                .setMaxResults(perPage)
                 .getResultList();
     }
+    public Long findHotFoodByAreaAndSigunguCount(String area, List<String> sigungu) {
+        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)", Long.class)
+                .setParameter("area", area)
+                .setParameter("sigungu", sigungu)
+                .getSingleResult();
+    }
+
+
 
 
 

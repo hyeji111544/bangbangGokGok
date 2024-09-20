@@ -238,6 +238,7 @@ searchBtn.addEventListener("click", function () {
         success: function (response) {
             console.log("검색 결과:", response);
             loadHotPlace(response);
+            makePageList(response);
         },
         error: function (error) {
             console.error("검색 에러:", error);
@@ -260,7 +261,7 @@ function loadHotPlace(response) {
 
         // fetch는 데이터를 받아서 .json()으로 파싱(json -> js object)해줘야 하는데
         // ajax의 success 콜백 함수는 json -> js object로 자동 파싱된다. 그냥 쓰면 됨
-        let placeList = response.body;
+        let placeList = response.body.contents;
 
         // 파싱한 데이터를 출력할 박스에 출력
         for (place of placeList) {
@@ -339,7 +340,7 @@ function printList() {
         url += `&${sigunguQueries}`;
     }
     //지역, 시군구 코드가 정해지지 않았으면 지역 선택 안 한 것 -> 전체 리스트에서 카테고리만 변경
-    if(areaCode == undefined && sigunguQueries =='') {
+    if(areaCode === undefined && sigunguQueries === '') {
         url = `/get-hotplace?category=${category}`;
     }
 
@@ -350,6 +351,7 @@ function printList() {
         success: function (response) {
             console.log("검색 결과:", response);
             loadHotPlace(response);
+            makePageList(response);
         },
         error: function (error) {
             console.error("검색 에러:", error);
@@ -367,6 +369,39 @@ $('.like__btn, .dot__btn').on('click', function(event) {
 
 
 
+
+function makePageList(response) {
+    // 응답이 오면 기존 page리스트를 지움
+    console.log(response)
+    if (response.body) {
+        $(".page__box").empty();
+        console.log("ok");
+
+        // fetch는 데이터를 받아서 .json()으로 파싱(json -> js object)해줘야 하는데
+        // ajax의 success 콜백 함수는 json -> js object로 자동 파싱된다. 그냥 쓰면 됨
+        let pageInfo = response.body;
+
+        // 계산한 페이지를 그리기
+        $(".page__box").prepend(printPageList(pageInfo));
+
+    } else {
+        return `<h2>검색 결과가 없습니다.</h2>`;
+    }
+
+
+}
+
+function printPageList() {
+    return `
+                        <ul class="pagination justify-content-center">
+                        <li class="page-item {{#model.first}}disabled{{/model.first}}"><a class="page-link" href="?page={{model.prev}}">&lt;</a></li>
+                        {{#model.numbers}}
+                        <li class="page-item"><a class="page-link" href="?page={{.}}">{{.}}</a></li>
+                        {{/model.numbers}}
+                        <li class="page-item {{#model.last}}disabled{{/model.last}}"><a class="page-link" href="?page={{model.next}}">&gt;</a></li>
+                    </ul>
+    `;
+}
 
 
 

@@ -3,6 +3,9 @@ package green.mtcoding.travel.content;
 import green.mtcoding.travel.area.Area;
 import green.mtcoding.travel.area.AreaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 
 
@@ -28,14 +31,18 @@ public class ContentService {
 
     /*           hotPlace-start             */
 
-    public List<ContentResponse.HotPlaceDTO> 핫플목록보기(String category, String area, List<String> sigungu) {
+    public ContentResponse.HotPlacePageDTO 핫플목록보기(String category, String area, List<String> sigungu, int page) {
         List<Content> contents = new ArrayList<>();
-        String list="";
+        String list = "";
+        Long totalCount = 0L;
+        int perPage = 20;
+        int first = page * perPage;
+        boolean ajax = false;
 
-        if(category.equals("touristAttractions")) {
+        if (category.equals("touristAttractions")) {
             //ta는 tourist attraction의 약자
             list = "ta";
-        } else if(category.equals("restaurants")) {
+        } else if (category.equals("restaurants")) {
             list = "food";
         }
 
@@ -45,37 +52,46 @@ public class ContentService {
 
 
         //전체 리스트
-        if(area == null && sigungu == null) {
-            if(list.equals("ta")) {
-                contents = contentRepository.findHotTaAll();
-            } else if(list.equals("food")) {
-                contents = contentRepository.findHotFoodAll();
+        if (area == null && sigungu == null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaAll(first, perPage);
+                totalCount = contentRepository.findHotTaAllCount();
+                System.out.println("ta임");
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodAll(first, perPage);
+                totalCount = contentRepository.findHotFoodAllCount();
             }
 
-        //지역 리스트
-        } else if(area != null && sigungu == null) {
-            if(list.equals("ta")) {
-                contents = contentRepository.findHotTaByArea(area);
-            } else if(list.equals("food")) {
-                contents = contentRepository.findHotFoodByArea(area);
+            //지역 리스트
+        } else if (area != null && sigungu == null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaByArea(area, first, perPage);
+                totalCount = contentRepository.findHotTaByAreaCount(area);
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodByArea(area, first, perPage);
+                totalCount = contentRepository.findHotFoodByAreaCount(area);
             }
 
-        //지역 + 시군구 상세지역 리스트
-        } else if(area != null && sigungu != null) {
-            if(list.equals("ta")) {
-                contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu);
-            } else if(list.equals("food")) {
-                contents = contentRepository.findHotFoodByAreaAndSigungu(area, sigungu);
+            //지역 + 시군구 상세지역 리스트
+        } else if (area != null && sigungu != null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu, first, perPage);
+                totalCount = contentRepository.findHotTaByAreaAndSigunguCount(area, sigungu);
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodByAreaAndSigungu(area, sigungu,first, perPage);
+                totalCount = contentRepository.findHotFoodByAreaAndSigunguCount(area, sigungu);
             }
+
         }
 
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos= new ArrayList<>();
-        for(Content content : contents) {
+
+      /*  List<ContentResponse.HotPlaceDTO> hotPlaceDtos = new ArrayList<>();
+        for (Content content : contents) {
             hotPlaceDtos.add(new ContentResponse.HotPlaceDTO(content));
-        }
-        return hotPlaceDtos;
+        }*/
+        return new ContentResponse.HotPlacePageDTO(contents, perPage, page, totalCount);
     }
-    
+
 
     /*           hotPlace-end             */
 
@@ -84,7 +100,7 @@ public class ContentService {
 
     /*           info-start             */
 
-    public ContentResponse.infoListDTO infoContentList(String contentTypeId){
+    public ContentResponse.infoListDTO infoContentList(String contentTypeId) {
         long count = contentRepository.countByContentTypeId(contentTypeId);
         List<Content> contentList = contentRepository.findByContentTypeId(contentTypeId);
         List<Area> areaList = areaRepository.findAll();

@@ -37,16 +37,17 @@ class ContentRepositoryTest {
     @Test
     public void findHotPlaceFindAll() throws Exception {
         //given
-
+        int first = 0;
+        int maxResults = 20;
         //when
 
-        List<Content> contents = contentRepository.findHotFoodAll();
+        List<Content> contents = contentRepository.findHotFoodAll(first, maxResults);
 
         //eye
         System.out.println(contents);
     }
 
-    @Test
+/*    @Test
     public void findHotPlaceByArea() throws Exception {
         //given
         String area = "1";
@@ -71,7 +72,7 @@ class ContentRepositoryTest {
 
         //eye
         System.out.println(contents);
-    }
+    }*/
     /*           hotPlace-end             */
 
 
