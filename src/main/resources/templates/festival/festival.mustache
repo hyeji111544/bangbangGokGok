@@ -1,209 +1,241 @@
 {{>layout/header}}
 
-    <link rel="stylesheet" href="/css/festival-main.css">
+<link rel="stylesheet" href="/css/festival-main.css">
 
-    <section>
-        <div class="festival__main__header__container">
-            <nav>
-                <div class="festival__logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-music-note-list" viewBox="0 0 16 16">
-                        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2" />
-                        <path fill-rule="evenodd" d="M12 3v10h-1V3z" />
-                        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z" />
-                        <path fill-rule="evenodd"
-                            d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                    <h1>전국 축제</h1>
-                </div>
-            </nav>
-            <section>
-                <div class="container mt-3">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-month"
+<section>
+    <div class="festival__container">
+        <nav>
+            <div class="festival__logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-music-note-list" viewBox="0 0 16 16">
+                    <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2" />
+                    <path fill-rule="evenodd" d="M12 3v10h-1V3z" />
+                    <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z" />
+                    <path fill-rule="evenodd"
+                          d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5" />
+                </svg>
+                <h1>전국 축제</h1>
+            </div>
+        </nav>
+        <section>
+            <div class="container mt-3">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-month"
                             data-bs-toggle="dropdown">
-                            시기
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">개최중</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">개최예정</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">01월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">02월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">03월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">04월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">05월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">06월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">07월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">08월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">09월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">10월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">11월</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="month">12월</a></li>
-                        </ul>
-                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-city"
+                        시기
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-dropdown="month">전체</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240101">01월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240201">02월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240301">03월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240401">04월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240501">05월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240601">06월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240701">07월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240801">08월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20240901">09월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20241001">10월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20241101">11월</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="month" data-value1="20241201">12월</a></li>
+                    </ul>
+                    <button type="button" class="btn btn-primary dropdown-toggle" id="dropdown-area"
                             data-bs-toggle="dropdown">
-                            지역
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">서울</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">인천</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">대전</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">대구</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">광주</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">부산</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">울산</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">세종시</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">경기도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">강원특별자치도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">충청북도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">충청남도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">경상북도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">경상남도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">전북특별자치도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">전라남도</a></li>
-                            <li><a class="dropdown-item" href="#" data-dropdown="city">제주도</a></li>
-                        </ul>
-                        <button type="button" class="btn btn-search">검색</button>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <!-- Carousel -->
-                <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-                    <!-- Indicators/dots -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                    </div>
-
-                    <!-- The slideshow/carousel -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="/images/card1.jpg" alt="Los Angeles" class="d-block"
-                                style="width:100%; height:600px;">
-                            <div class="carousel-caption">
-                                <h5>축제이름</h5>
-                                    <p>기간</p>
-                                    <p>지역</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/images/card2.jpg" alt="Chicago" class="d-block"
-                                style="width:100%; height:600px;">
-                            <div class="carousel-caption">
-                                <h5>축제이름</h3>
-                                    <p>기간</p>
-                                    <p>지역</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/images/card3.jpg" alt="New York" class="d-block"
-                                style="width:100%; height:600px;">
-                            <div class="carousel-caption">
-                                <h5>축제이름</h3>
-                                    <p>기간</p>
-                                    <p>지역</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Left and right controls/icons -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
+                        지역
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
-            </section>
-        </div>
-    </section>
-    <main>
-        <div class="festival__main__main__container">
-            <div class="bottom__box">
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card1.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card2.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card3.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card1.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card2.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="bottom__img">
-                        <img src="/images/card3.jpg">
-                    </div>
-                    <div class="bottom__info">
-                        <div class="bottom__info1">축제 이름</div>
-                        <div class="bottom__info2">축제 기간</div>
-                        <div class="bottom__info3">축제 지역</div>
-                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-dropdown="area">전국</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="1">서울</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="2">인천</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="3">대전</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="4">대구</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="5">광주</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="6">부산</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="7">울산</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="8">세종시</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="31">경기도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="32">강원특별자치도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="33">충청북도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="34">충청남도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="35">경상북도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="36">경상남도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="37">전북특별자치도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="38">전라남도</a></li>
+                        <li><a class="dropdown-item" href="#" data-dropdown="area" data-value2="39">제주도</a></li>
+                    </ul>
+                    <button type="button" class="btn btn-search" onclick="searchFestival()">검색</button>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
+        <section>
+            <!-- Carousel -->
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    {{#models}}
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="{{index}}" class="{{#active}}active{{/active}}"></button>
+                    {{/models}}
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    {{#models}}
+                        <div class="carousel-item {{#active}}active{{/active}}">
+                            <img src="{{originImgUrl}}" alt="{{contentId}}" class="d-block"
+                                 style="width:100%; height:600px;">
+                            <div class="carousel-caption">
+                                <h5>{{title}}</h5>
+                                <p>{{eventStartDate}} - {{eventenddate}}</p>
+                                <p>{{eventplace}}</p>
+                            </div>
+                        </div>
+                    {{/models}}
+                </div>
+
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </section>
+        <section>
+            <div id="bottom__box">
+
+            </div>
+        </section>
     </div>
+</section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // 드롭다운 항목들을 선택합니다.
-            const dropdownItems = document.querySelectorAll('.dropdown-item');
+<script>
 
-            // 각 드롭다운 항목에 대해 클릭 이벤트를 추가합니다.
-            dropdownItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    // data-dropdown 속성 값에 따라 관련된 버튼을 선택합니다.
-                    const dropdownType = this.getAttribute('data-dropdown');
-                    const dropdownButton = document.getElementById(`dropdown-${dropdownType}`);
+    let eventStartDate;
+    let areaCode;
 
-                    // 선택된 항목의 텍스트를 버튼에 설정합니다.
-                    dropdownButton.textContent = this.textContent;
-                });
+    document.addEventListener('DOMContentLoaded', function () {
+        // 드롭다운 항목들을 선택합니다.
+        const dropdownItems = $('.dropdown-item');
+
+        // 각 드롭다운 항목에 대해 클릭 이벤트를 추가합니다.
+        dropdownItems.each(function() {
+            $(this).click(function () {
+                // data-dropdown 속성 값에 따라 관련된 버튼을 선택합니다.
+                const dropdownType = $(this).attr('data-dropdown');
+                const dropdownButton = $(`#dropdown-${dropdownType}`);
+
+                // 선택된 항목의 텍스트를 버튼에 설정합니다.
+                dropdownButton.text($(this).text());
+
+                // 변수에 선택된 항목의 값 설정하기
+                if(dropdownType === 'month') {
+                    eventStartDate = $(this).attr('data-value1');
+                }
+                if(dropdownType === 'area') {
+                    areaCode = $(this).attr('data-value2');
+                }
             });
         });
-    </script>
+    });
+
+    async function searchFestival() {
+        // 1. 값 가져오기 -> 드롭다운 선택 항목이 바뀔 때마다 값이 바뀌기 때문에 전역변수로 빼고, 드롭다운 항목 선택될 때 값 설정되도록 함.
+        console.log(eventStartDate);
+        console.log(areaCode);
+
+        if (eventStartDate === undefined && areaCode === undefined) {
+            alert("축제 시기나 축제 지역 중 하나는 필수 선택입니다.");
+            return; // 알림 후 함수 실행 중지
+        }
+
+        // 2. fetch 로 통신하기
+        // 축제 조회 (월별)
+        if (areaCode === undefined) {
+            // await fetch(`/festival/main?eventStartDate=${eventStartDate}`);
+
+            $("#bottom__box").empty();
+
+            let response = await fetch(`http://apis.data.go.kr/B551011/KorService1/searchFestival1?serviceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&numOfRows=50000&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=${eventStartDate}&_type=json`, {
+                method : 'GET',
+                credentials: 'omit' // 쿠키를 요청에 포함하지 않음
+            });
+            let data = await response.json();
+            let boardList = data.response.body.items.item;
+
+            for (board of boardList) {
+                let dom = makeBox(board);
+                $("#bottom__box").append(dom);
+            }
+        }
+
+        // 축제 조회 (지역)
+        if (eventStartDate === undefined) {
+
+            $("#bottom__box").empty();
+
+            let response = await fetch(`https://apis.data.go.kr/B551011/KorService1/searchFestival1?serviceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&numOfRows=50000&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220101&areaCode=${areaCode}&_type=json`, {
+                method : 'GET',
+                credentials: 'omit' // 쿠키를 요청에 포함하지 않음
+            });
+            let data = await response.json();
+            let boardList = data.response.body.items.item;
+
+            for (board of boardList) {
+                let dom = makeBox(board);
+                $("#bottom__box").append(dom);
+            }
+        }
+
+        // 축제 조회 (월별 + 지역)
+        if (areaCode !== undefined && eventStartDate !== undefined) {
+
+            $("#bottom__box").empty();
+
+            let response = await fetch(`https://apis.data.go.kr/B551011/KorService1/searchFestival1?serviceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&numOfRows=50000&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=${eventStartDate}&areaCode=${areaCode}&_type=json`, {
+                method : 'GET',
+                credentials: 'omit' // 쿠키를 요청에 포함하지 않음
+            });
+            let data = await response.json();
+            let boardList = data.response.body.items.item;
+
+            for (board of boardList) {
+                let dom = makeBox(board);
+                $("#bottom__box").append(dom);
+            }
+        }
+    }
+
+
+    function makeBox(board, startDate, endDate) {
+        // 주소 뽑아내기
+        let parts = board.addr1.split(" ");
+        let result = parts.slice(0, 2).join(" ");
+
+        return `<div class="bottom" id="board-${board.contentid}">
+                        <div class="bottom__img">
+                            <img src="${board.firstimage}" alt="이미지 로드 실패" onerror="handleImageError(this);">
+                            <div class="ongoing">개최중</div>
+                        </div>
+                    <div class="bottom__info">
+                        <div class="bottom__info1">${board.title}</div>
+                        ${startDate && endDate
+                ? `<div class="bottom__info2">${startDate} - ${endDate}</div>`
+                : `<div class="bottom__info2">${board.eventstartdate} - ${board.eventenddate}</div>`}
+                        <div class="bottom__info3">${result}</div>
+                    </div>
+                </div>`;
+    }
+
+    function handleImageError(imgElement) {
+        // 이미 대체 이미지로 바뀌었는지 확인하는 조건
+        if (!imgElement.src.includes('no-image.png')) {
+            imgElement.src = '/images/no-image.png';
+        }
+    }
+
+
+
+</script>
 {{>layout/footer}}
