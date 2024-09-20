@@ -8,7 +8,7 @@ import green.mtcoding.travel.restourantInfo.RestaurantInfo;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
@@ -21,12 +21,12 @@ public class Review {
     private Integer id;
 
     @Column(nullable = false)
-    private String content;
+    private String context;
 
     @CreationTimestamp
     private Timestamp createdAt;
 
-    private byte rating;  // 리뷰 별점 (TINYINT에 해당)
+    private double rating;  // 리뷰 별점 (TINYINT에 해당)
 
     private boolean isDeleted;
 
