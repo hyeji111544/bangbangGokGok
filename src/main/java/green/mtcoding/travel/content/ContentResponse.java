@@ -82,7 +82,9 @@ public class ContentResponse {
         public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount) {
 
             this.number = page;
-            this.size = perPage;
+            //Repository에 maxResult값으로 사용하는 perPage를 가져 왔다.
+            //size가 페이지 숫자 크기 묶음 사이즈이다. 10페이지씩 만들기 위해서 20사이즈인 perPage의 절반으로
+            this.size = perPage/2;
 
 
             if(totalCount % perPage == 0 ) {
@@ -91,8 +93,8 @@ public class ContentResponse {
                 this.totalPage = (int) (totalCount / perPage + 1);
             }
 
-            System.out.println("page = " + page);
-            System.out.println("perPage = " + perPage);
+            System.out.println("page = " + number);
+            System.out.println("perPage = " + size);
             System.out.println("totalCount = " + totalCount);
             System.out.println("totalPage = " + totalPage);
 
@@ -109,8 +111,12 @@ public class ContentResponse {
                 this.next = number + 1;
             }
 
-            int temp = (number / perPage)*perPage;
-            for(int i=temp; i<temp+perPage; i++){
+            int temp = (number / size)*size;
+            for(int i=temp; i<temp+size;i++){
+                if(i > totalPage) {
+                    break;
+                }
+
                 this.numbers.add(i);
             }
 

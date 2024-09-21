@@ -334,7 +334,7 @@ function toggleActive(activeLink, inactiveLink) {
 }
 
 // 인기 여행지, 맛집 데이터를 AJAX로 불러오기
-function printList() {
+function printList(page) {
     let url = `/get-hotplace?category=${category}&area=${areaCode}`;
     if (sigunguQueries) {
         url += `&${sigunguQueries}`;
@@ -342,6 +342,10 @@ function printList() {
     //지역, 시군구 코드가 정해지지 않았으면 지역 선택 안 한 것 -> 전체 리스트에서 카테고리만 변경
     if(areaCode === undefined && sigunguQueries === '') {
         url = `/get-hotplace?category=${category}`;
+    }
+
+    if(page) {
+        url += '&page=' + page;
     }
 
     $.ajax({
@@ -383,6 +387,18 @@ function makePageList(response) {
 
         // 계산한 페이지를 그리기
         $(".page__box").prepend(printPageList(pageInfo));
+        for(let i = 0; i<pageInfo.totalPage; i++) {
+            $(".page__count__box").append(printPageListCount(i));
+        }
+        if(pageInfo.first == true) {
+            $(".prev__btn").prop("disabled", true);
+        }
+        console.log("first", pageInfo.first);
+        if(pageInfo.last == true) {
+            $(".next__btn").prop("disabled", true);
+        }
+        console.log("last", pageInfo.last);
+
 
     } else {
         return `<h2>검색 결과가 없습니다.</h2>`;
@@ -391,15 +407,21 @@ function makePageList(response) {
 
 }
 
-function printPageList() {
+function printPageList(pageInfo) {
     return `
                         <ul class="pagination justify-content-center">
-                        <li class="page-item {{#model.first}}disabled{{/model.first}}"><a class="page-link" href="?page={{model.prev}}">&lt;</a></li>
-                        {{#model.numbers}}
-                        <li class="page-item"><a class="page-link" href="?page={{.}}">{{.}}</a></li>
-                        {{/model.numbers}}
-                        <li class="page-item {{#model.last}}disabled{{/model.last}}"><a class="page-link" href="?page={{model.next}}">&gt;</a></li>
+                        <li class="page-item"><a class="page-link prev__btn" href="#" onClick='printList(${pageInfo.prev});'>&lt;</a></li>
+                        
+                        <li class="page-item page__count__box"></li>
+                        
+                        <li class="page-item"><a class="page-link next__btn" href="#" onClick='printList(${pageInfo.next});'>&gt;</a></li>
                     </ul>
+    `;
+}
+
+function printPageListCount(count) {
+    return `
+                <a class="page-link" href="#" onClick="printList(${count});">${count}</a>
     `;
 }
 

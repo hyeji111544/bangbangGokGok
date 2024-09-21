@@ -327,3 +327,6 @@
     justify-content: center; 
  }
 
+.page__count__box {
+    display: flex;
+}
