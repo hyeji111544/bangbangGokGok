@@ -2,7 +2,9 @@ package green.mtcoding.travel.global.config;
 
 
 import green.mtcoding.travel.global.interceptor.LoginInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -31,6 +33,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .setCachePeriod(60*60) //초 단위 => 한시간
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
+    }
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

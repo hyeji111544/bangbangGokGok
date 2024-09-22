@@ -3,6 +3,7 @@ package green.mtcoding.travel.tourismInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +22,12 @@ public class TourismInfoController {
     /*           region-end             */
 
     /*           hotPlace-start             */
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() {
+        return tourismInfoService.getRequest();
+    }
+    /*
     /*           hotPlace-end             */
 
     /*           festival-start             */

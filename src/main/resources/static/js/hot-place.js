@@ -274,7 +274,7 @@ function printHotPlace(place) {
                 <img src="${place.firstImage}" alt="이미지 2">                              
 
                             </div>
-                        </a>
+                     
 
                         <button class="like__btn" onclick="toggleLike(this)" data-id="${place.contentId}">
                             <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -293,6 +293,7 @@ function printHotPlace(place) {
                             <p class="hot__place__name">${place.title}</p>
                             <p class="hot__place__location">${place.addr1}</p>
                         </div>
+                      </a>
                     </div>`;
 }
 
@@ -394,9 +395,11 @@ function makePageList(response) {
         console.log("first", pageInfo.first);
         if (pageInfo.last == true) {
             $(".next__btn").addClass("disabled");
-        } else {{
-            $(".next__btn").removeClass("disabled");
-        }}
+        } else {
+            {
+                $(".next__btn").removeClass("disabled");
+            }
+        }
         console.log("last", pageInfo.last);
 
 
