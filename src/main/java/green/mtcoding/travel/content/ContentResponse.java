@@ -146,7 +146,7 @@ public class ContentResponse {
                 this.addr1 = content.getAddr1();
                 this.firstImage = content.getFirstImage();
                 if(firstImage == "") {
-                    this.firstImage = "/images/hotplace/no-image.jpg";
+                    this.firstImage = "/img/hotplace/no-image.jpg";
                 }
                 this.viewCount = content.getViewCount();
                 this.likeCount = content.getLikeCount();

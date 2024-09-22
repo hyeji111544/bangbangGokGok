@@ -13,13 +13,6 @@ public class TravelApplication {
         SpringApplication.run(TravelApplication.class, args);
 
 
-        try {
-            System.out.println("123 - sha256 : " + SHA256.encrypt("123"));
-            System.out.println("123 - sha256 : " + SHA256.encrypt("123"));
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-
 
     }
 }

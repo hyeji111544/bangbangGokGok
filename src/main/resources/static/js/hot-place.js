@@ -276,7 +276,7 @@ function printHotPlace(place) {
                             </div>
                         </a>
 
-                        <button class="like__btn" onclick="toggleLike(this)">
+                        <button class="like__btn" onclick="toggleLike(this)" data-id="${place.contentId}">
                             <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
