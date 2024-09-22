@@ -2,6 +2,7 @@ package green.mtcoding.travel.user;
 
 
 import green.mtcoding.travel.global.util.Resp;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -105,7 +108,16 @@ public class UserController {
 
     /*           myPage-start             */
     @GetMapping("/api/my-page")  //이름은 임시로 달아놨습니다. 원하시는대로 바꾸시면 됩니다
-    public String myPage() {
+    public String myPage(HttpServletRequest request) {
+        User user = (User) session.getAttribute("sessionUser");
+        Long countScrap = userService.selectMypageCountScrap(user);
+        Long countReview = userService.selectMypageCountReview(user);
+        List<UserResponse.MypageScrapDTO> scrapList = userService.selectMypageScrapList(user);
+        List<UserResponse.MypageReviewDTO> reviewList = userService.selectMypageReviewList(user);
+        request.setAttribute("countScrap", countScrap);
+        request.setAttribute("countReview", countReview);
+        request.setAttribute("scrapList", scrapList);
+        request.setAttribute("reviewList", reviewList);
         return "/mypage/my-page";
     }
 

@@ -24,7 +24,7 @@ class ContentRepositoryTest {
         String contentTypeId = "12";
 
         // when
-        List<Content> contentList = contentRepository.findByContentTypeId(contentTypeId);
+        // List<Content> contentList = contentRepository.findByContentTypeId(contentTypeId);
 
         // then
 

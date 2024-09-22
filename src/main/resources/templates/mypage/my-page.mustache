@@ -24,12 +24,12 @@
                     <div class="activity-item">
                         <div class="activity-icon">📝</div>
                         <div class="activity-label">내가 쓴 후기</div>
-                        <div class="activity-badge">7</div>
+                        <div class="activity-badge">{{countReview}}</div>
                     </div>
                     <div class="activity-item">
                         <div class="activity-icon">📓</div>
                         <div class="activity-label">스크랩</div>
-                        <div class="activity-badge">8</div>
+                        <div class="activity-badge">{{countScrap}}</div>
                     </div>
                 </div>
             </div>
@@ -81,30 +81,21 @@
                             <h4>스크랩</h4>
                         </div>
                         <div class="row">
-                            <div class="col-md-3 text-center">
-                                <div class="icon-box">
-                                    <img src="/images/5.JPG">
+
+                            {{#scrapList}}
+                                <div class="col-md-3 text-center">
+                                    <input type="hidden" value="{{contentId}}">
+                                    <input type="hidden" value="{{contentTypeId}}">
+                                    <div class="icon-box">
+                                        <img src="{{firstImage}}" alt="그림없음">
+                                    </div>
+                                    <div class="img__detail">{{title}}</div>
                                 </div>
-                                <div class="img__detail">부산 과학관</div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="icon-box">
-                                    <img src="/images/6.JPG">
-                                </div>
-                                <div class="img__detail">대원사</div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="icon-box">
-                                    <img src="/images/7.JPG">
-                                </div>
-                                <div class="img__detail">절</div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="icon-box">
-                                    <img src="/images/8.JPG">
-                                </div>
-                                <div class="img__detail">호텔</div>
-                            </div>
+                            {{/scrapList}}
+                            {{^scrapList}}
+                                <div>스크랩 목록이 비어있습니다</div>
+                            {{/scrapList}}
+
                         </div>
                         <div class="btn__box">
                             <button class="btn btn-primary mt-3" onclick="location.href=`/api/my-scrap`;">더보기</button>
@@ -118,40 +109,24 @@
                         <div>
                             <table class="review__box">
                                 <tr>
-                                    <td>번호</td>
-                                    <td>제목</td>
-                                    <td>내용</td>
-                                    <td>날짜</td>
-                                    <td>별점</td>
+                                    <td class="col-md-2">제목</td>
+                                    <td class="col-md-2">지역</td>
+                                    <td class="col-md-4">내용</td>
+                                    <td class="col-md-2">날짜</td>
+                                    <td class="col-md-2">별점</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>제목:1</td>
-                                    <td>내용:1</td>
-                                    <td>2024-09-04</td>
-                                    <td>★★★★★</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>제목:2</td>
-                                    <td>내용:2</td>
-                                    <td>2024-09-04</td>
-                                    <td>★★★★★</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>제목:3</td>
-                                    <td>내용:3</td>
-                                    <td>2024-09-04</td>
-                                    <td>★★★★★</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>제목:4</td>
-                                    <td>내용:4</td>
-                                    <td>2024-09-04</td>
-                                    <td>★★★★★</td>
-                                </tr>
+                                {{#reviewList}}
+                                    <tr>
+                                        <td>{{title}}</td>
+                                        <td>{{addr1}}</td>
+                                        <td>{{context}}</td>
+                                        <td>날짜</td>
+                                        <td>{{{starRating}}}</td>
+                                    </tr>
+                                {{/reviewList}}
+                                {{^reviewList}}
+                                    <td colspan="5" style="text-align: center">리뷰 내역이 없습니다.</td>
+                                {{/reviewList}}
                             </table>
                         </div>
                         <div class="btn__box">
@@ -183,5 +158,24 @@
         </div>
 
     </div>
+
+<script>
+    // 1. 스크랩 버튼을 누르면 scrap의 id를 가지고 update 요청하기
+    async function scrapOff(contentId,id){
+        let response = await fetch(`/api/my-scrapUpdate/${contentId}`,{
+            method : 'post'
+        });
+        console.log(response);
+        if (response.status == 200) {
+            let data = document.querySelector(`#scrap__card__${id}`);
+            data.style.display = "none";
+            alert("스크랩이 취소되었습니다")
+        } else {
+            alert("오류가 발생했습니다");
+        }
+    }
+    // 2. 성공적으로 완료되면 display:none으로 변경 + alter "스크랩이 취소되었습니다"
+
+</script>
 
 {{>layout/footer}}

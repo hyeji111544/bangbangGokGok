@@ -12,3 +12,13 @@ insert into scrap_tb(is_scrap, user_id, content_content_id)
 values (true, 1, 2863965);
 insert into scrap_tb(is_scrap, user_id, content_content_id)
 values (true, 1, 2781669);
+
+insert into festivalinfo_tb (content_id, contentTypeId) values (3021762, 15);
+insert into festivalinfo_tb (content_id, contentTypeId) values (3020141, 15);
+
+insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
+values(1,false, '반갑습니다', 734219, 734219, 4.5);
+insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
+values(1,false, '감사합니다', 3021762, 3021762, 3.5);
+insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
+values(1,false, '안녕하세요', 3020141, 3020141, 5);
