@@ -86,8 +86,8 @@
                                  style="width:100%; height:600px;">
                             <div class="carousel-caption">
                                 <h5>{{title}}</h5>
-                                <p>{{eventStartDate}} - {{eventenddate}}</p>
-                                <p>{{eventplace}}</p>
+                                <p>{{eventStartDate}} - {{eventEndDate}}</p>
+                                <p>{{eventPlace}}</p>
                             </div>
                         </div>
                     {{/models}}
@@ -213,7 +213,7 @@
         let parts = board.addr1.split(" ");
         let result = parts.slice(0, 2).join(" ");
 
-        return `<div class="bottom" id="board-${board.contentid}">
+        return `<div class="bottom" id="board-${board.contentid}" onclick="location.href='/festival/detail/${board.contentid}'">
                         <div class="bottom__img">
                             <img src="${board.firstimage}" alt="이미지 로드 실패" onerror="handleImageError(this);">
                             <div class="ongoing">개최중</div>
