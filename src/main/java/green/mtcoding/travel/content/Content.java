@@ -10,7 +10,7 @@ import lombok.Data;
 public class Content {
 
     @Id
-    @JsonAlias("contendid")
+    @JsonAlias("contentid")
     private String contentId;
     private String addr1;
     private String addr2;

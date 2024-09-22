@@ -14,7 +14,8 @@ import java.util.List;
 public class TourismInfo {
 
     @Id
-    private String contentid;
+    @JsonAlias("contentid")
+    private String contentId;
 
     @OneToMany(mappedBy = "tourismInfo", fetch = FetchType.LAZY)
     private List<Review> reviews;

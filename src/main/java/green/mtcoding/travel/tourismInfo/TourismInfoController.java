@@ -1,9 +1,13 @@
 package green.mtcoding.travel.tourismInfo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.net.URISyntaxException;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,9 +27,9 @@ public class TourismInfoController {
 
     /*           hotPlace-start             */
     @GetMapping("/test")
-    @ResponseBody
-    public String test() {
-        return tourismInfoService.getRequest();
+    public String test() throws JsonProcessingException, URISyntaxException {
+       tourismInfoService.getRequest();
+       return "/info/detail";
     }
     /*
     /*           hotPlace-end             */
