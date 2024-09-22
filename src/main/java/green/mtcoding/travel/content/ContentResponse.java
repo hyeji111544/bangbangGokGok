@@ -68,7 +68,7 @@ public class ContentResponse {
     public static class HotPlacePageDTO {
         private Integer number; //현재 페이지
         private Integer totalPage; // 전체페이지 개수
-        private Integer size; // 한 페이지의 아이템 개수
+        private Integer size; // 페이지 범위 ( 1~10, 11~20 이런 범위)
         private boolean first;
         private boolean last;
         private Integer prev; //현재 페이지 -1
@@ -83,14 +83,15 @@ public class ContentResponse {
 
             this.number = page;
             //Repository에 maxResult값으로 사용하는 perPage를 가져 왔다.
-            //size가 페이지 숫자 크기 묶음 사이즈이다. 10페이지씩 만들기 위해서 20사이즈인 perPage의 절반으로
-            this.size = perPage/2;
+            //size가 페이지 숫자 크기 묶음 사이즈이다. 10페이지씩 만들고 싶다. (0~9, 10~19 이런식으로)
+            this.size = 10;
 
 
+            //페이지 시작이 0이라면 1씩 빼야한다. 원리 나머지가 0일때는 계산 그대로. 나머지가 존재하면 계산에서 +1인데 -1씩 해준 상태
             if(totalCount % perPage == 0 ) {
-                this.totalPage = (int) (totalCount / perPage);
+                this.totalPage = (int) (totalCount / perPage) -1;
             } else if(totalCount % perPage != 0) {
-                this.totalPage = (int) (totalCount / perPage + 1);
+                this.totalPage = (int) (totalCount / perPage);
             }
 
             System.out.println("page = " + number);
@@ -104,8 +105,8 @@ public class ContentResponse {
             } else {
                 this.prev = number - 1;
             }
-            if(number == totalPage -1) {//인덱스는 0부터시작이고 토탈은 1부터 시작이므로 토탈-1이 인덱스 마지막
-                this.next = totalPage -1;
+            if(number == totalPage) {//인덱스는 0부터시작이고 페이지는 1부터 시작이므로 토탈-1이 인덱스 마지막인데 지금은 인덱스와 페이지가 일치이므로 인덱스 = 토탈이므로 -1이 아니고 같을 때로
+                this.next = totalPage;
                 this.last = true;
             } else {
                 this.next = number + 1;

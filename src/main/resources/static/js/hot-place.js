@@ -1,8 +1,7 @@
 //핫플 기본상태는 인기 여행지 체크
-$(function() {
+$(function () {
     placeLink.classList.add("active");
 });
-
 
 
 // 사진 슬라이드 & 좋아요
@@ -79,7 +78,7 @@ function showSlide(index, button) {
 let sigungus = [];
 let areaCode;
 let sigunguCode = [];
-let category = '';
+let category = 'touristAttractions';
 let sigunguQueries = '';
 
 let modal = document.querySelector("#modal");
@@ -135,7 +134,6 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
 
 
 // 시군구 버튼 동적 생성
@@ -201,10 +199,6 @@ function generateAreaButtons() {
 }
 
 
-
-
-
-
 // 검색 버튼 클릭 시 AJAX로 areaCode와 sigungu code 전송
 searchBtn.addEventListener("click", function () {
     // "전체" 버튼이 선택된 경우 sigunguCode는 비워둠
@@ -218,9 +212,9 @@ searchBtn.addEventListener("click", function () {
         }).join('&');
     }
 
-    if(placeLink.classList.contains("active")) {
+    if (placeLink.classList.contains("active")) {
         category = 'touristAttractions';
-    }else if(foodLink.classList.contains("active")) {
+    } else if (foodLink.classList.contains("active")) {
         category = 'restaurants';
     }
 
@@ -303,7 +297,6 @@ function printHotPlace(place) {
 }
 
 
-
 // 인기 여행지, 인기 맛집 클릭 시 AJAX 호출
 let placeLink = document.querySelector(".hotpl");
 let foodLink = document.querySelector(".hotf");
@@ -335,16 +328,20 @@ function toggleActive(activeLink, inactiveLink) {
 
 // 인기 여행지, 맛집 데이터를 AJAX로 불러오기
 function printList(page) {
+    console.log("category", category);
+    console.log("areaCode", areaCode);
+
+
     let url = `/get-hotplace?category=${category}&area=${areaCode}`;
     if (sigunguQueries) {
         url += `&${sigunguQueries}`;
     }
     //지역, 시군구 코드가 정해지지 않았으면 지역 선택 안 한 것 -> 전체 리스트에서 카테고리만 변경
-    if(areaCode === undefined && sigunguQueries === '') {
+    if (areaCode === undefined && sigunguQueries === '') {
         url = `/get-hotplace?category=${category}`;
     }
 
-    if(page) {
+    if (page) {
         url += '&page=' + page;
     }
 
@@ -364,14 +361,10 @@ function printList(page) {
 }
 
 
-
-
 // 컨텐츠 박스 전체를 a링크가 감싸고 있는데 내부에 좋아요 버튼과 사진 선택 dot 버튼은 a링크 영향 안 받게.
-$('.like__btn, .dot__btn').on('click', function(event) {
+$('.like__btn, .dot__btn').on('click', function (event) {
     event.preventDefault(); // 상위 <a> 태그의 기본 동작(링크 이동) 방지
 });
-
-
 
 
 function makePageList(response) {
@@ -387,21 +380,28 @@ function makePageList(response) {
 
         // 계산한 페이지를 그리기
         $(".page__box").prepend(printPageList(pageInfo));
-        for(let i = 0; i<pageInfo.totalPage; i++) {
-            $(".page__count__box").append(printPageListCount(i));
+        let pageArr = pageInfo.numbers;
+        for (let i = pageArr[0]; i <= pageArr[pageArr.length - 1]; i++) {
+            $(".page__count__box").append(printPageListNumber(i));
         }
-        if(pageInfo.first == true) {
-            $(".prev__btn").prop("disabled", true);
+        if (pageInfo.first == true) {
+            // remove로 첫 페이지에서는 화살표 지워도 괜찮은 것 같다. prop은 button, input에만 적용돼서 add클래스로 추가하고 css에서 opacity와 이벤트 클릭방지 처리
+            $(".prev__btn").addClass("disabled");
+        } else {
+            $(".prev__btn").removeClass("disabled");
         }
+
         console.log("first", pageInfo.first);
-        if(pageInfo.last == true) {
-            $(".next__btn").prop("disabled", true);
-        }
+        if (pageInfo.last == true) {
+            $(".next__btn").addClass("disabled");
+        } else {{
+            $(".next__btn").removeClass("disabled");
+        }}
         console.log("last", pageInfo.last);
 
 
     } else {
-        return `<h2>검색 결과가 없습니다.</h2>`;
+        $(".page__box").prepend('<h2>검색 결과가 없습니다.</h2>');
     }
 
 
@@ -410,18 +410,18 @@ function makePageList(response) {
 function printPageList(pageInfo) {
     return `
                         <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link prev__btn" href="#" onClick='printList(${pageInfo.prev});'>&lt;</a></li>
+                        <li class="page-item prev__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.prev});'>&lt;</a></li>
                         
                         <li class="page-item page__count__box"></li>
                         
-                        <li class="page-item"><a class="page-link next__btn" href="#" onClick='printList(${pageInfo.next});'>&gt;</a></li>
+                        <li class="page-item next__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.next});'>&gt;</a></li>
                     </ul>
     `;
 }
 
-function printPageListCount(count) {
+function printPageListNumber(number) {
     return `
-                <a class="page-link" href="#" onClick="printList(${count});">${count}</a>
+                <a class="page-link" href="#" onClick="printList(${number});">${number}</a>
     `;
 }
 

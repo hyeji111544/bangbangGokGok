@@ -330,3 +330,9 @@
 .page__count__box {
     display: flex;
 }
+
+.disabled .page-link {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
