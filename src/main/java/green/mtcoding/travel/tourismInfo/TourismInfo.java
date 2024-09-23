@@ -46,7 +46,7 @@ public class TourismInfo {
     @JsonAlias("originimgurl")
     private String originImgUrl;
     @JsonAlias("imgname")
-    private String imgname;
+    private String imgName;
     @JsonAlias("smallimageurl")
     private String smallImageUrl;
     private String cpyrhtDivCd;

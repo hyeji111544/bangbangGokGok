@@ -11,7 +11,7 @@
                         <path
                             d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                     </svg>
-                    <span>맘찍 횟수</span>
+                    <span>123</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
                         viewBox="0 0 16 16">
                         <path
@@ -19,7 +19,7 @@
                         <path
                             d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
                     </svg>
-                    <span>뷰횟수</span>
+                    <span>345</span>
                 </div>
                 <div class="share__box__2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -27,11 +27,7 @@
                         <path
                             d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-share" viewBox="0 0 16 16">
-                        <path
-                            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />
-                    </svg>
+
                 </div>
 
             </div>
@@ -45,15 +41,18 @@
             </div>
             <div class="article__img__box">
                 <img class="article__img__1" src="{{model.common.firstImage}}">
-                <img class="article__img__2" src="/images/maincard2.jpg">
-                <img class="article__img__3" src="/images/maincard2.jpg">
-                <img class="article__img__4" src="/images/maincard2.jpg">
+                {{#model.imgs}}
+                        <img class="article__img__2" src="{{infoName}}">
+                {{/model.imgs}}
             </div>
+
             <div class="article__info__box">
                 <div>상세정보</div>
                 <div>{{model.common.overview}}
                 </div>
-                <div class="article__info__map"> 지도 </div>
+                <div id="article__info__map" style="width: 100%; height: 500px; margin-bottom: 40px"></div>
+                <div style="display: none" class="map__X">{{model.common.mapX}}</div>
+                <div style="display: none" class="map__Y">{{model.common.mapY}}</div>
                 <div class="info__grid">
                     {{#model.intro.infoCenter}}
                     <div class="info__item">
@@ -280,6 +279,52 @@
             </ul>
 
         </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let mapX = document.querySelector('.map__X').textContent;
+                let mapY = document.querySelector('.map__Y').textContent;
+
+                renderMap(mapX, mapY)
+
+                const images = document.querySelectorAll('.article__img__box img.article__img__2');
+
+                images.forEach((img, index) => {
+                    if (index >= 3) {
+                        img.style.display = 'none';  // 네 번째 이후 이미지는 숨기기
+                    }
+                });
+            });
+
+            // 지도 렌더링 함수
+            function renderMap(mapX, mapY) {
+                console.log(mapX);
+                console.log(mapY);
+                let container = document.getElementById("article__info__map");
+
+                let options = {
+                    center: new kakao.maps.LatLng(mapY, mapX), //지도의 중심좌표.
+                    level: 3
+                };
+                let map = new kakao.maps.Map(container, options);
+
+                // 마커가 표시될 위치입니다
+                var markerPosition  = new kakao.maps.LatLng(mapY, mapX);
+
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+                // 지도가 보이지 않는 문제 해결을 위한 리사이즈 및 중심 좌표 재설정
+
+            }
+
+
+        </script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>
+
 
     </section>
 
