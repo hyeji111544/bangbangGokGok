@@ -195,13 +195,62 @@
  }
 
  .modal__search {
-     display: flex;
-     justify-content: center;
-     align-items: normal;
+
      margin-top: 20px;
      height: 40px;
      gap: 10px;
+
+     position: relative;
  }
+
+ .searching__keyword {
+     margin-right: 10px;
+ }
+
+ .search__box {
+     display: flex;
+     justify-content: center;
+
+ }
+
+/* 최근 검색어 */
+ .recent__searches__box {
+     margin-top: 30px;
+
+ }
+
+
+ .recent__searches {
+     list-style: none;
+     padding: 0;
+     margin: 10px 0;
+     max-height: 150px; /* 최대 높이 설정 (스크롤 가능하게 하려면 설정) */
+     overflow-y: auto; /* 목록이 넘칠 경우 스크롤 표시 */
+ }
+
+ .recent__searches li {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 5px 10px;
+     background-color: #f8f8f8;
+     margin-bottom: 5px;
+     border-radius: 4px;
+ }
+
+ .recent__searches li:hover {
+     background-color: #e0e0e0;
+ }
+
+ .delete__btn {
+     background-color: transparent;
+     border: none;
+     color: red;
+     cursor: pointer;
+     font-size: 14px;
+ }
+
+
 
 
 
