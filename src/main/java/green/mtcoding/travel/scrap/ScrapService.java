@@ -59,7 +59,7 @@ public class ScrapService {
             scrapRepository.scrapOffById(userId,contentId);
         } else if (bl == false) {
             scrapRepository.scrapOnById(userId,contentId);
-        } scrapRepository.scrapInsertById(userId, contentId);
+        } else if (bl == null) scrapRepository.scrapInsertById(userId, contentId);
 
     }
     // 1. 유저 세션 체크

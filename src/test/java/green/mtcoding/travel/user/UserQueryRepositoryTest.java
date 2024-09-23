@@ -27,5 +27,10 @@ public class UserQueryRepositoryTest {
         System.out.println(countScrap);
     }
 
-
+    @Test
+    public void test1(){
+        int id = 1;
+        List<UserResponse.MypageUserDTO> userInfo = userQueryRepository.userFindById(id);
+        System.out.println(userInfo);
+    }
 }

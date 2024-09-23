@@ -2,6 +2,8 @@ package green.mtcoding.travel.scrap;
 
 import green.mtcoding.travel.global.util.Resp;
 import green.mtcoding.travel.user.User;
+import green.mtcoding.travel.user.UserResponse;
+import green.mtcoding.travel.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class ScrapController {
 
     private final HttpSession session;
     private final ScrapService scrapService;
+    private final UserService userService;
 
     /*           main-start             */
     /*           main-end             */
@@ -51,7 +54,9 @@ public class ScrapController {
     public String myScrab(HttpServletRequest request) {
         User sessionUser = (User) session.getAttribute("sessionUser");
         List<ScrapResponse.ScrapListDTO> scrapList = scrapService.mypageSelectScrap(sessionUser);
+        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(sessionUser);
         request.setAttribute("models", scrapList);
+        request.setAttribute("userInfo", userInfo);
         return "/mypage/my-scrap";
     }
 
