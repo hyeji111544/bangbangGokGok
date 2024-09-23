@@ -209,7 +209,10 @@
 .hotpl.active, .hotf.active{
     font-weight: bold;
     color: mediumpurple;
-;
+}
+
+.rec__text{
+    color: mediumpurple;
 }
 
 

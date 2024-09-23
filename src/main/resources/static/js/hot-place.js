@@ -82,6 +82,7 @@ let category = 'touristAttractions';
 let sigunguQueries = '';
 let currentPage;
 let totalPage;
+let totalCount;
 
 let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
@@ -444,15 +445,16 @@ function printPageListNumber(number) {
 function changePageCount(response) {
     currentPage = response.body.number;
     totalPage = response.body.totalPage;
+    totalCount = response.body.totalCount;
     console.log("currentPage", currentPage);
     console.log("totalPage", totalPage);
 
     if($('.hotpl').hasClass('active')) {
-        $('.rec__text').text(`인기 여행지 (${currentPage} / ${totalPage})`);
+        $('.rec__text').text(`인기 여행지 (${totalCount}곳   | ${currentPage}/${totalPage})`);
         console.log("hot");
     }
     if($('.hotf').hasClass('active')) {
-        $('.rec__text').text(`인기 맛집 (${currentPage} / ${totalPage})`);
+        $('.rec__text').text(`인기 맛집 (${totalCount}곳   |  ${currentPage}/${totalPage})`);
         console.log("food");
     }
 
