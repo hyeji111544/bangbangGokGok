@@ -65,8 +65,19 @@
                 <img src="/images/header/logo2.png" alt="Logo">
             </div>
             <div class="modal__search">
-                <input type="text" class="form-control" placeholder="인기 관광지 검색">
-                <button class="btn btn-primary">Search</button>
+                <div class="search__box">
+                <input type="text" class="form-control searching__keyword" placeholder="인기 관광지 검색">
+                <button class="btn btn-primary" type="button">Search</button>
+                </div>
+
+                <!-- 최근 검색어 목록 -->
+                <div class="recent__searches__box">
+                    <h6> 최근 검색어 </h6>
+                    <ul class="recent__searches">
+
+                        <!-- 검색어 항목이 동적으로 여기에 추가됨 -->
+                    </ul>
+                </div>
             </div>
 
         </div>
