@@ -17,7 +17,7 @@ public class FestivalInfoRepository {
     // 메인 대표 축제 3개용
     public List<FestivalInfoResponse.FestivalMainDTO> findAll() {
         String sql = """
-                SELECT content_id, content_type_id, event_start_date, event_end_date, event_place, origin_img_url, title FROM festivalinfo_tb;
+                SELECT content_id, content_type_id, event_start_date, event_end_date, event_place, origin_img_url, title, area_code, sigungu_code FROM festivalinfo_tb;
                 """;
         Query query = em.createNativeQuery(sql);
 

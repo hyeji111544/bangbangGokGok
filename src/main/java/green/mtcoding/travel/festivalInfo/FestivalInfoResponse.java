@@ -35,6 +35,8 @@ public class FestivalInfoResponse {
         private String smallImage;
         private String originImgUrl;
         private String smallImageUrl;
+        private String areaCode;
+        private String sigunguCode;
 
         public FestivalDetailDTO(FestivalInfo festivalInfo) {
             this.contentId = festivalInfo.getContentId();
@@ -65,17 +67,9 @@ public class FestivalInfoResponse {
             this.smallImage = festivalInfo.getSmallImage();
             this.originImgUrl = festivalInfo.getOriginImgUrl();
             this.smallImageUrl = festivalInfo.getSmallImageUrl();
+            this.areaCode = festivalInfo.getAreaCode();
+            this.sigunguCode = festivalInfo.getSigunguCode();
         }
-
-//        public FestivalDetailDTO(FestivalInfo festivalInfo) {
-//            this.contentId = festivalInfo.getContentId();
-//            this.contentTypeId = festivalInfo.getContentTypeId();
-//            this.eventStartDate = festivalInfo.getEventStartDate();
-//            this.eventEndDate = festivalInfo.getEventEndDate();
-//            this.eventPlace = festivalInfo.getEventPlace();
-//            this.originImgUrl = festivalInfo.getOriginImgUrl();
-//            this.title = festivalInfo.getTitle();
-//        }
     }
 
     @Data
@@ -87,10 +81,13 @@ public class FestivalInfoResponse {
         private String eventPlace;
         private String originImgUrl;
         private String title;
+        // 추가
+        private String areaCode;
+        private String sigunguCode;
         private boolean active;
         private int index;
 
-        public FestivalMainDTO(String contentId, String contentTypeId, String eventStartDate, String eventEndDate, String eventPlace, String originImgUrl, String title) {
+        public FestivalMainDTO(String contentId, String contentTypeId, String eventStartDate, String eventEndDate, String eventPlace, String originImgUrl, String title, String areaCode, String sigunguCode) {
             this.contentId = contentId;
             this.contentTypeId = contentTypeId;
             this.eventStartDate = eventStartDate;
@@ -98,9 +95,11 @@ public class FestivalInfoResponse {
             this.eventPlace = eventPlace;
             this.originImgUrl = originImgUrl;
             this.title = title;
+            this.areaCode = areaCode;
+            this.sigunguCode = sigunguCode;
         }
 
-        public FestivalMainDTO(String contentId, String contentTypeId, String eventStartDate, String eventEndDate, String eventPlace, String originImgUrl, String title, boolean active, int index) {
+        public FestivalMainDTO(String contentId, String contentTypeId, String eventStartDate, String eventEndDate, String eventPlace, String originImgUrl, String title, String areaCode, String sigunguCode, boolean active, int index) {
             this.contentId = contentId;
             this.contentTypeId = contentTypeId;
             this.eventStartDate = eventStartDate;
@@ -108,6 +107,8 @@ public class FestivalInfoResponse {
             this.eventPlace = eventPlace;
             this.originImgUrl = originImgUrl;
             this.title = title;
+            this.areaCode = areaCode;
+            this.sigunguCode = sigunguCode;
             this.active = active;
             this.index = index;
         }

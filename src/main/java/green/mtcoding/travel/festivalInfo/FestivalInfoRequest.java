@@ -60,6 +60,10 @@ public class FestivalInfoRequest {
         private String zipCode;
         @JsonAlias("smallimageurl")
         private String smallImageUrl;
+        @JsonAlias("areacode")
+        private String areaCode;
+        @JsonAlias("sigungucode")
+        private String sigunguCode;
 
 
         public FestivalInfo toEntity() { // insert 할때만 필요
@@ -92,6 +96,8 @@ public class FestivalInfoRequest {
                     .tel(tel)
                     .telName(telName)
                     .zipCode(zipCode)
+                    .areaCode(areaCode)
+                    .sigunguCode(sigunguCode)
                     .build();
         }
 

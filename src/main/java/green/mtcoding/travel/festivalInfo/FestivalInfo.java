@@ -98,10 +98,15 @@ public class FestivalInfo {
     private String telName;
     @JsonAlias("zipcode")
     private String zipCode;
+    @JsonAlias("areacode")
+    private String areaCode;
+    @JsonAlias("sigungucode")
+    private String sigunguCode;
 
     @Builder
-    public FestivalInfo(String contentId, String sponsor1, String sponsor1Tel, String sponsor2, String sponsor2Tel, String eventEndDate, String playTime, String eventPlace, String eventHomePage, String ageLimit, String bookingPlace, String placeInfo, String subEvent, String program, String eventStartDate, String useTimeFestival, String discountInfoFestival, String spendTimeFestival, String festivalGrade, String serialNum, String infoName, String fldgubun, String originImgUrl, String imgName, String smallImageUrl, String cpyrhtDivCd, String viewCount, String likeCount, String title, String addr1, String addr2, String firstImage, String firstImage2, String homePage, String infoText, String mapX, String mapY, String overview, String smallImage, String tel, String telName, String zipCode) {
+    public FestivalInfo(String contentId, String contentTypeId, String sponsor1, String sponsor1Tel, String sponsor2, String sponsor2Tel, String eventEndDate, String playTime, String eventPlace, String eventHomePage, String ageLimit, String bookingPlace, String placeInfo, String subEvent, String program, String eventStartDate, String useTimeFestival, String discountInfoFestival, String spendTimeFestival, String festivalGrade, String serialNum, String infoName, String fldgubun, String originImgUrl, String imgName, String smallImageUrl, String cpyrhtDivCd, String viewCount, String likeCount, String title, String addr1, String addr2, String firstImage, String firstImage2, String homePage, String infoText, String mapX, String mapY, String overview, String smallImage, String tel, String telName, String zipCode, String areaCode, String sigunguCode) {
         this.contentId = contentId;
+        this.contentTypeId = contentTypeId;
         this.sponsor1 = sponsor1;
         this.sponsor1Tel = sponsor1Tel;
         this.sponsor2 = sponsor2;
@@ -143,10 +148,12 @@ public class FestivalInfo {
         this.tel = tel;
         this.telName = telName;
         this.zipCode = zipCode;
+        this.areaCode = areaCode;
+        this.sigunguCode = sigunguCode;
     }
 
     @Builder(builderMethodName = "festivalBuilder")
-    public FestivalInfo(String contentId, String contentTypeId, String sponsor1, String sponsor1Tel, String sponsor2, String sponsor2Tel, String eventEndDate, String playTime, String eventPlace, String eventStartDate, String useTimeFestival, String infoName, String originImgUrl, String imgName, String smallImageUrl, String title, String addr1, String addr2, String firstImage, String firstImage2, String homePage, String infoText, String mapX, String mapY, String overview, String smallImage, String tel, String telName, String zipCode) {
+    public FestivalInfo(String contentId, String contentTypeId, String sponsor1, String sponsor1Tel, String sponsor2, String sponsor2Tel, String eventEndDate, String playTime, String eventPlace, String eventStartDate, String useTimeFestival, String infoName, String originImgUrl, String imgName, String smallImageUrl, String title, String addr1, String addr2, String firstImage, String firstImage2, String homePage, String infoText, String mapX, String mapY, String overview, String smallImage, String tel, String telName, String zipCode, String areaCode, String sigunguCode) {
         this.contentId = contentId;
         this.contentTypeId = contentTypeId;
         this.sponsor1 = sponsor1;
@@ -176,5 +183,7 @@ public class FestivalInfo {
         this.tel = tel;
         this.telName = telName;
         this.zipCode = zipCode;
+        this.areaCode = areaCode;
+        this.sigunguCode = sigunguCode;
     }
 }
