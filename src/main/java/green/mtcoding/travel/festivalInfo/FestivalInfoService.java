@@ -3,9 +3,11 @@ package green.mtcoding.travel.festivalInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
 public class FestivalInfoService {
@@ -37,6 +39,18 @@ public class FestivalInfoService {
         }
 
         return festivalInfoList;
+    }
+    @Transactional
+    public FestivalInfoResponse.FestivalDetailDTO saveFestivalData(FestivalInfoRequest.SaveDTO saveDTO) {
+        // 1. 조회 후 없으면 등록
+        try {
+            FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
+        } catch (Exception e) {
+            festivalInfoRepository.save(saveDTO.toEntity()); // 담궈지는 순간, 만들어진다.
+            FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
+            return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
+        }
+        return null;
     }
     /*           festival-end             */
 

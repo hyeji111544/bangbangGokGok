@@ -14,9 +14,10 @@ public class FestivalInfoRepository {
 
     private final EntityManager em;
 
+    // 메인 대표 축제 3개용
     public List<FestivalInfoResponse.FestivalMainDTO> findAll() {
         String sql = """
-                SELECT content_id, contenttypeid, event_start_date, eventenddate, eventplace, origin_img_url, title FROM festivalinfo_tb;
+                SELECT content_id, content_type_id, event_start_date, event_end_date, event_place, origin_img_url, title FROM festivalinfo_tb;
                 """;
         Query query = em.createNativeQuery(sql);
 
@@ -25,6 +26,19 @@ public class FestivalInfoRepository {
 
         return festivalInfoList;
 
+    }
+
+    public FestivalInfo findByContentId(String contentId) {
+        Query query = em.createQuery("select f from FestivalInfo f where f.contentId = :contentId", FestivalInfo.class);
+        query.setParameter("contentId", contentId);
+
+        // getSingleResult() -> 단건 조회라서 없으면 NoResultException 터짐 / query.getResultList() -> List 리턴
+        FestivalInfo festivalInfo = (FestivalInfo) query.getSingleResult();
+        return festivalInfo;
+    }
+
+    public void save(FestivalInfo festivalInfo) {
+        em.persist(festivalInfo);
     }
 
 }

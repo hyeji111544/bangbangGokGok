@@ -1,261 +1,258 @@
 {{>layout/header}}
-    <link rel="stylesheet" href="/css/festival-detal.css">
-    <section class="container">
-        <div class="content__title__box">
-            <div class="content__title__1">축제 이름</div>
-            <div class="content__title__2">축제 지역(~군까지)</div>
-            <div class="content__title__3">축제 개요</div>
-            <div class="content__share__box">
-                <div class="share__box__1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-heart" viewBox="0 0 16 16">
-                        <path
-                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
-                    <span>맘찍 횟수</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
-                        <path
-                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
-                    </svg>
-                    <span>뷰횟수</span>
-                </div>
-                <div class="share__box__2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-bookmark" viewBox="0 0 16 16">
-                        <path
-                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
-                    </svg>
-                </div>
 
+<link rel="stylesheet" href="/css/detail-style.css" xmlns="http://www.w3.org/1999/html">
+
+<section class="container" id="{{festivalContentId}}">
+    <div class="content__title__box" id="content__title__box">
+
+    </div>
+    <article>
+        <div class="article__title__box">
+            <div>사진보기</div>
+            <div>상세정보</div>
+            <div>축제톡</div>
+            <div>추천여행</div>
+        </div>
+        <div class="article__img__box" id="article__img__box">
+
+        </div>
+        <div class="article__info__box" id="article__info__box">
+
+        </div>
+        <div class="article__like">축제가 마음에 드시나요?
+            <div class="like__buttons">
+                <button class="like__button">좋아요</button>
+                <button class="dislike__button">별로</button>
             </div>
         </div>
-        <article>
-            <div class="article__title__box">
-                <div>사진보기</div>
-                <div>상세정보</div>
-                <div>축제톡</div>
-                <div>추천여행</div>
-            </div>
-            <div class="article__img__box">
-                <img class="article__img__1" src="/images/maincard2.jpg">
-                <img class="article__img__2" src="/images/maincard2.jpg">
-                <img class="article__img__3" src="/images/maincard2.jpg">
-                <img class="article__img__4" src="/images/maincard2.jpg">
-            </div>
-            <div class="article__info__box">
-                <div>상세정보</div>
-                <div>문화유산 야행은 문화유산 집적지역을 거점으로 문화유산과 지역의 특색 있는 역사문화자원을 연계 활용한 관람, 체험, 공연, 전시 등 야간 특화 프로그램이다. 공주 문화유산 야행은
-                    공주 원도심 일원 근대 문화유산(옛 공주읍사무소, 공주제일교회 등)를 중심으로 이루어지며, 8가지 야간 테마를 주제로 한 프로그램을 진행한다. 올해 공주 문화유산 야행은
-                    '1926년 공주시가도'를 기반으로 1920년대 공주의 이야기를 생생히 살려내는 다양한 프로그램을 통해 행사장을 찾는 방문객들에게 '100년 전 공주로의 시간여행'을 선사한다.
-                    [행사내용]
-                    1. 낭만연회: 공주 문화유산 야행의 대표 프로그램으로, 모단걸/모단보이/재즈댄서 등이 출연하여 춤과 음악이 함께하는 한밤의 근대 연회
-                    2. 문화유산 미디어파사드: 공주 문화유산 야행의 핵심 문화유산인 옛 공주읍사무소를 배경으로 진행하는 미디어파사드
-                    3. 사애리시의 응접실: 공주 중학동 구 선교사 가옥에 살았던 실존 인물 사애리시를 조명하는 근대 토크콘서트
-                    4. 되살려본 1926 공주시가도: 공주의 근대 문화유산 이미지를 바탕으로 제작된 근대 공주 분위기의 포토존
-                    5. 고마플레이크: 근대 머리핀/자개공예/기억 등불 등 근대 공주의 분위기를 담은 자신만의 공주 문화유산 야행 기념품 만들기 체험
-                </div>
-                <div class="article__info__map"> 지도 </div>
-                <div class="info__grid">
-                    <div class="info__item">
-                        <strong>문의 및 안내</strong>
-                        <span>123-456-7890</span>
-                    </div>
-                    <div class="info__item">
-                        <strong>축제 기간</strong>
-                        <span>2024.09.06 ~ 2024.09.08</span>
-                    </div>
-                    <div class="info__item">
-                        <strong>주소</strong>
-                        <span>충청남도 공주시 우체국길 8 공주 원도심 일원 근대 문화유산(옛 공주읍사무소 등)</span>
-                    </div>
-                    <div class="info__item">
-                        <strong>이용 요금</strong>
-                        <span>₩30,000</span>
-                    </div>
-                    <div class="info__item">
-                        <strong>운영 재단</strong>
-                        <span>국가유산청, 충청남도, 공주시/공주문화관광재단</span>
-                    </div>
-                    <div class="info__item">
-                        <strong>공식홈페이지</strong>
-                        <span>URL 주소</span>
-                    </div>
+    </article>
+    <section class="comment__box">
+        <div class="comment__title">축제톡 8</div>
+        <!-- 댓글등록 -->
+        <div class="comment__write">
+            <div class="form__group">
+                <textarea class="form__control" placeholder="댓글을 입력하세요" id="comment"></textarea>
+                <div class="button__area">
+                    <button type="submit" class="btn submit-button">작성</button>
+                    <button type="button" class="btn cancel-button">취소</button>
                 </div>
             </div>
-            <div class="article__like">축제가 마음에 드시나요?
-                <div class="like__buttons">
-                    <button class="like__button">좋아요</button>
-                    <button class="dislike__button">별로</button>
-                </div>
-            </div>
-        </article>
-        <section class="comment__box">
-            <div class="comment__title">축제톡 8</div>
-            <div class="comment__write">
-                <div class="form__group">
-                    <input type="text" class="form__control" placeholder="댓글을 입력하세요" required>
-                    <div class="button__area">
-                        <button type="submit" class="btn submit-button">작성</button>
-                        <button type="button" class="btn cancel-button">취소</button>
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <!--for-->
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
+        <!-- 댓글목록 -->
+        <div class="comment__content">
+            <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
+            <div class="comment__wrapper">
+                <div class="comment__text">
+                    40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
+                    40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
+                    40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
+                    40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
+                    40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
+                </div>
+                <div class="comment__footer">
+                    <span class="comment__username">아*디 </span>
+                    <span class="comment__date">24.05.11</span>
+                </div>
+                <div class="button__area1">
+                    <button type="button" class="btn submit-button">수정</button>
+                    <button type="button" class="btn cancel-button">삭제</button>
                 </div>
             </div>
-            <!--for-->
-            <!--delete-->
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                </div>
-            </div>
-            <!--delete-->
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                <li class="page-item"><a class="page-link" href="javascript:void(0);">&gt;</a></li>
-            </ul>
-
-        </section>
+        </div>
+        <!--for-->
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">&gt;</a></li>
+        </ul>
     </section>
+</section>
+
+<script>
+
+    let contentId;
+
+    let obj1;
+    let obj2;
+    let obj3;
+    let obj4;
+    let obj5;
+
+    // DOM이 완전히 로드된 후 실행할 코드
+    document.addEventListener('DOMContentLoaded', function() {
+
+        viewDetail();
+
+        async function viewDetail() {
+            // 1. festivalContentId 가져오기
+            contentId = "{{festivalContentId}}";
+            console.log(contentId);
+
+            // 2. fetch 요청하기 (병렬)
+            let [response1, response2, response3, response4] = await Promise.all([
+                fetch(`http://apis.data.go.kr/B551011/KorService1/detailCommon1?ServiceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&contentTypeId=15&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&_type=json`),
+                fetch(`http://apis.data.go.kr/B551011/KorService1/detailIntro1?ServiceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&contentTypeId=15&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&_type=json`),
+                fetch(`http://apis.data.go.kr/B551011/KorService1/detailInfo1?ServiceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&contentTypeId=15&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&_type=json`),
+                fetch(`http://apis.data.go.kr/B551011/KorService1/detailImage1?ServiceKey=kHfRvlblfY0%2FqktqEjjp72ndE1A%2BDbLjFv6u3ELfNbj4h23qBTf%2FZUp415fmG85GBeoJQGeE0H6xM2OfWVHpCg%3D%3D&contentId=${contentId}&MobileOS=ETC&MobileApp=AppTest&imageYN=Y&subImageYN=Y&numOfRows=10&_type=json`)
+            ])
+
+            // json(): JSON -> 자바스크립트로 파싱
+            let data1 = await response1.json(); // 공통 정보 조회
+            let data2 = await response2.json(); // 소개 정보 조회
+            let data3 = await response3.json(); // 반복 정보 조회
+            let data4 = await response4.json(); // 이미지 정보 조회
+
+            let objList1 = data1.response.body.items.item;
+            let objList2 = data2.response.body.items.item;
+            let objList3 = data3.response.body.items.item;
+            let objList4 = data4.response.body.items.item;
+
+            obj1 = objList1[0];
+            obj2 = objList2[0];
+            obj3 = objList3[0];
+            obj4 = objList3[1];
+            obj5 = objList4[0];
+
+            sendToServer();
+            // console.log(obj1);
+            // console.log(obj2);
+            // console.log(obj3);
+            // console.log(obj4);
+            // console.log(obj5);
+        }
+    })
+    // 받은 데이터 서버로 보내기
+    async function sendToServer() {
+        // 받아온 데이터를 분해하여 dataAll 하나의 객체로 만듬
+        let dataAll = {
+            ...obj1,
+            ...obj2,
+            ...obj3,
+            ...obj4,
+            ...obj5
+        };
+        console.log("dataAll", dataAll);
+
+        // 서버로 POST 요청 보내기
+        let response = await fetch(`/festival/save-festival-data`, {
+            method: 'POST',
+            body: JSON.stringify(dataAll),
+            headers: {
+                "Content-Type":"application/json; charset=utf-8"
+            }
+        });
+
+        if (response.ok) {
+            let responseBody = await response.json(); // DTO !!
+            console.log("서버 응답:", responseBody);
+
+            let dom1 = makeTitleBox(responseBody);
+            $("#content__title__box").append(dom1);
+            let dom2 = makeImgBox(responseBody)
+            $("#article__img__box").append(dom2);
+            let dom3 = makeInfoBox(responseBody)
+            $("#article__info__box").append(dom3);
+
+        } else {
+            console.error("서버 응답 실패:", response.status);
+        }
+    }
+    function makeTitleBox(responseBody) {
+        // 주소 뽑아내기
+        let parts = responseBody.body.addr1.split(" ");
+        let result = parts.slice(0, 2).join(" ");
+        console.log(result);
+
+        return `<div class="content__title__1">${responseBody.body.title}</div>
+        <div class="content__title__2">${result}</div>
+        <div class="content__title__3"></div>
+        <div class="content__share__box">
+            <div class="share__box__1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-heart" viewBox="0 0 16 16">
+                    <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                </svg>
+                <span>맘찍 횟수</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                     viewBox="0 0 16 16">
+                    <path
+                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                    <path
+                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                </svg>
+                <span>뷰횟수</span>
+            </div>
+            <div class="share__box__2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-bookmark" viewBox="0 0 16 16">
+                    <path
+                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
+                </svg>
+            </div>
+
+        </div>`;
+    }
+
+    function makeImgBox(responseBody) {
+
+        return `<img class="article__img__1" src="${responseBody.body.firstImage}">
+            <img class="article__img__2" src="${responseBody.body.firstImage2}">
+            <img class="article__img__3" src="/images/maincard2.jpg">
+            <img class="article__img__4" src="/images/maincard2.jpg">`;
+    }
+
+    function makeInfoBox(responseBody) {
+        // 홈페이지 링크 뽑아내기
+        let hp = responseBody.body.homePage;
+        // HTML 문자열을 DOM 요소로 변환 후 href 속성 추출
+        let href = $($.parseHTML(hp)).attr('href');
+
+        return `<div>축제 정보</div>
+            <div>${responseBody.body.overview}</div>
+            <div style="font-size: 24px;">${responseBody.body.infoName}</div><br>
+            <div>${responseBody.body.infoText}</div><br>
+            <div class="article__info__map"> 지도 </div>
+            <div class="info__grid">
+                <div class="info__item">
+                    <strong>문의 및 안내</strong>
+                    <span>${responseBody.body.tel}</span>
+                </div>
+                <div class="info__item">
+                    <strong>축제 기간</strong>
+                    <span>${responseBody.body.eventStartDate} ~ ${responseBody.body.eventEndDate}</span>
+                </div>
+                <div class="info__item">
+                    <strong>주소</strong>
+                    <span>${responseBody.body.zipCode}&nbsp;${responseBody.body.addr1}&nbsp;${responseBody.body.addr2}</span>
+                </div>
+                <div class="info__item">
+                    <strong>행사 장소</strong>
+                    <span>${responseBody.body.eventPlace}</span>
+                </div>
+                <div class="info__item">
+                    <strong>공연 시간</strong>
+                    <span>${responseBody.body.playTime}</span>
+                </div>
+                <div class="info__item">
+                    <strong>이용 요금</strong>
+                    <span>${responseBody.body.useTimeFestival}</span>
+                </div>
+                <div class="info__item">
+                    <strong>운영 재단</strong>
+                    <span>${responseBody.body.sponsor1}&nbsp;${responseBody.body.sponsor1Tel}, ${responseBody.body.sponsor2}</span>
+                </div>
+                <div class="info__item">
+                    <strong>공식홈페이지</strong>
+                    <span>${href}</span>
+                </div>
+            </div>`;
+    }
+
+
+</script>
+
 {{>layout/footer}}
