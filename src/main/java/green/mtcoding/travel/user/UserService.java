@@ -4,6 +4,8 @@ package green.mtcoding.travel.user;
 import green.mtcoding.travel.global.error.ex.Exception400;
 import green.mtcoding.travel.global.error.ex.Exception404;
 import green.mtcoding.travel.global.util.MyFile;
+import green.mtcoding.travel.review.Review;
+import green.mtcoding.travel.scrap.Scrap;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,6 +25,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserQueryRepository userQueryRepository;
     private final EntityManager em;
 
 
@@ -114,6 +119,33 @@ public class UserService {
     /*           user-end             */
 
     /*           myPage-start             */
+
+    // 마이페이지 스크랩 개수
+    public Long selectMypageCountScrap(User session) {
+        int id = session.getId();
+        Long countScrap = userQueryRepository.countScrapById(id);
+        return countScrap;
+    }
+    // 마이페이지 스크랩 리스트
+    public List<UserResponse.MypageScrapDTO> selectMypageScrapList(User session) {
+        int id = session.getId();
+        List<UserResponse.MypageScrapDTO> scrapList = userQueryRepository.scrapFindById(id);
+        return scrapList;
+    }
+    // 마이페이지 리뷰 개수
+    public Long selectMypageCountReview(User session) {
+        int id = session.getId();
+        Long countReview = userQueryRepository.countReviewById(id);
+        return countReview;
+    }
+    // 마이페이지 스크랩 리스트
+    public List<UserResponse.MypageReviewDTO> selectMypageReviewList(User session) {
+        int id = session.getId();
+        List<UserResponse.MypageReviewDTO> reviewList = userQueryRepository.reviewFindById(id);
+        return reviewList;
+    }
+
+
     /*           myPage-end             */
 }
 
