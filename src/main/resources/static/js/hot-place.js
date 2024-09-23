@@ -82,7 +82,10 @@ let category = 'touristAttractions';
 let sigunguQueries = '';
 let currentPage;
 let totalPage;
+<<<<<<< HEAD
 let totalCount;
+=======
+>>>>>>> 85cbb50 (feat: hotplace paging)
 
 let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
@@ -446,6 +449,7 @@ function changePageCount(response) {
     currentPage = response.body.number;
     totalPage = response.body.totalPage;
     totalCount = response.body.totalCount;
+
     console.log("currentPage", currentPage);
     console.log("totalPage", totalPage);
 
