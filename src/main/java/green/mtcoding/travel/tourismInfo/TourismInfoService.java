@@ -60,11 +60,10 @@ public class TourismInfoService {
                 + "&mapinfoYN=Y"
                 //콘텐츠 개요 조회
                 + "&overviewYN=Y"
-                //한 페이지 결과수
+                //한 페이지 결과수 (상세페이지는 단건 조회라서 필요 없지만 일단 넣어둠)
                 + "&numOfRows=1"
-                //페이지 번호
+                //페이지 번호 (상세페이지는 단건 조회라서 필요 없지만 일단 넣어둠)
                 + "&pageNo=1"
-
                 //인증키
                 + "&serviceKey=" + "guF8R5Fvce%2B4pE1ZObunvt5I4iCubZA1EQ1BaiYhTAnuL%2B%2Fz6SzLy3YLg9NqHVGkzljSctn91KA85o6F7pWLkw%3D%3D";
 
@@ -76,41 +75,20 @@ public class TourismInfoService {
         // HTTP GET 요청 보내기
         ResponseEntity<Map> response = restTemplate.getForEntity(apiUri, Map.class);
         Map<String, Object> jsonResponse = response.getBody();
-        System.out.println("jsonResponse = " + jsonResponse);
-
         Map<String, Object> bodyMap = (Map<String, Object>) jsonResponse.get("response");
         Map<String, Object> bodyContent = (Map<String, Object>) bodyMap.get("body");
         Map<String, Object> items = (Map<String, Object>) bodyContent.get("items");
         List<Map<String, Object>> item = (List<Map<String, Object>>) items.get("item");
 
-        System.out.println("item = " + item);
+        //Map에서 필요한 데이터 꺼낸 뒤 Json으로 파싱
+        //Map에서 바로 Entity 객체로 만들지 않는 것은 Map에서 객체로 만들면 @JasonAlias가 적용 안 되기 때문에
+        //Json으로 만들어서 Entity 객체로 만들어 준다.
+        String jsonData = objectMapper.writeValueAsString(item.get(0));
 
-        System.out.println("content = " + item.get(0));
-
-        String json = objectMapper.writeValueAsString(item.get(0));
-        System.out.println("json = " + json);
-        TourismInfo tourismInfo = objectMapper.convertValue(item.get(0), TourismInfo.class);
+        //Json으로 파싱하고 Entity 클래스에 매핑 -> @JsonAlias적용 됨
+        TourismInfo tourismInfo = objectMapper.readValue(jsonData, TourismInfo.class);
 
         System.out.println("tourismInfo = " + tourismInfo);
-
-/*
-        Map<String, Object> responseMap = objectMapper.readValue(jsonResponse, Map.class);
-
-    // "items" 아래에 있는 "item" 배열만 추출
-        Map<String, Object> bodyMap = (Map<String, Object>) responseMap.get("response");
-        Map<String, Object> bodyContent = (Map<String, Object>) bodyMap.get("body");
-        Map<String, Object> items = (Map<String, Object>) bodyContent.get("items");
-        Object itemList = items.get("item");
-*/
-
-
-
-
-
-        // 응답 값
-        //Map<String, Object> responseData = objectMapper.readValue(jsonResponse, Map.class);
-
-        //System.out.println("responseData = " + responseMap);
 
 
     }
@@ -132,3 +110,5 @@ public class TourismInfoService {
     /*           myPage-start             */
     /*           myPage-end             */
 }
+
+
