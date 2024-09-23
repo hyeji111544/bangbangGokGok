@@ -11,9 +11,9 @@
             <div class="scrollTo" data-target="#photoSection">사진보기</div>
             <div class="scrollTo" data-target="#detailSection">상세정보</div>
             <div class="scrollTo" data-target="#talkSection">축제톡</div>
-            <div>추천여행</div>
+            <div onclick="sendToHotplace()">추천여행</div>
         </div>
-        <div class="article__img__box" id="article__img__box">
+        <div class="article__img__festi__box" id="article__img__festi__box">
 
         </div>
         <div class="article__info__box" id="article__info__box">
@@ -79,7 +79,10 @@
     let obj2;
     let obj3;
     let obj4;
-    let obj5;
+    let obj5 = []; // 배열로 선언하여 전체 객체를 저장할 수 있게 함
+
+    let areaCode;
+    let sigunguCode;
 
     // DOM이 완전히 로드된 후 실행할 코드
     document.addEventListener('DOMContentLoaded', function() {
@@ -115,11 +118,20 @@
             console.log("objList3", objList3);
             console.log("objList4", objList4);
 
+            if (objList4.length > 0) {
+                for (let i = 0; i < objList4.length; i++) {
+                    obj5.push(objList4[i]); // 각 객체를 배열에 추가
+                    // console.log(`Item ${i}:`, obj5); // 각 객체 출력
+                    // console.log(obj5.originimgurl); // 'someField'는 객체 내 필드 이름
+                    // console.log(obj5.smallimageurl);
+                }
+            }
+
             obj1 = objList1[0];
             obj2 = objList2[0];
             obj3 = objList3[0];
             obj4 = objList3[1];
-            obj5 = objList4[0];
+
 
             sendToServer();
         }
@@ -132,7 +144,7 @@
                 ...obj2,
                 ...obj3,
                 ...obj4,
-                ...obj5
+                obj5 // 배열로 추가
             };
             console.log("dataAll", dataAll);
 
@@ -153,10 +165,13 @@
                 $("#content__title__box").append(dom1);  // jQuery 방식
 
                 let dom2 = makeImgBox(responseBody);
-                $("#article__img__box").append(dom2);    // jQuery 방식
+                $("#article__img__festi__box").append(dom2);    // jQuery 방식
 
                 let dom3 = makeInfoBox(responseBody);
                 $("#article__info__box").append(dom3);   // jQuery 방식
+
+                areaCode = responseBody.body.areaCode;
+                sigunguCode = responseBody.body.sigunguCode;
 
                 renderMap(responseBody);  // 지도를 그리는 함수를 여기서 호출
             } else {
@@ -197,10 +212,35 @@
         }
 
         function makeImgBox(responseBody) {
-            return `<img class="article__img__1" id="detailSection" src="${responseBody.body.firstImage}" alt="이미지 로드 실패" onerror="handleImageError(this);">
-            <img class="article__img__2" src="${responseBody.body.firstImage2}" alt="이미지 로드 실패" onerror="handleImageError(this);">
-            <img class="article__img__3" src="/images/maincard2.jpg" alt="이미지 로드 실패" onerror="handleImageError(this);">
-            <img class="article__img__4" src="/images/maincard2.jpg" alt="이미지 로드 실패" onerror="handleImageError(this);">`;
+            // 이미지 취합 및 추출
+            // let imageData = responseBody.obj5.map(item => ({
+            //     originimgurl: item.originimgurl,
+            //     imgname: item.imgname
+            // }));
+
+            // let posterImageUrls = imageData
+            //         .filter(image => image.imgname.includes('포스터')) // '포스터'가 포함된 객체 필터링
+            //         .map(image => image.originimgurl); // 해당 객체의 originimgurl만 추출
+            //
+            // console.log(posterImageUrls); // 포스터가 포함된 이미지 URL 배열
+
+            // obj5가 배열인지 확인
+            // if (Array.isArray(responseBody.body.obj5)) {
+            //     // obj5의 각 요소를 순회하며 필요한 데이터 추출
+            //     let imageData = [];
+            //     for (let i = 0; i < responseBody.body.obj5.length; i++) {
+            //         let item = responseBody.body.obj5[i];
+            //         imageData.push({
+            //             originimgurl: item.originimgurl,
+            //             imgname: item.imgname
+            //         });
+            //     }
+            //     console.log("Image Data:", imageData);
+            // } else {
+            //     console.error("obj5는 배열이 아닙니다.");
+            // }
+
+            return `<img class="article__img__festi__1" id="detailSection" src="${responseBody.body.firstImage}" alt="이미지 로드 실패" onerror="handleImageError(this);">`;
         }
 
         function makeInfoBox(responseBody) {
@@ -298,6 +338,16 @@
             }, 500);  // 0.5초 동안 부드럽게 스크롤
         });
     });
+
+    // areaCode, sigunguCode 핫플레이스로 데이터 보내기
+    async function sendToHotplace() {
+        console.log(areaCode);
+        console.log(sigunguCode);
+
+       let response = await fetch(`/hotplace/choice?area=${areaCode}&sigungu=${sigunguCode}`);
+       let responseBody = await response.json();
+       console.log(responseBody);
+    }
 </script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>

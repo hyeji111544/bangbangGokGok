@@ -66,12 +66,20 @@ public class ContentController {
         ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(category, area, sigungu, page);
         return ResponseEntity.ok(Resp.ok(hotPlacePageDTO));
     }
+
+    // http://localhost:8080/hotplace/choice?area=${areaCode}&sigungu=${sigunguCode}
+    @GetMapping("/hotplace/choice")
+    public ResponseEntity<?> hotPlaceFromFestival(@RequestParam("area") String area, @RequestParam("sigungu") String sigungu) {
+        System.out.println(area);
+        System.out.println(sigungu);
+        return ResponseEntity.ok(Resp.ok("굿"));
+    }
     /*           hotPlace-end             */
 
     /*           festival-start             */
     @GetMapping("/festival")
     public String festival() {
-        return "/festival/festival";
+        return "/festival/main";
     }
     /*           festival-end             */
 
