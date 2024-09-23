@@ -69,6 +69,7 @@ public class ContentResponse {
 
     @Data
     public static class HotPlacePageDTO {
+        private String keyword;
         private Integer number; //현재 페이지
         private Integer totalPage; // 전체페이지 개수
         private Long itemCount; //현재 페이지 아이템 개수
@@ -88,6 +89,7 @@ public class ContentResponse {
 
             this.number = page;
             this.totalCount = totalCount;
+            this.keyword = keyword;
 
 
 
@@ -103,10 +105,6 @@ public class ContentResponse {
                 this.totalPage = (int) (totalCount / perPage) + 1;
             }
 
-            System.out.println("page = " + number);
-            System.out.println("perPage = " + size);
-            System.out.println("totalCount = " + totalCount);
-            System.out.println("totalPage = " + totalPage);
 
             if (number == 1) {
                 this.prev = 1;

@@ -16,10 +16,13 @@
  }
 
  /* Logo Style */
- .logo {
+ .logo img {
+     width: 50px;
+ /*
      font-size: 24px;
      font-weight: bold;
      cursor: pointer;
+     */
  }
 
  /* Menu Box Styles */
@@ -27,6 +30,8 @@
      font-size: 18px;
      display: flex;
      gap: 20px;
+     transform: translateX(100px);
+
  }
 
  .menu__box div {
@@ -79,6 +84,19 @@
 
  .menu__box div:hover::after {
      opacity: 1;
+ }
+
+
+ .input-group {
+     display: flex;
+     height: 80px;
+     width: 200px;
+     align-items: center;
+
+ }
+
+ .mb-3 {
+     margin-bottom: 0 !important;
  }
 
  /* User Info Styles */
@@ -147,6 +165,47 @@
      background-color: rgba(0, 0, 0, 0.05);
      border-radius: 5px;
  }
+
+
+
+
+ /* Modal styling */
+ .search__modal {
+     display: none; /* 페이지 로드 시 숨김 상태 */
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 800px;
+     background-color: rgba(255, 255, 255, 0.9);
+     z-index: 1000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .search__modal__content {
+     display: flex;
+     text-align: center;
+ }
+
+ .modal__logo img {
+     width: 450px;
+     margin-right: 100px;
+ }
+
+ .modal__search {
+     display: flex;
+     justify-content: center;
+     align-items: normal;
+     margin-top: 20px;
+     height: 40px;
+     gap: 10px;
+ }
+
+
+
+
 
 
  /*footer*/
