@@ -45,7 +45,7 @@
 <script>
     // 1. 스크랩 버튼을 누르면 scrap의 id를 가지고 update 요청하기
     async function scrapOff(contentId,id){
-        let response = await fetch(`/api/my-scrapUpdate/${contentId}`,{
+        let response = await fetch(`/api/scrapOnOff/${contentId}`,{
             method : 'post'
         });
         console.log(response);

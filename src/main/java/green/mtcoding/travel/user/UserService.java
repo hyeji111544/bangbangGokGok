@@ -144,7 +144,12 @@ public class UserService {
         List<UserResponse.MypageReviewDTO> reviewList = userQueryRepository.reviewFindById(id);
         return reviewList;
     }
-
+    // 마이페이지 유저 정보
+    public List<UserResponse.MypageUserDTO> selectMypageUserInfo(User session) {
+        int id = session.getId();
+        List<UserResponse.MypageUserDTO> userInfo = userQueryRepository.userFindById(id);
+        return userInfo;
+    }
 
     /*           myPage-end             */
 }

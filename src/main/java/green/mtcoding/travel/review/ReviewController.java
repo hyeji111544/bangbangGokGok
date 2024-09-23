@@ -1,6 +1,8 @@
 package green.mtcoding.travel.review;
 
 import green.mtcoding.travel.user.User;
+import green.mtcoding.travel.user.UserResponse;
+import green.mtcoding.travel.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ public class ReviewController {
 
     private final HttpSession session;
     private final ReviewService reviewService;
+    private final UserService userService;
 
     /*           main-start             */
     /*           main-end             */
@@ -45,11 +48,13 @@ public class ReviewController {
     public String myReview(HttpServletRequest request) {
         User sessionUser = (User) session.getAttribute("sessionUser");
         List<ReviewResponse.ReviewListDTO> reviewList = reviewService.mypageReviewList(sessionUser);
+        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(sessionUser);
         request.setAttribute("models", reviewList);
+        request.setAttribute("userInfo", userInfo);
         return "/mypage/my-review";
     }
 
-    @GetMapping("/write")
+    @GetMapping("/api/review/write")
     public String write() {
         return "/mypage/write";
     }

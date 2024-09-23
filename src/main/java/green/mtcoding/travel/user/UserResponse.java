@@ -12,6 +12,19 @@ import java.util.List;
 public class UserResponse {
 
     @Data
+    public static class MypageUserDTO{
+        private int id;
+        private String nickname;
+        private String profile;
+
+        public MypageUserDTO(int id, String nickname, String profile) {
+            this.id = id;
+            this.nickname = nickname;
+            this.profile = profile;
+        }
+    }
+
+    @Data
     public static class MypageScrapDTO{
         private int id;
         private boolean isScrap;

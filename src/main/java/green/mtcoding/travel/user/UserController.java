@@ -114,10 +114,12 @@ public class UserController {
         Long countReview = userService.selectMypageCountReview(user);
         List<UserResponse.MypageScrapDTO> scrapList = userService.selectMypageScrapList(user);
         List<UserResponse.MypageReviewDTO> reviewList = userService.selectMypageReviewList(user);
+        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(user);
         request.setAttribute("countScrap", countScrap);
         request.setAttribute("countReview", countReview);
         request.setAttribute("scrapList", scrapList);
         request.setAttribute("reviewList", reviewList);
+        request.setAttribute("userInfo", userInfo);
         return "/mypage/my-page";
     }
 
