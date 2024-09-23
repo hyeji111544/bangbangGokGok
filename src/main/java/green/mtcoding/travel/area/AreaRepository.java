@@ -27,5 +27,13 @@ public class AreaRepository {
         return query.getResultList();
     }
 
+    /*           hotPlace-start             */
+    public Area findByArea(String area) {
+        return em.createQuery("select a from Area a join fetch a.sigungus s where a.code =:area", Area.class)
+                .setParameter("area", area)
+                .getSingleResult();
+    }
+    /*           hotPlace-end             */
+
     
 }

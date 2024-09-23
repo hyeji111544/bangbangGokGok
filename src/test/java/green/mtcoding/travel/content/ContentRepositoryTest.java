@@ -34,38 +34,17 @@ class ContentRepositoryTest {
 
 
     /*           hotPlace-start             */
-    @Test
-    public void findHotPlaceFindAll() throws Exception {
-        //given
-
-        //when
-
-        List<Content> contents = contentRepository.findHotPlaceAll();
-
-        //eye
-        System.out.println(contents);
-    }
-
-    @Test
-    public void findHotPlaceByArea() throws Exception {
-        //given
-        String area = "1";
-
-        //when
-        List<Content> contents = contentRepository.findHotPlaceByArea(area);
-
-        //eye
-        System.out.println(contents);
-    }
 
     @Test
     public void findHotPlaceByAreaAndSigungu() throws Exception {
         //given
         String area = "1";
         List<String> sigungu = Arrays.asList("1", "2");
+        int perPage = 20;
+        int first = 0;
 
         //when
-        List<Content> contents = contentRepository.findHotPlaceByAreaAndSigungu(area, sigungu);
+        List<Content> contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu, first, perPage);
 
         //eye
         System.out.println(contents);

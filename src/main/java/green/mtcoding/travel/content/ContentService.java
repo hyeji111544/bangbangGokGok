@@ -29,21 +29,65 @@ public class ContentService {
 
     /*           hotPlace-start             */
 
-    public List<ContentResponse.HotPlaceDTO> 핫플목록보기(String area, List<String> sigungu) {
+    public ContentResponse.HotPlacePageDTO 핫플목록보기(String category, String area, List<String> sigungu, int page) {
         List<Content> contents = new ArrayList<>();
-        if(area == null && sigungu == null) {
-            contents = contentRepository.findHotPlaceAll();
-        } else if(area != null && sigungu == null) {
-            contents = contentRepository.findHotPlaceByArea(area);
-        } else if(area != null && sigungu != null) {
-            contents = contentRepository.findHotPlaceByAreaAndSigungu(area, sigungu);
+        String list = "";
+        Long totalCount = 0L;
+        int perPage = 20;
+        int first = (page-1) * perPage;
+        boolean ajax = false;
+
+        if (category.equals("touristAttractions")) {
+            //ta는 tourist attraction의 약자
+            list = "ta";
+        } else if (category.equals("restaurants")) {
+            list = "food";
         }
 
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos= new ArrayList<>();
-        for(Content content : contents) {
-            hotPlaceDtos.add(new ContentResponse.HotPlaceDTO(content));
+        //관광지는 대분류 cat1=A01 +  cat1=A02 & cat2!=A208
+        //음식점은 대분류 cat1=A05
+        //이렇게 분류코드 개수가 차이나서 아예 메서드를 따로 만든다.
+
+
+        //리팩토링 필요
+        //전체 리스트
+        if (area == null && sigungu == null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaAll(first, perPage);
+                totalCount = contentRepository.findHotTaAllCount();
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodAll(first, perPage);
+                totalCount = contentRepository.findHotFoodAllCount();
+            }
+
+            //지역 리스트
+        } else if (area != null && sigungu == null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaByArea(area, first, perPage);
+                totalCount = contentRepository.findHotTaByAreaCount(area);
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodByArea(area, first, perPage);
+                totalCount = contentRepository.findHotFoodByAreaCount(area);
+            }
+
+            //지역 + 시군구 상세지역 리스트
+        } else if (area != null && sigungu != null) {
+            if (list.equals("ta")) {
+                contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu, first, perPage);
+                totalCount = contentRepository.findHotTaByAreaAndSigunguCount(area, sigungu);
+            } else if (list.equals("food")) {
+                contents = contentRepository.findHotFoodByAreaAndSigungu(area, sigungu,first, perPage);
+                totalCount = contentRepository.findHotFoodByAreaAndSigunguCount(area, sigungu);
+            }
+
         }
-        return hotPlaceDtos;
+
+
+      /*  List<ContentResponse.HotPlaceDTO> hotPlaceDtos = new ArrayList<>();
+        for (Content content : contents) {
+            hotPlaceDtos.add(new ContentResponse.HotPlaceDTO(content));
+        }*/
+        return new ContentResponse.HotPlacePageDTO(contents, perPage, page, totalCount);
     }
     
 

@@ -19,8 +19,7 @@ import java.util.List;
 public class ContentController {
 
     private final ContentService contentService;
-    private final AreaService areaService;
-    private final SigunguService sigunguService;
+
 
     /*           main-start             */
     @GetMapping("/")
@@ -49,27 +48,24 @@ public class ContentController {
     /*           hotPlace-start             */
     @GetMapping("/hotplace")
     public String hotPlace(
-            @RequestParam(value = "area", required = false) String area,
-            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
             HttpServletRequest request) {
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
-        System.out.println(hotPlaceDtos);
-        request.setAttribute("models", hotPlaceDtos);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기("touristAttractions", null, null, 1);
+        System.out.println(hotPlacePageDTO);
+        request.setAttribute("model", hotPlacePageDTO);
         return "/hotplace/hotplace";
     }
 
 
-
-   @GetMapping("/get-hotplace")
+    @GetMapping("/get-hotplace")
     public ResponseEntity<?> hotPlaceFilter(
-           @RequestParam(value = "area", required = false) String area,
-           @RequestParam(value = "sigungu", required = false) List<String> sigungu
-            ) {
-        List<ContentResponse.HotPlaceDTO> hotPlaceDtos = contentService.핫플목록보기(area, sigungu);
-        return ResponseEntity.ok(Resp.ok(hotPlaceDtos));
-
+            @RequestParam(value = "category", required = false) String category,
+            @RequestParam(value = "area", required = false) String area,
+            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page
+    ) {
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(category, area, sigungu, page);
+        return ResponseEntity.ok(Resp.ok(hotPlacePageDTO));
     }
-
     /*           hotPlace-end             */
 
     /*           festival-start             */
@@ -86,7 +82,6 @@ public class ContentController {
         ContentResponse.infoListDTO infoListDTO= contentService.infoContentList(infoRequestDTO);
         request.setAttribute("model", infoListDTO);
         System.out.println(infoListDTO);
-
         return "/info/info";
     }
 /*
