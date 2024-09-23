@@ -11,7 +11,7 @@ import java.util.List;
 public class ContentResponse {
 
     @Data
-    public static class infoListDTO{
+    public static class infoListDTO {
         private long count;
         private List<ContentDTO> contents = new ArrayList<>();
         private List<AreaDTO> areas = new ArrayList<>();
@@ -21,13 +21,13 @@ public class ContentResponse {
             for (Content content : contentList) {
                 this.contents.add(new ContentDTO(content));
             }
-            for(Area area : areaList) {
+            for (Area area : areaList) {
                 this.areas.add(new AreaDTO(area));
             }
         }
 
         @Data
-        public static class AreaDTO{
+        public static class AreaDTO {
             private String code;
             private String name;
 
@@ -54,8 +54,8 @@ public class ContentResponse {
                 this.areaCode = content.getAreaCode();
                 this.contentTypeId = content.getContentTypeId();
                 this.firstImage = content.getFirstImage();
-                if(this.firstImage == ""){
-                    this.firstImage="/images/noimg.jpg";
+                if (this.firstImage == "") {
+                    this.firstImage = "/images/noimg.jpg";
                 }
             }
         }
@@ -82,16 +82,18 @@ public class ContentResponse {
         public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount) {
 
             this.number = page;
+
+
             //Repository에 maxResult값으로 사용하는 perPage를 가져 왔다.
             //size가 페이지 숫자 크기 묶음 사이즈이다. 10페이지씩 만들고 싶다. (0~9, 10~19 이런식으로)
             this.size = 10;
 
 
             //페이지 시작이 0이라면 1씩 빼야한다. 원리 나머지가 0일때는 계산 그대로. 나머지가 존재하면 계산에서 +1인데 -1씩 해준 상태
-            if(totalCount % perPage == 0 ) {
-                this.totalPage = (int) (totalCount / perPage) -1;
-            } else if(totalCount % perPage != 0) {
+            if (totalCount % perPage == 0) {
                 this.totalPage = (int) (totalCount / perPage);
+            } else if (totalCount % perPage != 0) {
+                this.totalPage = (int) (totalCount / perPage) + 1;
             }
 
             System.out.println("page = " + number);
@@ -99,31 +101,36 @@ public class ContentResponse {
             System.out.println("totalCount = " + totalCount);
             System.out.println("totalPage = " + totalPage);
 
-            if (number == 0) {
-                this.prev = 0;
+            if (number == 1) {
+                this.prev = 1;
                 this.first = true;
             } else {
                 this.prev = number - 1;
             }
-            if(number == totalPage) {//인덱스는 0부터시작이고 페이지는 1부터 시작이므로 토탈-1이 인덱스 마지막인데 지금은 인덱스와 페이지가 일치이므로 인덱스 = 토탈이므로 -1이 아니고 같을 때로
+            if (number == totalPage) { //인덱스는 0부터시작이고 페이지는 1부터 시작이므로 토탈-1이 인덱스 마지막인데 지금은 인덱스와 페이지가 일치이므로 인덱스 = 토탈이므로 -1이 아니고 같을 때로
                 this.next = totalPage;
                 this.last = true;
             } else {
                 this.next = number + 1;
             }
 
-            int temp = (number / size)*size;
-            for(int i=temp; i<temp+size;i++){
-                if(i > totalPage) {
+            // 현재 페이지 number가 1부터 시작한다고 (size+1) 하면 볼륨이 10개가 아니라 11개가 돼서 다음 페이지 묶음으로 넘어갈 때 11의 배수가 돼야 한다.
+            // 페이지 묶음 볼륨을 +1 할 것이 아니라 현재 페이지가 1이므로 시작을 number -1 하면 size 볼륨은 10개로 유지된다.
+            int temp = ((number-1) / size) * size;
+
+            for (int i = temp + 1; i < temp + size + 1; i++) {
+                if (i > totalPage) {
                     break;
                 }
 
                 this.numbers.add(i);
+
             }
 
-            for(Content content: contents) {
+            for (Content content : contents) {
                 this.contents.add(new HotPlaceDTO(content));
             }
+
         }
 
 
@@ -145,7 +152,7 @@ public class ContentResponse {
                 this.title = content.getTitle();
                 this.addr1 = content.getAddr1();
                 this.firstImage = content.getFirstImage();
-                if(firstImage == "") {
+                if (firstImage == "") {
                     this.firstImage = "/img/hotplace/no-image.jpg";
                 }
                 this.viewCount = content.getViewCount();
@@ -154,9 +161,7 @@ public class ContentResponse {
         }
 
 
-
     }
-
 
 
     @Data
@@ -177,7 +182,7 @@ public class ContentResponse {
             this.title = content.getTitle();
             this.addr1 = content.getAddr1();
             this.firstImage = content.getFirstImage();
-            if(firstImage == "") {
+            if (firstImage == "") {
                 this.firstImage = "/images/hotplace/no-image.jpg";
             }
             this.viewCount = content.getViewCount();

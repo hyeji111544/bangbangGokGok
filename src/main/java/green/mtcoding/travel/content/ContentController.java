@@ -49,7 +49,7 @@ public class ContentController {
     @GetMapping("/hotplace")
     public String hotPlace(
             HttpServletRequest request) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기("touristAttractions", null, null, 0);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기("touristAttractions", null, null, 1);
         System.out.println(hotPlacePageDTO);
         request.setAttribute("model", hotPlacePageDTO);
         return "/hotplace/hotplace";
@@ -62,7 +62,7 @@ public class ContentController {
            @RequestParam(value = "category", required = false) String category,
            @RequestParam(value = "area", required = false) String area,
            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
-           @RequestParam(value = "page", required = false, defaultValue = "0") int page
+           @RequestParam(value = "page", required = false, defaultValue = "1") int page
             ) {
        System.out.println("category: " + category);
        System.out.println("area = " + area);

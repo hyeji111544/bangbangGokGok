@@ -26,12 +26,6 @@ public class TourismInfoController {
     /*           region-end             */
 
     /*           hotPlace-start             */
-    @GetMapping("/test")
-    public String test() throws JsonProcessingException, URISyntaxException {
-       tourismInfoService.getRequest();
-       return "/info/detail";
-    }
-    /*
     /*           hotPlace-end             */
 
     /*           festival-start             */

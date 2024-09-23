@@ -36,7 +36,7 @@ public class ContentService {
         String list = "";
         Long totalCount = 0L;
         int perPage = 20;
-        int first = page * perPage;
+        int first = (page-1) * perPage;
         boolean ajax = false;
 
         if (category.equals("touristAttractions")) {
@@ -56,7 +56,6 @@ public class ContentService {
             if (list.equals("ta")) {
                 contents = contentRepository.findHotTaAll(first, perPage);
                 totalCount = contentRepository.findHotTaAllCount();
-                System.out.println("ta임");
             } else if (list.equals("food")) {
                 contents = contentRepository.findHotFoodAll(first, perPage);
                 totalCount = contentRepository.findHotFoodAllCount();
