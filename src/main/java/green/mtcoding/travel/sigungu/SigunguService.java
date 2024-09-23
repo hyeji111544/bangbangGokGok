@@ -27,16 +27,6 @@ public class SigunguService {
     /*           region-end             */
 
     /*           hotPlace-start             */
-
-    public List<SigunguResponse.SigunguDTO> 시군구리스트가져오기(String area) {
-        List<Sigungu> sigunguList = sigunguRepository.findByArea(area);
-        List<SigunguResponse.SigunguDTO> dtoList = new ArrayList<>();
-        for (Sigungu sigungu : sigunguList) {
-            dtoList.add(new SigunguResponse.SigunguDTO(sigungu));
-        }
-        return dtoList;
-    }
-
     /*           hotPlace-end             */
 
     /*           festival-start             */

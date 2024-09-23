@@ -33,13 +33,6 @@ public class SigunguController {
     /*           region-end             */
 
     /*           hotPlace-start             */
-
-    @GetMapping("/get-sigungu")
-    public ResponseEntity<?> getSigungu(@RequestParam("area") String area) {
-        List<SigunguResponse.SigunguDTO> sigunguListDTO = sigunguService.시군구리스트가져오기(area);
-        return ResponseEntity.ok(Resp.ok(sigunguListDTO));
-    }
-
     /*           hotPlace-end             */
 
     /*           festival-start             */
