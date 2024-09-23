@@ -1,23 +1,32 @@
+//핫플 기본상태는 인기 여행지 체크
+$(function () {
+    placeLink.classList.add("active");
+});
+
+
 // 사진 슬라이드 & 좋아요
 function toggleLike(button) {
-    const svg = button.querySelector('svg');
-    const isLiked = svg.style.fill === "red";
+    let svg = button.querySelector('svg');
+    let isLiked = svg.style.fill === "red";
+    let contentId = button.dataset.id;
 
     if (isLiked) {
         svg.style.fill = "none";
         console.log("좋아요 해제됨");
-        sendLikeStatus(button.dataset.id, false); // 좋아요 해제 요청
+        console.log("contentId", contentId);
+        sendLikeStatus(contentId, false); // 좋아요 해제 요청
     } else {
         svg.style.fill = "red";
         console.log("좋아요 체크됨");
-        sendLikeStatus(button.dataset.id, true); // 좋아요 체크 요청
+        console.log("contentId", contentId);
+        sendLikeStatus(contentId, true); // 좋아요 체크 요청
     }
 }
 
 // AJAX로 좋아요 상태 전송
 async function sendLikeStatus(id, isLiked) {
     try {
-        const response = await fetch('/like', {
+        let response = await fetch('/like', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,16 +75,19 @@ function showSlide(index, button) {
 
 
 // 버튼 생성 후 검색
-let areas = [];
+let sigungus = [];
 let areaCode;
 let sigunguCode = [];
+let category = 'touristAttractions';
+let sigunguQueries = '';
+let currentPage;
+let totalPage;
 
 let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
 let areaSelectionDiv = document.querySelector("#area-selection");
 let searchBtn = document.querySelector("#searchBtn");
-let areaCodeInput = document.querySelector(".area-code");
-let sigunguSelect = document.querySelector("#sigungu-select");
+
 
 // 모달 열기
 let openModalBtns = document.querySelectorAll(".open__modal");
@@ -83,9 +95,6 @@ openModalBtns.forEach(function (button) {
     button.onclick = function () {
         modal.style.display = "block";
 
-        // 지역 이름 표시
-        let modalArea = button.querySelector(".hotplace__name").textContent;
-        document.querySelector(".modal__area").textContent = modalArea;
 
         // '전체' 버튼 추가
         areaSelectionDiv.innerHTML = ""; // 기존 버튼들을 초기화
@@ -94,7 +103,7 @@ openModalBtns.forEach(function (button) {
         allButton.textContent = "전체";
         areaSelectionDiv.appendChild(allButton);
 
-        areaCode = button.querySelector(".area-code").value;
+        areaCode = button.querySelector(".area__code").value;
 
         // AJAX로 시군구 데이터 가져오기
         $.ajax({
@@ -102,9 +111,13 @@ openModalBtns.forEach(function (button) {
             type: 'GET',
             dataType: 'json',
             success: function (response) {
-                areas = response.body; // 시군구 데이터를 areas에 추가
+                sigungus = response.body.sigunguDtos; // 시군구 데이터를 areas에 추가
+                // 지역 이름 표시
+                $(".modal__area").text(response.body.name);
                 generateAreaButtons(); // 받은 데이터를 이용해 버튼 생성
-                console.log(areas);
+
+                console.log(response);
+                console.log(sigungus);
             },
             error: function (error) {
                 console.error("에러 발생:", error);
@@ -124,59 +137,69 @@ window.onclick = function (event) {
     }
 }
 
+
 // 시군구 버튼 동적 생성
 function generateAreaButtons() {
-    areas.forEach(function (area) {
+    // '전체' 버튼은 한 번만 생성
+    areaSelectionDiv.innerHTML = ""; // 기존 버튼들을 초기화
+    let allButton = document.createElement("button");
+    allButton.classList.add("area-btn", "selected");
+    allButton.textContent = "전체"; // '전체' 버튼 텍스트 설정
+    allButton.setAttribute("id", "all-btn"); // '전체' 버튼에 ID 추가
+
+    // '전체' 버튼 클릭 이벤트 설정
+    allButton.addEventListener("click", function () {
+        // 모든 하위지역 버튼의 'selected' 클래스를 제거
+        document.querySelectorAll(".area-btn").forEach(function (btn) {
+            if (btn !== allButton) { // '전체' 버튼은 제외
+                btn.classList.remove("selected");
+            }
+        });
+        // '전체' 버튼에 'selected' 클래스 추가
+        allButton.classList.add("selected");
+
+        // 하위 지역 코드를 비움
+        sigunguCode = [];
+    });
+
+    // '전체' 버튼을 DOM에 추가
+    areaSelectionDiv.appendChild(allButton);
+
+    // 그 다음에 하위지역 버튼들을 동적으로 생성 (전체 제외)
+    sigungus.forEach(function (area) {
         let button = document.createElement("button");
         button.classList.add("area-btn");
         button.textContent = area.name; // 시군구 이름을 버튼에 표시
         button.setAttribute("data-code", area.code); // 시군구 코드 저장
 
-        // 모든 버튼의 이벤트를 초기화하고 한 번만 설정
-        document.querySelectorAll('.area-btn').forEach(function (button) {
-            button.onclick = function () {
-                let allButton = document.querySelector(".area-btn:first-child"); // '전체' 버튼
+        // 하위지역 버튼 클릭 이벤트 설정
+        button.addEventListener("click", function () {
+            // '전체' 버튼 선택 해제
+            allButton.classList.remove("selected");
 
-                if (button.textContent === '전체') {
-                    // '전체' 버튼이 클릭되면 모든 하위지역 버튼들의 'selected' 클래스를 제거
-                    document.querySelectorAll(".area-btn").forEach(function (btn) {
-                        if (btn.textContent !== '전체') {
-                            btn.classList.remove("selected");
-                        }
-                    });
+            // 현재 클릭한 하위지역 버튼의 선택 상태를 토글
+            button.classList.toggle("selected");
 
-                    // '전체' 버튼에 'selected' 클래스 추가
-                    button.classList.add("selected");
+            // 선택된 하위지역 버튼을 확인하여 처리
+            let selectedAreas = document.querySelectorAll(".area-btn.selected:not(#all-btn)");
 
-                    // 하위 지역 코드를 비움
-                    sigunguCode = [];
-
-                } else {
-                    // 하위지역 버튼 클릭 시 '전체' 버튼의 선택을 해제
-                    button.classList.toggle("selected");
-                    allButton.classList.remove("selected");
-
-                    // 선택된 하위지역 버튼들을 배열로 모음
-                    const selectedAreas = document.querySelectorAll(".area-btn.selected");
-
-                    // 선택된 하위지역이 없을 경우, '전체' 버튼을 다시 선택
-                    if (selectedAreas.length === 0) {
-                        allButton.classList.add("selected");
-                        sigunguCode = [];
-                    } else {
-                        // 선택된 하위지역 버튼들의 코드를 sigunguCode에 저장
-                        sigunguCode = Array.from(selectedAreas).map(function (area) {
-                            return area.getAttribute("data-code");
-                        });
-                    }
-                }
-            };
-
+            // 선택된 하위지역이 없으면 '전체' 버튼을 다시 선택
+            if (selectedAreas.length === 0) {
+                allButton.classList.add("selected");
+                sigunguCode = [];
+            } else {
+                // 선택된 하위지역 버튼들의 코드를 sigunguCode에 저장
+                sigunguCode = Array.from(selectedAreas).map(function (area) {
+                    return area.getAttribute("data-code");
+                });
+            }
         });
 
+        // 동적으로 생성된 하위지역 버튼을 DOM에 추가
         areaSelectionDiv.appendChild(button);
     });
 }
+
 
 // 검색 버튼 클릭 시 AJAX로 areaCode와 sigungu code 전송
 searchBtn.addEventListener("click", function () {
@@ -184,15 +207,20 @@ searchBtn.addEventListener("click", function () {
     let isAllSelected = document.querySelector(".area-btn:first-child").classList.contains("selected");
 
     // 쿼리스트링을 만들기 위한 배열 생성
-    let sigunguQueries = '';
+    sigunguQueries = '';
     if (!isAllSelected && sigunguCode.length > 0) {
         sigunguQueries = sigunguCode.map(function (code) {
             return `sigungu=${code}`;
         }).join('&');
     }
 
-    // URL 변수로 쿼리스트링을 깔끔하게 처리
-    let url = `/get-hotplace?area=${areaCode}`;
+    if (placeLink.classList.contains("active")) {
+        category = 'touristAttractions';
+    } else if (foodLink.classList.contains("active")) {
+        category = 'restaurants';
+    }
+
+    let url = `/get-hotplace?category=${category}&area=${areaCode}`;
     if (sigunguQueries) {
         url += `&${sigunguQueries}`;
     }
@@ -205,7 +233,9 @@ searchBtn.addEventListener("click", function () {
         dataType: 'json',
         success: function (response) {
             console.log("검색 결과:", response);
+
             loadHotPlace(response);
+            makePageList(response);
         },
         error: function (error) {
             console.error("검색 에러:", error);
@@ -226,9 +256,12 @@ function loadHotPlace(response) {
     if (response) {
         $(".hot__place__card__box").empty();
 
+        //상단에 현재/전체 페이지수
+        changePageCount(response);
+
         // fetch는 데이터를 받아서 .json()으로 파싱(json -> js object)해줘야 하는데
         // ajax의 success 콜백 함수는 json -> js object로 자동 파싱된다. 그냥 쓰면 됨
-        let placeList = response.body;
+        let placeList = response.body.contents;
 
         // 파싱한 데이터를 출력할 박스에 출력
         for (place of placeList) {
@@ -247,9 +280,9 @@ function printHotPlace(place) {
                 <img src="${place.firstImage}" alt="이미지 2">                              
 
                             </div>
-                        </a>
+                     
 
-                        <button class="like-btn" onclick="toggleLike(this)">
+                        <button class="like__btn" onclick="toggleLike(this)" data-id="${place.contentId}">
                             <svg id="like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -266,6 +299,7 @@ function printHotPlace(place) {
                             <p class="hot__place__name">${place.title}</p>
                             <p class="hot__place__location">${place.addr1}</p>
                         </div>
+                      </a>
                     </div>`;
 }
 
@@ -276,14 +310,22 @@ let foodLink = document.querySelector(".hotf");
 
 placeLink.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleActive(placeLink, foodLink);
-    fetchData('place');
+    if (!placeLink.classList.contains("active")) {
+        toggleActive(placeLink, foodLink);
+        category = 'touristAttractions';
+        $(".rec__text").text('인기 여행지');
+        printList();
+    }
 });
 
 foodLink.addEventListener("click", function (event) {
     event.preventDefault();
-    toggleActive(foodLink, placeLink);
-    fetchData('food');
+    if (!foodLink.classList.contains("active")) {
+        toggleActive(foodLink, placeLink);
+        category = 'restaurants';
+        $(".rec__text").text('인기 맛집');
+        printList();
+    }
 });
 
 function toggleActive(activeLink, inactiveLink) {
@@ -292,31 +334,138 @@ function toggleActive(activeLink, inactiveLink) {
 }
 
 // 인기 여행지, 맛집 데이터를 AJAX로 불러오기
-async function fetchData(type) {
-    try {
-        const response = await fetch(`/${type}`, {
-            method: 'GET'
-        });
+function printList(page) {
+    console.log("category", category);
+    console.log("areaCode", areaCode);
 
-        if (!response.ok) {
-            throw new Error(`${type} 데이터 로드 실패`);
-        }
 
-        const data = await response.json();
-        console.log(`${type} 데이터:`, data);
-    } catch (error) {
-        console.error(`${type} 데이터 로드 중 오류:`, error);
+    let url = `/get-hotplace?category=${category}&area=${areaCode}`;
+    if (sigunguQueries) {
+        url += `&${sigunguQueries}`;
     }
+    //지역, 시군구 코드가 정해지지 않았으면 지역 선택 안 한 것 -> 전체 리스트에서 카테고리만 변경
+    if (areaCode === undefined && sigunguQueries === '') {
+        url = `/get-hotplace?category=${category}`;
+    }
+
+    if (page) {
+        url += '&page=' + page;
+    }
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            console.log("검색 결과:", response);
+
+
+            loadHotPlace(response);
+            makePageList(response);
+            moveLocation();
+
+        },
+        error: function (error) {
+            console.error("검색 에러:", error);
+        }
+    });
 }
 
 
+// 컨텐츠 박스 전체를 a링크가 감싸고 있는데 내부에 좋아요 버튼과 사진 선택 dot 버튼은 a링크 영향 안 받게.
+$('.like__btn, .dot__btn').on('click', function (event) {
+    event.preventDefault(); // 상위 <a> 태그의 기본 동작(링크 이동) 방지
+});
+
+
+function makePageList(response) {
+    // 응답이 오면 기존 page리스트를 지움
+    console.log(response)
+    if (response.body) {
+        $(".page__box").empty();
+        console.log("ok");
+
+        // fetch는 데이터를 받아서 .json()으로 파싱(json -> js object)해줘야 하는데
+        // ajax의 success 콜백 함수는 json -> js object로 자동 파싱된다. 그냥 쓰면 됨
+        let pageInfo = response.body;
 
 
 
 
+        // 계산한 페이지를 그리기
+        $(".page__box").prepend(printPageList(pageInfo));
+        let pageArr = pageInfo.numbers;
+        for (let i = pageArr[0]; i <= pageArr[pageArr.length - 1]; i++) {
+            $(".page__count__box").append(printPageListNumber(i));
+        }
+        if (pageInfo.first == true) {
+            // remove로 첫 페이지에서는 화살표 지워도 괜찮은 것 같다. prop은 button, input에만 적용돼서 add클래스로 추가하고 css에서 opacity와 이벤트 클릭방지 처리
+            $(".prev__btn").addClass("disabled");
+        } else {
+            $(".prev__btn").removeClass("disabled");
+        }
+
+        console.log("first", pageInfo.first);
+        if (pageInfo.last == true) {
+            $(".next__btn").addClass("disabled");
+        } else {
+            {
+                $(".next__btn").removeClass("disabled");
+            }
+        }
+        console.log("last", pageInfo.last);
+
+
+    } else {
+        $(".page__box").prepend('<h2>검색 결과가 없습니다.</h2>');
+    }
+
+
+}
+
+function printPageList(pageInfo) {
+    return `
+                        <ul class="pagination justify-content-center">
+                        <li class="page-item prev__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.prev});'>&lt;</a></li>
+                        
+                        <li class="page-item page__count__box"></li>
+                        
+                        <li class="page-item next__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.next});'>&gt;</a></li>
+                    </ul>
+    `;
+}
+
+function printPageListNumber(number) {
+    return `
+                <a class="page-link" onClick="printList(${number});">${number}</a>
+    `;
+}
+
+function changePageCount(response) {
+    currentPage = response.body.number;
+    totalPage = response.body.totalPage;
+    console.log("currentPage", currentPage);
+    console.log("totalPage", totalPage);
+
+    if($('.hotpl').hasClass('active')) {
+        $('.rec__text').text(`인기 여행지 (${currentPage} / ${totalPage})`);
+        console.log("hot");
+    }
+    if($('.hotf').hasClass('active')) {
+        $('.rec__text').text(`인기 맛집 (${currentPage} / ${totalPage})`);
+        console.log("food");
+    }
 
 
 
+}
 
+
+function moveLocation() {
+    let element = document.querySelector(".icon__box");
+    element.scrollIntoView({
+        behavior: "auto"
+    });
+}
 
 

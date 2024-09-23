@@ -19,6 +19,11 @@ public class AreaService {
     /*           region-end             */
 
     /*           hotPlace-start             */
+    public AreaResponse.AreaDTO 시군구리스트가져오기(String areaCode) {
+        Area area = areaRepository.findByArea(areaCode);
+        AreaResponse.AreaDTO areaDTO = new AreaResponse.AreaDTO(area);
+        return areaDTO;
+    }
     /*           hotPlace-end             */
 
     /*           festival-start             */
