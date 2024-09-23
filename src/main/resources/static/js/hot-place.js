@@ -275,7 +275,7 @@ function loadHotPlace(response) {
 
 function printHotPlace(place) {
     return ` <div class="hot__place__card">
-            <a href="/get-info/${place.contentId}">
+            <a href="/info/detail?contentId=${place.contentId}">
                             <div class="hot__place__img__box">
                                 <img src="${place.firstImage}" class="active" alt="이미지 1">
                 <img src="${place.firstImage}" alt="이미지 2">                              
