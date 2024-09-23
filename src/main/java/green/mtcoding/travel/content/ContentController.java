@@ -48,8 +48,12 @@ public class ContentController {
     /*           hotPlace-start             */
     @GetMapping("/hotplace")
     public String hotPlace(
+            @RequestParam(value = "category", required = false, defaultValue = "touristAttractions") String category,
+            @RequestParam(value = "area", required = false) String area,
+            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
             HttpServletRequest request) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기("touristAttractions", null, null, 1);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(category, area, sigungu, page);
         System.out.println(hotPlacePageDTO);
         request.setAttribute("model", hotPlacePageDTO);
         return "/hotplace/hotplace";

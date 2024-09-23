@@ -22,7 +22,7 @@
 
 <body>
 <header>
-    <div class="logo">로고</div>
+    <div class="logo"><img src="/images/header/logo2.png"></div>
     <div class="menu__box">
         <div><a href="/">메인</a></div>
         <div><a href="/theme">테마</a></div>
@@ -31,8 +31,14 @@
         <div><a href="/festival">축제</a></div>
         <div><a href="/info">정보</a></div>
         <div><a href="/tourmap">지도</a></div>
+
     </div>
+
 <div class="user__info">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="검색">
+        <button class="btn btn-success" type="submit">Go</button>
+    </div>
 <div class="info__login">
     {{#sessionUser}}
 
@@ -51,4 +57,19 @@
         </div>
     </div>
     {{/sessionUser}}
+
+    <!--검색 모달창-->
+    <div id="search__modal" class="search__modal" style="display: none">
+        <div class="search__modal__content">
+            <div class="modal__logo">
+                <img src="/images/header/logo2.png" alt="Logo">
+            </div>
+            <div class="modal__search">
+                <input type="text" class="form-control" placeholder="인기 관광지 검색">
+                <button class="btn btn-primary">Search</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="/js/header.js"></script>
 </header>
