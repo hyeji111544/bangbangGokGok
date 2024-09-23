@@ -82,10 +82,8 @@ let category = 'touristAttractions';
 let sigunguQueries = '';
 let currentPage;
 let totalPage;
-<<<<<<< HEAD
 let totalCount;
-=======
->>>>>>> 85cbb50 (feat: hotplace paging)
+
 
 let modal = document.querySelector("#modal");
 let closeModal = document.querySelector(".close");
