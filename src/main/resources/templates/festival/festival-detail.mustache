@@ -8,9 +8,9 @@
     </div>
     <article>
         <div class="article__title__box">
-            <div>사진보기</div>
-            <div>상세정보</div>
-            <div>축제톡</div>
+            <div class="scrollTo" data-target="#photoSection">사진보기</div>
+            <div class="scrollTo" data-target="#detailSection">상세정보</div>
+            <div class="scrollTo" data-target="#talkSection">축제톡</div>
             <div>추천여행</div>
         </div>
         <div class="article__img__box" id="article__img__box">
@@ -27,7 +27,7 @@
         </div>
     </article>
     <section class="comment__box">
-        <div class="comment__title">축제톡 8</div>
+        <div class="comment__title" id="talkSection">축제톡 1</div>
         <!-- 댓글등록 -->
         <div class="comment__write">
             <div class="form__group">
@@ -110,6 +110,11 @@
             let objList3 = data3.response.body.items.item;
             let objList4 = data4.response.body.items.item;
 
+            console.log("objList1", objList1);
+            console.log("objList2", objList2);
+            console.log("objList3", objList3);
+            console.log("objList4", objList4);
+
             obj1 = objList1[0];
             obj2 = objList2[0];
             obj3 = objList3[0];
@@ -117,105 +122,101 @@
             obj5 = objList4[0];
 
             sendToServer();
-            // console.log(obj1);
-            // console.log(obj2);
-            // console.log(obj3);
-            // console.log(obj4);
-            // console.log(obj5);
         }
-    })
-    // 받은 데이터 서버로 보내기
-    async function sendToServer() {
-        // 받아온 데이터를 분해하여 dataAll 하나의 객체로 만듬
-        let dataAll = {
-            ...obj1,
-            ...obj2,
-            ...obj3,
-            ...obj4,
-            ...obj5
-        };
-        console.log("dataAll", dataAll);
 
-        // 서버로 POST 요청 보내기
-        let response = await fetch(`/festival/save-festival-data`, {
-            method: 'POST',
-            body: JSON.stringify(dataAll),
-            headers: {
-                "Content-Type":"application/json; charset=utf-8"
+        // 받은 데이터 서버로 보내기
+        async function sendToServer() {
+            // 받아온 데이터를 분해하여 dataAll 하나의 객체로 만듬
+            let dataAll = {
+                ...obj1,
+                ...obj2,
+                ...obj3,
+                ...obj4,
+                ...obj5
+            };
+            console.log("dataAll", dataAll);
+
+            // 서버로 POST 요청 보내기
+            let response = await fetch(`/festival/save-festival-data`, {
+                method: 'POST',
+                body: JSON.stringify(dataAll),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
+            });
+
+            if (response.ok) {
+                let responseBody = await response.json(); // DTO !!
+                console.log("서버 응답:", responseBody);
+
+                let dom1 = makeTitleBox(responseBody);
+                $("#content__title__box").append(dom1);  // jQuery 방식
+
+                let dom2 = makeImgBox(responseBody);
+                $("#article__img__box").append(dom2);    // jQuery 방식
+
+                let dom3 = makeInfoBox(responseBody);
+                $("#article__info__box").append(dom3);   // jQuery 방식
+
+                renderMap(responseBody);  // 지도를 그리는 함수를 여기서 호출
+            } else {
+                console.error("서버 응답 실패:", response.status);
             }
-        });
-
-        if (response.ok) {
-            let responseBody = await response.json(); // DTO !!
-            console.log("서버 응답:", responseBody);
-
-            let dom1 = makeTitleBox(responseBody);
-            $("#content__title__box").append(dom1);
-            let dom2 = makeImgBox(responseBody)
-            $("#article__img__box").append(dom2);
-            let dom3 = makeInfoBox(responseBody)
-            $("#article__info__box").append(dom3);
-
-        } else {
-            console.error("서버 응답 실패:", response.status);
         }
-    }
-    function makeTitleBox(responseBody) {
-        // 주소 뽑아내기
-        let parts = responseBody.body.addr1.split(" ");
-        let result = parts.slice(0, 2).join(" ");
-        console.log(result);
 
-        return `<div class="content__title__1">${responseBody.body.title}</div>
-        <div class="content__title__2">${result}</div>
-        <div class="content__title__3"></div>
-        <div class="content__share__box">
-            <div class="share__box__1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-heart" viewBox="0 0 16 16">
-                    <path
-                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                </svg>
-                <span>맘찍 횟수</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
-                     viewBox="0 0 16 16">
-                    <path
-                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
-                    <path
-                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
-                </svg>
-                <span>뷰횟수</span>
-            </div>
-            <div class="share__box__2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-bookmark" viewBox="0 0 16 16">
-                    <path
-                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
-                </svg>
-            </div>
+        function makeTitleBox(responseBody) {
+            // 주소 뽑아내기
+            let parts = responseBody.body.addr1.split(" ");
+            let result = parts.slice(0, 2).join(" ");
+            console.log(result);
 
-        </div>`;
-    }
+            return `<div class="content__title__1">${responseBody.body.title}</div>
+            <div class="content__title__2">${result}</div>
+            <div class="content__title__3"></div>
+            <div class="content__share__box">
+                <div class="share__box__1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="M8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                    </svg>
+                    <span id="photoSection">맘찍 횟수</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                        viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                    </svg>
+                    <span>뷰횟수</span>
+                </div>
+                <div class="share__box__2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bookmark" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
+                    </svg>
+                </div>
+            </div>`;
+        }
 
-    function makeImgBox(responseBody) {
+        function makeImgBox(responseBody) {
+            return `<img class="article__img__1" id="detailSection" src="${responseBody.body.firstImage}" alt="이미지 로드 실패" onerror="handleImageError(this);">
+            <img class="article__img__2" src="${responseBody.body.firstImage2}" alt="이미지 로드 실패" onerror="handleImageError(this);">
+            <img class="article__img__3" src="/images/maincard2.jpg" alt="이미지 로드 실패" onerror="handleImageError(this);">
+            <img class="article__img__4" src="/images/maincard2.jpg" alt="이미지 로드 실패" onerror="handleImageError(this);">`;
+        }
 
-        return `<img class="article__img__1" src="${responseBody.body.firstImage}">
-            <img class="article__img__2" src="${responseBody.body.firstImage2}">
-            <img class="article__img__3" src="/images/maincard2.jpg">
-            <img class="article__img__4" src="/images/maincard2.jpg">`;
-    }
+        function makeInfoBox(responseBody) {
+            // 홈페이지 링크 뽑아내기
+            let hp = responseBody.body.homePage;
+            // HTML 문자열을 DOM 요소로 변환 후 href 속성 추출
+            let href = $($.parseHTML(hp)).attr('href');
 
-    function makeInfoBox(responseBody) {
-        // 홈페이지 링크 뽑아내기
-        let hp = responseBody.body.homePage;
-        // HTML 문자열을 DOM 요소로 변환 후 href 속성 추출
-        let href = $($.parseHTML(hp)).attr('href');
-
-        return `<div>축제 정보</div>
+            return `<div>축제 정보</div>
             <div>${responseBody.body.overview}</div>
-            <div style="font-size: 24px;">${responseBody.body.infoName}</div><br>
-            <div>${responseBody.body.infoText}</div><br>
-            <div class="article__info__map"> 지도 </div>
+            <div style="font-size: 24px;">행사 내용</div><br>
+            <div>${responseBody.body.infoText}</div><br><br>
+
+            <div style="font-size: 24px;">위치 안내</div><br>
+            <div id="article__info__map" style="width: 100%; height: 500px;"></div><br>
+
             <div class="info__grid">
                 <div class="info__item">
                     <strong>문의 및 안내</strong>
@@ -243,16 +244,63 @@
                 </div>
                 <div class="info__item">
                     <strong>운영 재단</strong>
-                    <span>${responseBody.body.sponsor1}&nbsp;${responseBody.body.sponsor1Tel}, ${responseBody.body.sponsor2}</span>
+                    <span>${responseBody.body.sponsor1}, ${responseBody.body.sponsor2}</span>
                 </div>
                 <div class="info__item">
                     <strong>공식홈페이지</strong>
-                    <span>${href}</span>
+                    <span><a href="${href}">${responseBody.body.title}</a></span>
                 </div>
             </div>`;
-    }
+        }
 
+        // 지도 렌더링 함수
+        function renderMap(responseBody) {
+            let container = document.getElementById("article__info__map");
+            console.log(responseBody.body.mapX);
+            console.log(responseBody.body.mapY);
+            let mapX = responseBody.body.mapX;
+            let mapY = responseBody.body.mapY;
+            let options = {
+                /*
+                center: new kakao.maps.LatLng(responseBody.body.mapX, responseBody.body.mapY),
+                level: 3
+                 */
+                center: new kakao.maps.LatLng(mapY, mapX), //지도의 중심좌표.
+                level: 3
+            };
+            let map = new kakao.maps.Map(container, options);
 
+            // 마커가 표시될 위치입니다
+            var markerPosition  = new kakao.maps.LatLng(mapY, mapX);
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+        }
+
+        function handleImageError(imgElement) {
+            // 이미 대체 이미지로 바뀌었는지 확인하는 조건
+            if (!imgElement.src.includes('no-image.png')) {
+                imgElement.src = '/images/no-image.png';
+            }
+        }
+
+        // 배너 클릭 시 스크롤 이동
+        $('.scrollTo').on('click', function() {
+            // data-target 속성에 지정된 id 값을 가져와 해당 섹션으로 이동
+            var target = $(this).data('target');
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 500);  // 0.5초 동안 부드럽게 스크롤
+        });
+    });
 </script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>
+
 
 {{>layout/footer}}
