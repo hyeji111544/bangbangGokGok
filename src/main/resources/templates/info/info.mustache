@@ -18,7 +18,7 @@
                 <div style="display: none" name="contentId">{{contentId}}</div>
                     <img src="{{firstImage}}">
                 <div class="place__content__wrapper">
-                    <div>{{title}}</div>
+                    <div onclick="detailClick('{{contentId}}')" >{{title}}</div>
                     <div>{{addr1}}</div>
 
                 </div>
@@ -86,7 +86,7 @@
             <div style="display: none" name="contentId">${content.contentId}</div>
             <img src="${content.firstImage}" alt="${content.title}">
             <div class="place__content__wrapper">
-                <div>${content.title}</div>
+                <div onclick="detailClick('${content.contentId}')" >${content.title}</div>
                 <div>${content.addr1}</div>
             </div>
             <div class="place__content__more">
@@ -98,6 +98,11 @@
             </div>
         </div>
     `).join('');
+    }
+
+    function detailClick(contentId){
+        console.log(contentId);
+        location.href = `/info/detail?contentId=${contentId}`;
     }
 
     async function fetchContent(url){
