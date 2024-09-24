@@ -118,9 +118,22 @@
             <div class="comment__title">여행톡 8</div>
             <div class="comment__write">
                 <div class="form__group">
-                    <input type="text" class="form__control" placeholder="댓글을 입력하세요" required>
+                    <input type="text" class="form__control" placeholder="댓글을 입력하세요" id="review__context" required>
+                    <input type="hidden" value="{{model.contentId}}" id="contentId">
                     <div class="button__area">
-                        <button type="submit" class="btn submit-button">작성</button>
+                        <select name="rating" id="review__rating">
+                            <option value="0.5">0.5</option>
+                            <option value="1.0">1.0</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2.0">2.0</option>
+                            <option value="2.5">2.5</option>
+                            <option value="3.0">3.0</option>
+                            <option value="3.5">3.5</option>
+                            <option value="4.0">4.0</option>
+                            <option value="4.5">4.5</option>
+                            <option value="5.0">5.0</option>
+                        </select>
+                        <button type="submit" class="btn submit-button review__write()">작성</button>
                         <button type="button" class="btn cancel-button">취소</button>
                     </div>
                 </div>
@@ -353,5 +366,55 @@
 
 
     </section>
+
+<script>
+    // 작성 버튼 클릭 이벤트
+    document.querySelector('.review__write').addEventListener('click', async function(event) {
+        event.preventDefault(); // 페이지 리로드 방지
+        // contentId 가져오기
+        const contentId = document.getElementById('contentId').value;
+
+        // 댓글 입력란에서 값 가져오기
+        const context = document.getElementById('review__context').value;
+
+        // 선택한 평점 가져오기
+        const rating = document.getElementById('review__rating').value;
+
+        // 유효성 검사 (필요시)
+        if (!context || rating === "0.0") {
+            alert("댓글과 평점을 입력하세요!");
+            return;
+        }
+
+        // AJAX 요청
+        await fetch('/api/review/write', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contentId:contentId,
+                context: context,
+                rating: rating
+            })
+        })
+                .then(response => response.json())
+                .then(data => {
+                    // 서버 응답 처리
+                    if (data.success) {
+                        alert('댓글이 성공적으로 작성되었습니다.');
+                        // 필요한 경우 입력 필드 초기화
+                        document.getElementById('review__context').value = '';
+                        document.getElementById('review__rating').value = '0.5'; // 기본 값으로 설정
+                    } else {
+                        alert('댓글 작성에 실패했습니다. 다시 시도해주세요.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('서버 오류가 발생했습니다.');
+                });
+    });
+</script>
 
 {{>layout/footer}}

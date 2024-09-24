@@ -1,6 +1,7 @@
 package green.mtcoding.travel.scrap;
 
 import green.mtcoding.travel.content.Content;
+import green.mtcoding.travel.user.UserResponse;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
@@ -18,6 +19,15 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public class ScrapRepository {
 
     private final EntityManager em;
+
+    // 마이페이지 유저 정보 긁어오기
+    public List<ScrapResponse.MypageUserDTO> userFindById(int id) {
+        Query query = em.createNativeQuery("select u.id, u.nick_name, u.profile from user_tb u where u.id = ?");
+        query.setParameter(1, id);
+        JpaResultMapper mapper = new JpaResultMapper(); // 이게 없으면 List를 불러올때 객체로 받아서 인식이 안됨
+        List<ScrapResponse.MypageUserDTO> userInfo = mapper.list(query, ScrapResponse.MypageUserDTO.class);
+        return userInfo;
+    }
 
     // 기존 스크랩이 존재하는지 찾기
     public Boolean scrapFindByContentId(int userId, String contentId) {

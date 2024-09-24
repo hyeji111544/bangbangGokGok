@@ -16,8 +16,8 @@
                         </div>
                         <div class="scrab__box">
 
-                            {{#models}}
-                            <div class="scrab__card" id="scrap__card__{{id}}">
+                            {{#model.scrapList}}
+                            <div class="scrab__card" id="scrap__card__{{id}}" onclick="location.href=`/info/detail?contentId={{contentContentId}}`;">
                                 <input type="hidden" value="{{contentContentId}}">
                                 <input type="hidden" value="{{contentTypeId}}">
                                 <div class="icon-box">
@@ -29,10 +29,10 @@
                                 <div>{{title}}</div>
                                 <div>{{addr1}}</div>
                             </div>
-                            {{/models}}
-                            {{^models}}
+                            {{/model.scrapList}}
+                            {{^model.scrapList}}
                                 <div>스크랩 목록이 비어있습니다</div>
-                            {{/models}}
+                            {{/model.scrapList}}
 
                         </div>
                     </div>

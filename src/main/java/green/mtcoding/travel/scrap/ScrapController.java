@@ -53,10 +53,8 @@ public class ScrapController {
     @GetMapping("/api/my-scrap")
     public String myScrab(HttpServletRequest request) {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        List<ScrapResponse.ScrapListDTO> scrapList = scrapService.mypageSelectScrap(sessionUser);
-        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(sessionUser);
-        request.setAttribute("models", scrapList);
-        request.setAttribute("userInfo", userInfo);
+        ScrapResponse.MypageScrapDTO model = scrapService.mypageSelectScrap(sessionUser);
+        request.setAttribute("model", model);
         return "/mypage/my-scrap";
     }
 

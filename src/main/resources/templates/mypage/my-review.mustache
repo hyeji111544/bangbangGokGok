@@ -23,18 +23,18 @@
                                     <td class="col-md-2">날짜</td>
                                     <td class="col-md-2">별점</td>
                                 </tr>
-                                {{#models}}
-                                <tr>
+                                {{#model.reviewList}}
+                                <tr onclick="location.href=`/info/detail?contentId={{contentId}}`;">
                                     <td>{{title}}</td>
                                     <td>{{addr1}}</td>
                                     <td>{{context}}</td>
                                     <td>날짜</td>
                                     <td>{{{starRating}}}</td>
                                 </tr>
-                                {{/models}}
-                                {{^models}}
+                                {{/model.reviewList}}
+                                {{^model.reviewList}}
                                     <td colspan="5" style="text-align: center">리뷰 내역이 없습니다.</td>
-                                {{/models}}
+                                {{/model.reviewList}}
                             </table>
                         </div>
                         <div class="btn__box">

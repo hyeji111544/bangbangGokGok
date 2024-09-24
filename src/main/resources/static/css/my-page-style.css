@@ -166,9 +166,9 @@
     /* 짝수 행 배경색 */
 }
 
-/* 마우스 호버 시 행 배경색 변경 */
-.review__box tr:hover {
+.review__box tr:not(:first-child):hover {
     background-color: #ddd;
+    cursor:pointer;
     /* 호버 시 배경색 */
 }
 
@@ -237,4 +237,11 @@
     text-align: center;
     font-weight: 800;
     margin-bottom: 20px;
+}
+
+.hsy2{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
 }
