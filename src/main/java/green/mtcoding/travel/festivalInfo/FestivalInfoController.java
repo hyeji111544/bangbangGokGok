@@ -57,7 +57,6 @@ public class FestivalInfoController {
         return ResponseEntity.ok(Resp.ok(detailDTO));
     }
 
-
     /*           festival-end             */
 
     /*           info-start             */
