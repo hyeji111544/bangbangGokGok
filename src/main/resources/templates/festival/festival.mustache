@@ -216,10 +216,27 @@
         let parts = board.addr1.split(" ");
         let result = parts.slice(0, 2).join(" ");
 
+        // 오늘 날짜 계산
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작
+        let day = String(today.getDate()).padStart(2, '0'); // 일
+        let todayString = `${year}${month}${day}`; // 오늘 날짜 문자열
+        let todayNum = Number(todayString); // 문자열 -> 숫자 변환
+
+        let startDateNum = Number(board.eventstartdate);
+        let endDateNum = Number(board.eventenddate);
+
+        // 오늘 날짜를 기준으로 축제 진행중이라면, board 데이터에 isOngoing 속성 추가
+        board.isOngoing = todayNum >= startDateNum && todayNum <= endDateNum; // 참이면 속성에 true 할당, 거짓이면 속성에 false 할당
+
+        // 결과를 반환하고, isOngoing 값에 따라 div의 display 속성 설정
+        const ongoingDiv = `<div class="ongoing" style="${board.isOngoing ? 'display: block;' : 'display: none;'}">개최중</div>`;
+
         return `<div class="bottom" id="board-${board.contentid}" onclick="location.href='/festival/detail/${board.contentid}'">
                         <div class="bottom__img">
                             <img src="${board.firstimage}" alt="이미지 로드 실패" onerror="handleImageError(this);">
-                            <div class="ongoing">개최중</div>
+                            ${ongoingDiv}
                         </div>
                     <div class="bottom__info">
                         <div class="bottom__info1">${board.title}</div>
