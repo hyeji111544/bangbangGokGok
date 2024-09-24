@@ -78,8 +78,9 @@ public class ContentRepository {
 
 
     /*           hotPlace-start             */
-    public List<Content> findHotTaAll(int first, int perPage) {
-        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) order by c.viewCount desc", Content.class)
+    public List<Content> findHotTaAll(int first, int perPage, String keyword) {
+        return em.createQuery("select c from Content c where ((c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208')))) and c.title like :keyword order by c.viewCount desc", Content.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setFirstResult(first)
                 .setMaxResults(perPage)
                 .getResultList();
@@ -92,8 +93,9 @@ public class ContentRepository {
 
 
 
-    public List<Content> findHotFoodAll(int first, int perPage) {
-        return em.createQuery("select c from Content c where c.cat1 = 'A05' order by c.viewCount desc", Content.class)
+    public List<Content> findHotFoodAll(int first, int perPage, String keyword) {
+        return em.createQuery("select c from Content c where c.cat1 = 'A05' and c.title like :keyword order by c.viewCount desc", Content.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setFirstResult(first)
                 .setMaxResults(perPage)
                 .getResultList();
@@ -104,9 +106,10 @@ public class ContentRepository {
                 .getSingleResult();
     }
 
-    public List<Content> findHotTaByArea(String area, int first,  int perPage) {
-        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area order by c.viewCount desc", Content.class)
+    public List<Content> findHotTaByArea(String area, int first,  int perPage, String keyword) {
+        return em.createQuery("select c from Content c where ((c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area) and c.title like :keyword order by c.viewCount desc", Content.class)
                 .setParameter("area", area)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setFirstResult(first)
                 .setMaxResults(perPage)
                 .getResultList();
@@ -118,9 +121,10 @@ public class ContentRepository {
                 .getSingleResult();
     }
 
-    public List<Content> findHotFoodByArea(String area, int first,  int perPage) {
-        return em.createQuery("select c from Content c where c.cat1 = 'A05' and c.areaCode=:area order by c.viewCount desc", Content.class)
+    public List<Content> findHotFoodByArea(String area, int first,  int perPage, String keyword) {
+        return em.createQuery("select c from Content c where (c.cat1 = 'A05' and c.areaCode=:area) and c.title like :keyword order by c.viewCount desc", Content.class)
                 .setParameter("area", area)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setFirstResult(first)
                 .setMaxResults(perPage)
                 .getResultList();
@@ -131,10 +135,11 @@ public class ContentRepository {
                 .getSingleResult();
     }
 
-    public List<Content> findHotTaByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage) {
-        return em.createQuery("select c from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu) ", Content.class)
+    public List<Content> findHotTaByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage, String keyword) {
+        return em.createQuery("select c from Content c where ((c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu)) and c.title like :keyword ", Content.class)
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setFirstResult(first)
                 .setMaxResults(perPage)
                 .getResultList();
@@ -146,8 +151,9 @@ public class ContentRepository {
                 .getSingleResult();
     }
 
-    public List<Content> findHotFoodByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage) {
-        return em.createQuery("select c from Content c where c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)order by c.viewCount desc", Content.class)
+    public List<Content> findHotFoodByAreaAndSigungu(String area, List<String> sigungu, int first,  int perPage, String keyword) {
+        return em.createQuery("select c from Content c where (c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)) and c.title like :keyword order by c.viewCount desc", Content.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
                 .setFirstResult(first)

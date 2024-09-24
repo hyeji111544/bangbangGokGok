@@ -36,15 +36,15 @@ class ContentRepositoryTest {
     /*           hotPlace-start             */
 
     @Test
-    public void findHotPlaceByAreaAndSigungu() throws Exception {
+    public void findHotTaAll() throws Exception {
         //given
-        String area = "1";
-        List<String> sigungu = Arrays.asList("1", "2");
+
         int perPage = 20;
         int first = 0;
+        String keyword = "10";
 
         //when
-        List<Content> contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu, first, perPage);
+        List<Content> contents = contentRepository.findHotTaAll(first, perPage, keyword);
 
         //eye
         System.out.println(contents);

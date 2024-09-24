@@ -85,7 +85,7 @@ public class ContentResponse {
         private List<Integer> numbers = new ArrayList<>();
         private List<HotPlaceDTO> contents = new ArrayList<>(); //일단 빈 객체를 만들어서 초기화 해둔다.
 
-        public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount) {
+        public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount, String keyword) {
 
             this.number = page;
             this.totalCount = totalCount;
