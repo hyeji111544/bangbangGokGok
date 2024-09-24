@@ -1,142 +1,197 @@
 {{>layout/header}}
 <link rel="stylesheet" href="/css/index-style.css">
-    <section class="container">
-        <div id="demo" class="carousel slide" data-bs-ride="carousel"
-            style="margin-top: 30px; border: 5px solid rgba(255, 255, 255, 0.3)">
+<section class="container">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel"
+         style="margin-top: 30px; border: 5px solid rgba(255, 255, 255, 0.3)">
 
-            <!-- Indicators/dots -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            </div>
-
-            <!-- The slideshow/carousel -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <a href="https://example.com/link1" target="_blank">
-                        <div class="carousel-caption">
-                            <h5>봄철 인생사진 맛집</h5>
-                            <p>부산 사상구 삼락공원</p>
-                        </div>
-                        <img src="/images/slide1.jpg" alt="Los Angeles" class="d-block"
-                            style="width:100%; height:380px;">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <a href="https://example.com/link1" target="_blank">
-                        <div class="carousel-caption">
-                            <h5>여름철 바다 여행</h5>
-                            <p>제주도 해변</p>
-                        </div>
-                        <img src="/images/slide2.png" alt="Chicago" class="d-block" style="width:100%; height:380px;">
-                    </a>
-                </div>
-                <div class="carousel-item">
-                    <a href="https://example.com/link1" target="_blank">
-                        <div class="carousel-caption">
-                            <h5>가을산단풍 즐기기</h5>
-                            <p>남해 금산</p>
-                        </div>
-                        <img src="/images/slide3.png" alt="New York" class="d-block" style="width:100%; height:380px;">
-                    </a>
-                </div>
-            </div>
-
-            <!-- Left and right controls/icons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
         </div>
 
-        <div class="placeInfo__box">
-            <div class="place_title">
-                <div>Today's</div>
-                <div> 추천 여행지 </div>
-            </div>
-            <ul class="nav__content" style="margin: 10px;">
-                <li class="nav__item">
-                    <a class="nav__link" href="#">전국</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">서울</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">인천</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">인천</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">대전</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">대구</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">광주</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">부산</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">대구</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">울산</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">제주</a>
-                </li>
-            </ul>
-            <div class="image__gallery">
-                <div class="image__card">
-                    <img src="/images/maincard1.jpg" alt="Card 1">
-                    <div class="card__text">서울 경복궁</div>
-                </div>
-                <div class="image__card">
-                    <img src="/images/maincard2.jpg" alt="Card 2">
-                    <div class="card__text">바람의언덕</div>
-                </div>
-                <div class="image__card">
-                    <img src="/images/maincard3.PNG" alt="Card 3">
-                    <div class="card__text">부산 어쩌구</div>
-                </div>
-            </div>
-            <div class="see__more">
-                더보기 +
-            </div>
-        </div>
-        <div class="travel__info">
-            <div class="travel__title">이 섹션 제목은 뭐라고 하지 대체</div>
-            <div class="travel__content__box">
-
-                <div class="travel__content1">
-                    <img src="/images/maincard1.jpg">
-                    <div class="travel__side__box">
-                        <div class="travel__text1">전주 수목원</div>
-                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="https://example.com/link1" target="_blank">
+                    <div class="carousel-caption">
+                        <h5>title</h5>
+                        <p>addr1</p>
                     </div>
-                </div>
-                <div class="travel__content2">
-                    <img src="/images/maincard2.jpg">
-                    <div class="travel__side__box">
-                        <div class="travel__text1">전주 수목원</div>
-                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
-                    </div>
-                </div>
-                <div class="travel__content3">
-                    <img src="/images/maincard3.PNG">
-                    <div class="travel__side__box">
-                        <div class="travel__text1">전주 수목원</div>
-                        <div class="travel__text2">한번쯤 가 봐야할 인생 단풍 여행지</div>
-                    </div>
-                </div>
+                    <img src="/images/slide1.jpg" alt="Los Angeles" class="d-block"
+                         style="width:100%; height:380px;">
+                </a>
             </div>
         </div>
 
-    </section>
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <div class="placeInfo__box">
+        <div class="place_title">
+            <div>Today's</div>
+            <div> 추천 여행지</div>
+        </div>
+        <ul class="nav__content" style="margin: 10px;">
+            <li class="nav__item"><span onclick="areaClick('all',this)" class="nav__link" id="defaultItem">전국</span></li>
+            <li class="nav__item"><span onclick="areaClick('1',this)" class="nav__link">서울</span></li>
+            <li class="nav__item"><span onclick="areaClick('2',this)" class="nav__link">인천</span></li>
+            <li class="nav__item"><span onclick="areaClick('3',this)" class="nav__link">대전</span></li>
+            <li class="nav__item"><span onclick="areaClick('4',this)" class="nav__link">대구</span></li>
+            <li class="nav__item"><span onclick="areaClick('5',this)" class="nav__link">광주</span></li>
+            <li class="nav__item"><span onclick="areaClick('6',this)" class="nav__link">부산</span></li>
+            <li class="nav__item"><span onclick="areaClick('7',this)" class="nav__link">울산</span></li>
+            <li class="nav__item"><span onclick="areaClick('39',this)" class="nav__link">제주</span></li>
+        </ul>
+        <div class="image__gallery">
+            <div class="image__card">
+                <img src="/images/maincard1.jpg" alt="Card 1">
+                <div class="card__text"></div>
+            </div>
+            <div class="image__card">
+                <img src="/images/maincard2.jpg" alt="Card 2">
+                <div class="card__text"></div>
+            </div>
+            <div class="image__card">
+                <img src="/images/maincard3.PNG" alt="Card 3">
+                <div class="card__text"></div>
+            </div>
+        </div>
+        <div class="see__more" onclick="infoClick()">
+            더보기 +
+        </div>
+    </div>
+    <div class="travel__info">
+        <div class="travel__title">🍁 가을 여행지 추천 🍁</div>
+        <div class="travel__content__box">
+
+            <div class="travel__content1" onclick="detailClick('2508220')">
+                <img src="/images/maincard4.jpg">
+                <div class="travel__side__box">
+                    <div class="travel__text1">국립백두대간수목원</div>
+                    <div class="travel__text2">선선한 날씨에 가족여행으로 딱</div>
+                </div>
+            </div>
+            <div class="travel__content2" onclick="clickFestival('2746930')">
+                <img src="/images/maincard2.jpg">
+                <div class="travel__side__box">
+                    <div class="travel__text1">감악산 꽃별 여행</div>
+                    <div class="travel__text2">낮에는 가을의 꽃의 전경을, 밤에는 별빛을</div>
+                </div>
+            </div>
+            <div class="travel__content3" onclick="clickFestival('2648460')">
+                <img src="/images/maincard5.png">
+                <div class="travel__side__box">
+                    <div class="travel__text1">경복궁 별빛야행</div>
+                    <div class="travel__text2">미처 알지 못했던 경복궁의 새롭고 비밀스런 이야기</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let url = `get-info?area=all`;
+
+            fetchContent(url);
+            slide();
+        });
+
+        const defaultItem = document.getElementById("defaultItem");
+        defaultItem.classList.add("active");
+        let activeItem = defaultItem;
+
+        async function areaClick(areaCode, element){
+            if (activeItem) {
+                activeItem.classList.remove("active");
+            }
+            element.classList.add("active");
+            activeItem = element;
+
+            let contentUrl = `get-info?area=${areaCode}`;
+            await fetchContent(contentUrl);
+        }
+
+        async function slide(){
+            let url = `get-info?area=all&sortBy=viewCount`;
+            let response = await fetch(url);
+            let responseBody = await response.json();
+            let contentList = responseBody.body.contents;
+
+            console.log("slide",contentList);
+            // Select the carousel-inner element
+            const carouselInner = document.querySelector('.carousel-inner');
+            carouselInner.innerHTML = '';  // Clear the existing carousel items
+
+            // Iterate over contentList and create carousel items
+            contentList.forEach((content, index) => {
+                const isActive = index === 0 ? 'active' : '';  // Make the first item active
+
+                const carouselItem = `
+                <div class="carousel-item ${isActive}">
+                    <a href="${content.link}" target="_blank">
+                        <div class="carousel-caption">
+                            <h5>${content.title}</h5>
+                            <p>${content.addr1}</p>
+                        </div>
+                        <img src="${content.firstImage || '/images/default.jpg'}" alt="${content.title}" class="d-block" style="width:100%; height:380px;">
+                    </a>
+                </div>
+            `;
+
+                // Append the newly created carousel item
+                carouselInner.insertAdjacentHTML('beforeend', carouselItem);
+            });
+        }
+
+        async function fetchContent(url){
+            let response = await fetch(url);
+            let responseBody = await response.json();
+            let contentList = responseBody.body.contents;
+
+            const gallery = document.querySelector('.image__gallery');
+
+            // 기존 내용을 초기화합니다.
+            gallery.innerHTML = '';
+
+            // 내용 배열의 첫 3개 항목을 사용하여 카드 생성
+            for (let i = 4; i < Math.min(7, contentList.length); i++) {
+                const content = contentList[i];
+
+                const locationPrefix = content.addr1.substring(0, 2);
+
+                // 카드 HTML 생성
+                const cardHTML = `
+                    <div class="image__card" onclick="detailClick('${content.contentId}')">
+                        <img src="${content.firstImage}" alt="Card ${i + 1}">
+                        <div class="card__text">${locationPrefix} ${content.title}</div>
+                    </div>
+                `;
+
+                // 갤러리에 카드 추가
+                gallery.insertAdjacentHTML('beforeend', cardHTML);
+            }
+        }
+
+        function infoClick() {
+            location.href = `/info`
+        }
+
+        function clickFestival(contentId) {
+            location.href = `/festival/detail/${contentId}`;
+        }
+
+        function detailClick(contentId) {
+            location.href = `/info/detail?contentId=${contentId}`;
+        }
+    </script>
+
+</section>
 {{>layout/footer}}
