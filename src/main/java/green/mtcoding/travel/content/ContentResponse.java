@@ -104,6 +104,11 @@ public class ContentResponse {
             } else if (totalCount % perPage != 0) {
                 this.totalPage = (int) (totalCount / perPage) + 1;
             }
+            
+            //검색결과 없을 때 보고 있는 페이지의 현재 페이지가 1이므로 전체 페이지도 그냥 1처리
+            if(totalPage==0) {
+                totalPage = 1;
+            }
 
 
             if (number == 1) {

@@ -86,8 +86,9 @@ public class ContentRepository {
                 .getResultList();
     }
 
-    public Long findHotTaAllCount() {
-        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208')))", Long.class)
+    public Long findHotTaAllCount(String keyword) {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .getSingleResult();
     }
 
@@ -101,8 +102,9 @@ public class ContentRepository {
                 .getResultList();
     }
 
-    public Long findHotFoodAllCount() {
-        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05'", Long.class)
+    public Long findHotFoodAllCount(String keyword) {
+        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05' and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .getSingleResult();
     }
 
@@ -115,8 +117,9 @@ public class ContentRepository {
                 .getResultList();
     }
 
-    public Long findHotTaByAreaCount(String area) {
-        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area", Long.class)
+    public Long findHotTaByAreaCount(String area, String keyword) {
+        return em.createQuery("select count(c) from Content c where ((c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area) and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setParameter("area", area)
                 .getSingleResult();
     }
@@ -129,8 +132,9 @@ public class ContentRepository {
                 .setMaxResults(perPage)
                 .getResultList();
     }
-    public Long findHotFoodByAreaCount(String area) {
-        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05' and c.areaCode=:area", Long.class)
+    public Long findHotFoodByAreaCount(String area, String keyword) {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A05' and c.areaCode=:area) and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setParameter("area", area)
                 .getSingleResult();
     }
@@ -144,8 +148,9 @@ public class ContentRepository {
                 .setMaxResults(perPage)
                 .getResultList();
     }
-    public Long findHotTaByAreaAndSigunguCount(String area, List<String> sigungu) {
-        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu)", Long.class)
+    public Long findHotTaByAreaAndSigunguCount(String area, List<String> sigungu, String keyword) {
+        return em.createQuery("select count(c) from Content c where ((c.cat1 = 'A01' or (c.cat1= 'A02' and (c.cat2<>'A0207' and c.cat2 <> 'A0208'))) and c.areaCode=:area and c.sigunguCode in (:sigungu)) and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
                 .getSingleResult();
@@ -160,8 +165,9 @@ public class ContentRepository {
                 .setMaxResults(perPage)
                 .getResultList();
     }
-    public Long findHotFoodByAreaAndSigunguCount(String area, List<String> sigungu) {
-        return em.createQuery("select count(c) from Content c where c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)", Long.class)
+    public Long findHotFoodByAreaAndSigunguCount(String area, List<String> sigungu, String keyword) {
+        return em.createQuery("select count(c) from Content c where (c.cat1 = 'A05' and c.areaCode=:area and c.sigunguCode in (:sigungu)) and c.title like :keyword", Long.class)
+                .setParameter("keyword",  "%" + keyword + "%")
                 .setParameter("area", area)
                 .setParameter("sigungu", sigungu)
                 .getSingleResult();
