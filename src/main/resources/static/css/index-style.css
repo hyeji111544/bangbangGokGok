@@ -50,17 +50,49 @@
    }
 
    .nav__item {
-       margin: 0 15px;
+       margin: 10px 15px;
    }
 
    .nav__link {
-       text-decoration: none;
-       color: rgb(0, 0, 0);
        font-family: "Noto Sans KR", sans-serif;
        font-size: 16px;
        padding: 10px 15px;
        border-radius: 5px;
        position: relative;
+       cursor: pointer;
+       overflow: hidden;
+   }
+
+   .nav__link.active {
+       color: black; /* 텍스트 색상 */
+       font-weight: bold;
+   }
+
+   /* 활성화된 링크 아래의 점 애니메이션 */
+   .nav__link.active::after {
+       content: ""; /* 가상 요소 생성 */
+       position: absolute; /* 위치를 절대적으로 설정 */
+       left: 0; /* 왼쪽에서 시작 */
+       bottom: 0; /* 하단에 위치 */
+       width: 100%; /* 너비를 100%로 설정 */
+       height: 3px; /* 선의 높이 */
+       background-color: transparent; /* 초기 배경색 투명 */
+       border-bottom: 3px solid black; /* 점선으로 설정 */
+       animation: dotToLine 0.5s forwards; /* 애니메이션 적용 */
+   }
+
+   /* 애니메이션 정의 */
+   @keyframes dotToLine {
+       0% {
+           background-color: transparent; /* 초기 상태에서 투명 */
+           width: 0; /* 너비를 0으로 설정 */
+       }
+       100% {
+
+           background-color: black; /* 최종 상태에서 검정색으로 설정 */
+           width: 100%; /* 너비를 100%로 설정 */
+           border-bottom: none; /* 점선 제거 */
+       }
    }
 
    .nav__link::before {
@@ -123,6 +155,8 @@
        font-size: 1em;
    }
 
+
+
    .see__more {
        text-align: right;
        margin-top: 20px;
@@ -174,16 +208,19 @@
        height: 610px;
        grid-column: 1 /1 span;
        grid-row: 1 / 2 span;
+       overflow: hidden;
    }
 
    .travel__content2 {
        height: 300px;
        grid-column: 2 /3 span;
+       overflow: hidden;
    }
 
    .travel__content3 {
        height: 300px;
        grid-column: 2 /3 span;
+       overflow: hidden;
    }
 
    .travel__content1 img,
@@ -192,6 +229,13 @@
        object-fit: cover;
        width: 100%;
        height: 100%;
+       transition: transform 0.3s ease; /* 부드러운 변화를 위해 transition 추가 */
+   }
+
+   .travel__content1 img:hover,
+   .travel__content2 img:hover,
+   .travel__content3 img:hover {
+       transform: scale(1.1); /* 호버 시 이미지 확대 */
    }
 
    .travel__side__box {
@@ -205,10 +249,12 @@
    }
 
    .travel__text1 {
+       cursor: pointer;
        font-size: 20px;
    }
 
    .travel__text2 {
+       cursor: pointer;
        font-size: 25px;
    }
 
@@ -238,4 +284,29 @@
        margin: 0;
        font-size: 18px;
        line-height: 1.4;
+   }
+
+   @media (max-width: 900px) {
+       .card__text {
+           display: none; /* 텍스트를 숨김 */
+       }
+
+       .travel__content__box {
+           grid-template-columns: 1fr; /* 1열로 변경 */
+       }
+
+       .travel__content1 {
+           grid-column: 1; /* 첫 번째 열 */
+           grid-row: 1; /* 첫 번째 행 */
+       }
+
+       .travel__content2 {
+           grid-column: 1; /* 첫 번째 열 */
+           grid-row: 2; /* 두 번째 행 */
+       }
+
+       .travel__content3 {
+           grid-column: 1; /* 첫 번째 열 */
+           grid-row: 3; /* 세 번째 행 */
+       }
    }

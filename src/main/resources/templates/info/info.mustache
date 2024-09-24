@@ -76,8 +76,9 @@
         fetchContent(url);
     }
 
-    function sigunguItem(responseBody){
-        return ` <div onclick="sigunguClick('${responseBody.code}','${responseBody.area.code}',this)" class="place__name2__item">${responseBody.name}</div>`;
+    function sigunguItem(responseBody, area){
+        console.log("item : ",responseBody);
+        return ` <div onclick="sigunguClick('${responseBody.code}','${area}',this)" class="place__name2__item">${responseBody.name}</div>`;
     }
 
     function renderContentItems(contentList) {
@@ -124,17 +125,23 @@
     }
 
     async function fetchArea(areaCode, areaName){
+        console.log(areaCode, areaName);
         let response = await fetch(`get-sigungu?area=${areaCode}`);
+        console.log(response);
         let responseBody = await response.json();
-
+        console.log(responseBody);
         $(".place__box1__title").text(`# ${areaName}`);
 
         //2. 받아온 데이터로 div 만들기
         let sigunguList = responseBody.body;
-        let placeName2Div = $("<div>").addClass("place__name2");
+        console.log(sigunguList);
 
-        for(sigungu of sigunguList){
-            let dom = sigunguItem(sigungu);
+        let sigunguDtos = sigunguList.sigunguDtos;
+        let placeName2Div = $("<div>").addClass("place__name2");
+        for(let sigungu of sigunguDtos){
+            console.log(sigungu);
+            let dom = sigunguItem(sigungu, sigunguList.code);
+            console.log("dom : ",dom);
             placeName2Div.append(dom);
         }
 
