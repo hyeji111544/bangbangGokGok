@@ -224,7 +224,7 @@
      list-style: none;
      padding: 0;
      margin: 10px 0;
-     max-height: 150px; /* 최대 높이 설정 (스크롤 가능하게 하려면 설정) */
+     max-height: 300px; /* 최대 높이 설정 (스크롤 가능하게 하려면 설정) */
      overflow-y: auto; /* 목록이 넘칠 경우 스크롤 표시 */
  }
 
@@ -236,6 +236,7 @@
      background-color: #f8f8f8;
      margin-bottom: 5px;
      border-radius: 4px;
+     cursor: pointer;
  }
 
  .recent__searches li:hover {
@@ -245,7 +246,7 @@
  .delete__btn {
      background-color: transparent;
      border: none;
-     color: red;
+     color: mediumpurple;
      cursor: pointer;
      font-size: 14px;
  }
