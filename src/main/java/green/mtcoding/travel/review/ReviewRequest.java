@@ -8,19 +8,21 @@ public class ReviewRequest {
 
         @Data
         public static class SaveDTO {
-            private Integer boardId;
+            private Content contentId;
             private String context;
+            private double rating;
 
             // insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
             // insert into reply_tb(comment, board_id, user_id, created_at) values('댓글', 5, 1, now())
-            /*
-            public Review toEntity(User sessionUser, Content content){
+
+            public Review toEntity(User sessionUser){
                 return Review.builder()
-                        .comment(comment)
+                        .context(context)
                         .user(sessionUser)
-                        .board(board)
+                        .contentId(contentId)
+                        .rating(rating)
                         .build();
-            }*/
+            }
         }
 
 }

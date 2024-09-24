@@ -6,11 +6,15 @@ import green.mtcoding.travel.tourismInfo.TourismInfo;
 import green.mtcoding.travel.user.User;
 import green.mtcoding.travel.restourantInfo.RestaurantInfo;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Timestamp;
+
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name="review_tb")
@@ -44,4 +48,14 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private RestaurantInfo restaurantInfo;
+
+    @Builder
+    public Review(Integer id, String context, User user, Content contentId, double rating){
+        this.id = id;
+        this.context = context;
+        this.user = user;
+        this.contentId = contentId;
+        this.rating = rating;
+    }
+
 }

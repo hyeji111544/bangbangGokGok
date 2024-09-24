@@ -110,16 +110,8 @@ public class UserController {
     @GetMapping("/api/my-page")  //이름은 임시로 달아놨습니다. 원하시는대로 바꾸시면 됩니다
     public String myPage(HttpServletRequest request) {
         User user = (User) session.getAttribute("sessionUser");
-        Long countScrap = userService.selectMypageCountScrap(user);
-        Long countReview = userService.selectMypageCountReview(user);
-        List<UserResponse.MypageScrapDTO> scrapList = userService.selectMypageScrapList(user);
-        List<UserResponse.MypageReviewDTO> reviewList = userService.selectMypageReviewList(user);
-        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(user);
-        request.setAttribute("countScrap", countScrap);
-        request.setAttribute("countReview", countReview);
-        request.setAttribute("scrapList", scrapList);
-        request.setAttribute("reviewList", reviewList);
-        request.setAttribute("userInfo", userInfo);
+        UserResponse.DTO model = userService.myPage(user);
+        request.setAttribute("model", model);
         return "/mypage/my-page";
     }
 

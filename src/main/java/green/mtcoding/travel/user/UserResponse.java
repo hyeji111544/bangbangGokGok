@@ -205,4 +205,21 @@ public class UserResponse {
             }
         }
     }
+
+    @Data
+    public static class DTO {
+        private Long countScrap;
+        private Long countReview;
+        private List<UserResponse.MypageScrapDTO> scrapList;
+        private List<UserResponse.MypageReviewDTO> reviewList;
+        private List<UserResponse.MypageUserDTO> userInfo;
+
+        public DTO(Long countScrap, Long countReview, List<MypageScrapDTO> scrapList, List<MypageReviewDTO> reviewList, List<MypageUserDTO> userInfo) {
+            this.countScrap = countScrap;
+            this.countReview = countReview;
+            this.scrapList = scrapList;
+            this.reviewList = reviewList;
+            this.userInfo = userInfo;
+        }
+    }
 }

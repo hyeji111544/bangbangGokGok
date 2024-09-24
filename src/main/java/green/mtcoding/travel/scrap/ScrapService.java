@@ -1,6 +1,7 @@
 package green.mtcoding.travel.scrap;
 
 import green.mtcoding.travel.user.User;
+import green.mtcoding.travel.user.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,11 +40,12 @@ public class ScrapService {
     /*           user-end             */
 
     /*           myPage-start             */
-    public List<ScrapResponse.ScrapListDTO> mypageSelectScrap(User sessionUser) {
+    public ScrapResponse.MypageScrapDTO mypageSelectScrap(User sessionUser) {
         // 1. 유저 id를 가지고 스크랩 목록 가져오기
         int id = sessionUser.getId();
         List<ScrapResponse.ScrapListDTO> scrapList = scrapRepository.scrapFindByUserId(id);
-        return scrapList;
+        List<ScrapResponse.MypageUserDTO> userInfo = scrapRepository.userFindById(id);
+        return new ScrapResponse.MypageScrapDTO(scrapList, userInfo);
         // 2. 스크랩 목록 유무 판단
 
     }

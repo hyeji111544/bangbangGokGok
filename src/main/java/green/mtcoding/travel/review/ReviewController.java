@@ -6,8 +6,10 @@ import green.mtcoding.travel.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -47,16 +49,16 @@ public class ReviewController {
     @GetMapping("/api/my-review")
     public String myReview(HttpServletRequest request) {
         User sessionUser = (User) session.getAttribute("sessionUser");
-        List<ReviewResponse.ReviewListDTO> reviewList = reviewService.mypageReviewList(sessionUser);
-        List<UserResponse.MypageUserDTO> userInfo = userService.selectMypageUserInfo(sessionUser);
-        request.setAttribute("models", reviewList);
-        request.setAttribute("userInfo", userInfo);
+        ReviewResponse.MypageReviewDTO model = reviewService.mypageReviewList(sessionUser);
+        request.setAttribute("model", model);
         return "/mypage/my-review";
     }
 
     @GetMapping("/api/review/write")
-    public String write() {
-        return "/mypage/write";
+    public ResponseEntity<?> reviewWrite(@RequestBody ReviewRequest.SaveDTO saveDTO) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        reviewService.reviewWrite(saveDTO, sessionUser);
+        return ResponseEntity.ok("댓글이 성공적으로 저장되었습니다.");
     }
     /*           myPage-end             */
 

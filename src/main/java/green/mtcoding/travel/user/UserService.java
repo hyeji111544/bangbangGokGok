@@ -120,6 +120,17 @@ public class UserService {
 
     /*           myPage-start             */
 
+    public UserResponse.DTO myPage(User session){
+        int id = session.getId();
+        Long countScrap = userQueryRepository.countScrapById(id);
+        List<UserResponse.MypageScrapDTO> scrapList = userQueryRepository.scrapFindById(id);
+        Long countReview = userQueryRepository.countReviewById(id);
+        List<UserResponse.MypageReviewDTO> reviewList = userQueryRepository.reviewFindById(id);
+        List<UserResponse.MypageUserDTO> userInfo = userQueryRepository.userFindById(id);
+
+        return new UserResponse.DTO(countScrap, countReview, scrapList, reviewList, userInfo);
+    }
+
     // 마이페이지 스크랩 개수
     public Long selectMypageCountScrap(User session) {
         int id = session.getId();

@@ -4,8 +4,50 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class ReviewResponse {
+
+    @Data
+    public static class DTO{
+        private Integer id;
+        private String context;
+        private boolean isDeleted;
+        private double rating;
+        private String nickname;
+
+        public DTO(Review review) {
+            this.id = review.getId();
+            this.context = review.getContext();
+            this.isDeleted = review.isDeleted();
+            this.rating = review.getRating();
+            this.nickname = review.getUser().getNickName();
+        }
+    }
+
+    @Data
+    public static class MypageReviewDTO{
+        private List<ReviewResponse.ReviewListDTO> reviewList;
+        private List<ReviewResponse.MypageUserDTO> userInfo;
+
+        public MypageReviewDTO(List<ReviewResponse.ReviewListDTO> reviewList, List<ReviewResponse.MypageUserDTO> userInfo) {
+            this.reviewList = reviewList;
+            this.userInfo = userInfo;
+        }
+    }
+
+    @Data
+    public static class MypageUserDTO{
+        private int id;
+        private String nickname;
+        private String profile;
+
+        public MypageUserDTO(int id, String nickname, String profile) {
+            this.id = id;
+            this.nickname = nickname;
+            this.profile = profile;
+        }
+    }
 
     @Data
     public static class ReviewListDTO {

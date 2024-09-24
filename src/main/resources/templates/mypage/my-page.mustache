@@ -24,12 +24,12 @@
                     <div class="activity-item">
                         <div class="activity-icon">📝</div>
                         <div class="activity-label">내가 쓴 후기</div>
-                        <div class="activity-badge">{{countReview}}</div>
+                        <div class="activity-badge">{{model.countReview}}</div>
                     </div>
                     <div class="activity-item">
                         <div class="activity-icon">📓</div>
                         <div class="activity-label">스크랩</div>
-                        <div class="activity-badge">{{countScrap}}</div>
+                        <div class="activity-badge">{{model.countScrap}}</div>
                     </div>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                         </div>
                         <div class="row">
 
-                            {{#scrapList}}
-                                <div class="col-md-3 text-center">
+                            {{#model.scrapList}}
+                                <div class="col-md-3 text-center hsy2" onclick="location.href=`/info/detail?contentId={{contentId}}`;">
                                     <input type="hidden" value="{{contentId}}">
                                     <input type="hidden" value="{{contentTypeId}}">
                                     <div class="icon-box">
@@ -91,10 +91,10 @@
                                     </div>
                                     <div class="img__detail">{{title}}</div>
                                 </div>
-                            {{/scrapList}}
-                            {{^scrapList}}
+                            {{/model.scrapList}}
+                            {{^model.scrapList}}
                                 <div>스크랩 목록이 비어있습니다</div>
-                            {{/scrapList}}
+                            {{/model.scrapList}}
 
                         </div>
                         <div class="btn__box">
@@ -115,18 +115,18 @@
                                     <td class="col-md-2">날짜</td>
                                     <td class="col-md-2">별점</td>
                                 </tr>
-                                {{#reviewList}}
-                                    <tr>
+                                {{#model.reviewList}}
+                                    <tr onclick="location.href=`/info/detail?contentId={{contentId}}`;">
                                         <td>{{title}}</td>
                                         <td>{{addr1}}</td>
                                         <td>{{context}}</td>
                                         <td>날짜</td>
                                         <td>{{{starRating}}}</td>
                                     </tr>
-                                {{/reviewList}}
-                                {{^reviewList}}
+                                {{/model.reviewList}}
+                                {{^model.reviewList}}
                                     <td colspan="5" style="text-align: center">리뷰 내역이 없습니다.</td>
-                                {{/reviewList}}
+                                {{/model.reviewList}}
                             </table>
                         </div>
                         <div class="btn__box">
