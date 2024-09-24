@@ -108,18 +108,13 @@
         <hr class="divider">
         <!-- 추가된 여행지도 섹션 -->
         <div class="container travel-map-container">
-            <div>
-                <H3><strong>테마가 있는 여행을 즐겨보세요</strong></H3>
+            <div class="traval-map-item">
+                <h3><strong>테마가 있는 여행을 즐겨보세요</strong></h3>
+                <div id="article__info__map" style="width: 100%; height: 500px; margin-bottom: 40px"></div>
             </div>
-            <!-- Map Image -->
-            <div class="map-image">
-                <img src="/images/지도.png" alt="Korea Map" class="img-fluid">
-            </div>
-
             <!-- Travel Recommendations -->
             <div class="travel-recommendations">
                 <h4>오늘의 여행을 내일로 미루지 말자!</h4>
-                <a href="#">
                     <div class="recommendation-item">
                         <img src="/images/백수해안도로.jpg" alt="백수해안도로">
                         <div>
@@ -127,8 +122,6 @@
                             <small>전남 영광군</small>
                         </div>
                     </div>
-                </a>
-                <a href="#">
                     <div class="recommendation-item">
                         <img src="/images/탄도항누에섬.jpg" alt="탄도항누에섬">
                         <div>
@@ -136,8 +129,6 @@
                             <small>경기 안산시</small>
                         </div>
                     </div>
-                </a>
-                <a href="#">
                     <div class="recommendation-item">
                         <img src="/images/세방낙조.jpg" alt="세방낙조 전망대">
                         <div>
@@ -145,8 +136,6 @@
                             <small>전남 진도군</small>
                         </div>
                     </div>
-                </a>
-                <a href="#">
                     <div class="recommendation-item">
                         <img src="/images/선유도.jpg" alt="선유도해수욕장">
                         <div>
@@ -154,8 +143,24 @@
                             <small>전북 군산시</small>
                         </div>
                     </div>
-                </a>
 
             </div>
         </div>
+    <script>
+        $(document).ready(function () {
+            renderMap();
+        });
+        function renderMap() {
+            let mapContainer = document.getElementById("article__info__map");
+
+            let options = {
+                center : new kakao.maps.LatLng(36.2683, 127.6358), //지도의 중심좌표.
+                level: 13
+            };
+            let map = new kakao.maps.Map(mapContainer, options);
+        }
+
+
+    </script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>
 {{>layout/footer}}
