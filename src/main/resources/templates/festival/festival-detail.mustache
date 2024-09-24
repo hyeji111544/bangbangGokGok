@@ -207,7 +207,7 @@
                 </div>
                 <div class="share__box__2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-bookmark" viewBox="0 0 16 16">
+                        class="bi bi-bookmark scrap__btn" viewBox="0 0 16 16" data-id="${responseBody.body.contentId}">
                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
                     </svg>
                 </div>
@@ -247,10 +247,17 @@
         }
 
         function makeInfoBox(responseBody) {
+
+            let href;
             // 홈페이지 링크 뽑아내기
             let hp = responseBody.body.homePage;
-            // HTML 문자열을 DOM 요소로 변환 후 href 속성 추출
-            let href = $($.parseHTML(hp)).attr('href');
+            // 축제홈페이지 존재하지 않는 경우 처리
+            if (!hp) {
+                href = "#"; // href가 유효하지 않을 경우 기본 값으로 "#" 설정
+            } else {
+                // HTML 문자열을 DOM 요소로 변환 후 href 속성 추출
+                href = $($.parseHTML(hp)).attr('href') || "#";
+            }
 
             return `<div>축제 정보</div>
             <div>${responseBody.body.overview}</div>
@@ -295,6 +302,9 @@
                 </div>
             </div>`;
         }
+
+
+
 
         // 지도 렌더링 함수
         function renderMap(responseBody) {
@@ -350,6 +360,30 @@
         let url = `/hotplace?area=${areaCode}&sigungu=${sigunguCode}`; // url 에 데이터 추가
         window.location.href = url; // 해당 url 로 이동
     }
+
+    $(document).on("click", ".scrap__btn", function () {
+        console.log("clicked");
+        let contentId = $(this).data("id"); // 클릭된 버튼의 data-id 가져오기
+        console.log(contentId);
+        $.ajax({
+            url: `/api/scrapOnOff/${contentId}`,
+            type: 'post',
+            success: function (response) {
+                console.log("성공", response);
+                let result = response.body;
+                if (result == 'on') {
+                    alert("스크랩에 추가되었습니다.");
+                }
+                if (result == "off") {
+                    alert("스크랩이 해제되었습니다.");
+                }
+            },
+            error: function (error) {
+                location.href = "/login-form";
+            }
+        });
+    });
+
 </script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>
