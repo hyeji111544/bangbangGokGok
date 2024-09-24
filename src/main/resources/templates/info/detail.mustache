@@ -23,7 +23,7 @@
                 </div>
                 <div class="share__box__2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-bookmark" viewBox="0 0 16 16">
+                        class="bi bi-bookmark scrap__btn" viewBox="0 0 16 16" data-id="{{model.contentId}}">
                         <path
                             d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
                     </svg>
@@ -320,6 +320,32 @@
                 // 지도가 보이지 않는 문제 해결을 위한 리사이즈 및 중심 좌표 재설정
 
             }
+
+
+            //스크랩 버튼 클릭
+            $(".scrap__btn").on("click", function(){
+                let contentId = $(".scrap__btn").data("id");
+                console.log(contentId);
+                $.ajax({
+                    url: `/api/scrapOnOff/${contentId}`,
+                    type: 'post',
+                    success: function (response) {
+                        console.log("성공", response);
+                        let result = response.body;
+                        if(result =='on') {
+                            alert("스크랩에 추가되었습니다.");
+                        }
+                        if(result =="off") {
+                            alert("스크랩이 해제되었습니다.");
+                        }
+                    },
+                    error: function (error) {
+                        location.href="/login-form";
+                    }
+
+                });
+
+            });
 
 
         </script>

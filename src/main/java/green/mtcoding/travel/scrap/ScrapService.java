@@ -50,16 +50,24 @@ public class ScrapService {
 
     // 스크랩 OnOff
     @Transactional
-    public void scrapOnOff(User sessionUser, String contentId){
+    public String scrapOnOff(User sessionUser, String contentId){
         int userId = sessionUser.getId();
+        try{
+            Boolean bl = scrapRepository.scrapFindByContentId(userId,contentId);
+            if (bl == true){
+                scrapRepository.scrapOffById(userId,contentId);
+                return "off";
+            } else if (bl == false) {
+                scrapRepository.scrapOnById(userId,contentId);
+            }
+            return "on";
+        } catch (NullPointerException e){
+            scrapRepository.scrapInsertById(userId, contentId);
+            return "on";
+        }
 
         // 스크랩이 존재하는지
-        Boolean bl = scrapRepository.scrapFindByContentId(userId,contentId);
-        if (bl == true){
-            scrapRepository.scrapOffById(userId,contentId);
-        } else if (bl == false) {
-            scrapRepository.scrapOnById(userId,contentId);
-        } else if (bl == null) scrapRepository.scrapInsertById(userId, contentId);
+
 
     }
     // 1. 유저 세션 체크

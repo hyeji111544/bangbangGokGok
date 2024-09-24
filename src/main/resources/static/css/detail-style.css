@@ -42,6 +42,14 @@
     gap: 10px;
 }
 
+
+/* 스크랩 버튼 */
+.scrap__btn {
+    cursor: pointer;
+}
+
+
+
 article {}
 
 .article__title__box {
