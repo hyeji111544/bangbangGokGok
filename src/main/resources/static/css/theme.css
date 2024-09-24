@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
     padding-top: 100px;
+    font-family: "Noto Sans KR", sans-serif;
     /* 헤더 높이만큼 패딩 추가 */
 }
 
@@ -11,13 +11,45 @@ body {
     background-color: #fdd835;
     position: relative;
     z-index: 900;
-    /* 헤더보다 낮지만 다른 요소들 위에 위치하도록 설정 */
+}
+
+.div-title h3 {
+    font-size: 40px;
+    background: linear-gradient(90deg,#1565C0, #424242, #F57C00 );
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: bounceIn 1.5s ease-in-out, gradientMove 3s ease-in-out infinite;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8) translateY(-50px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0%;
+    }
+    50% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: 0%;
+    }
 }
 
 .theme-description p {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    color: #007bff;
+    color: black;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, color 0.2s;
     position: relative;
@@ -28,11 +60,12 @@ body {
 }
 
 .theme-description p:hover {
-    transform: scale(1.1);
-    color: #0056b3;
+    font-weight: bold;
 }
 
 .theme-card-container {
+    text-decoration: none;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,18 +99,23 @@ body {
 }
 
 .theme-description {
+
     text-align: center;
     font-size: 16px;
     white-space: nowrap;
 }
 
 .travel-map-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     margin-top: 40px;
     position: relative;
     z-index: 500;
     /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+.traval-map-item{
+
 }
 
 .map-image {
@@ -89,7 +127,6 @@ body {
 }
 
 .travel-recommendations {
-    width: 35%;
     padding-left: 20px;
     position: relative;
     z-index: 300;
@@ -101,6 +138,7 @@ body {
 }
 
 .recommendation-item {
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -121,10 +159,51 @@ body {
     flex: 1;
 }
 
+.recommendation-item > div > p {
+    font-weight: 600;
+}
+
 .divider {
     margin: 40px 0;
     border-top: 2px solid #ddd;
     position: relative;
     z-index: 100;
     /* 다른 요소들보다 낮은 z-index 설정 */
+}
+
+@media (max-width: 900px) {
+    .travel-map-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .map-image {
+        width: 100%; /* Make the image take full width */
+        max-width: none; /* Remove max width restriction */
+        margin-bottom: 20px; /* Add spacing below the image */
+    }
+
+    .travel-recommendations {
+        width: 100%; /* Make recommendations take full width */
+        padding-left: 0; /* Remove padding for smaller screens */
+    }
+
+    .div-title h3 {
+        font-size: 24px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center; /* Center align the items */
+    }
+
+    .col-md-3 {
+        flex: 0 0 45%; /* Two cards per row */
+        max-width: 45%; /* Ensure max width is also 45% */
+        margin: 10px; /* Optional: Add margin for spacing */
+    }
+
+
+
 }
