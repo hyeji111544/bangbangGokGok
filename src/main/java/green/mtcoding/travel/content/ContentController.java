@@ -55,7 +55,6 @@ public class ContentController {
         return "/hotplace/hotplace";
     }
 
-
     @GetMapping("/get-hotplace")
     public ResponseEntity<?> hotPlaceFilter(
             @RequestParam(value = "category", required = false) String category,
@@ -67,13 +66,6 @@ public class ContentController {
         return ResponseEntity.ok(Resp.ok(hotPlacePageDTO));
     }
 
-    // http://localhost:8080/hotplace/choice?area=${areaCode}&sigungu=${sigunguCode}
-    @GetMapping("/hotplace/choice")
-    public ResponseEntity<?> hotPlaceFromFestival(@RequestParam("area") String area, @RequestParam("sigungu") String sigungu) {
-        System.out.println(area);
-        System.out.println(sigungu);
-        return ResponseEntity.ok(Resp.ok("굿"));
-    }
     /*           hotPlace-end             */
 
     /*           festival-start             */
@@ -81,6 +73,16 @@ public class ContentController {
     public String festival() {
         return "/festival/main";
     }
+
+    // http://localhost:8080/hotplace?area=${areaCode}&sigungu=${sigunguCode}
+    /* hotplace 로 보낸 코드
+    @GetMapping("/hotplace")
+    public String hotPlaceFromFestival(@RequestParam("area") String area, @RequestParam("sigungu") String sigungu) {
+        System.out.println(area);
+        System.out.println(sigungu);
+        return "/hotplace/hotplace";
+    }
+     */
     /*           festival-end             */
 
     /*           info-start             */
@@ -91,6 +93,7 @@ public class ContentController {
         request.setAttribute("model", infoListDTO);
         System.out.println(infoListDTO);
         return "/info/info";
+
     }
 /*
     @GetMapping("/get-info")
