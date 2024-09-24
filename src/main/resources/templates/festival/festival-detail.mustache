@@ -79,7 +79,8 @@
     let obj2;
     let obj3;
     let obj4;
-    let obj5 = []; // 배열로 선언하여 전체 객체를 저장할 수 있게 함
+    let obj5;
+    // let obj5 = []; // 배열로 선언하여 전체 객체를 저장할 수 있게 함
 
     let areaCode;
     let sigunguCode;
@@ -118,19 +119,20 @@
             console.log("objList3", objList3);
             console.log("objList4", objList4);
 
-            if (objList4.length > 0) {
-                for (let i = 0; i < objList4.length; i++) {
-                    obj5.push(objList4[i]); // 각 객체를 배열에 추가
-                    // console.log(`Item ${i}:`, obj5); // 각 객체 출력
-                    // console.log(obj5.originimgurl); // 'someField'는 객체 내 필드 이름
-                    // console.log(obj5.smallimageurl);
-                }
-            }
+            // if (objList4.length > 0) {
+            //     for (let i = 0; i < objList4.length; i++) {
+            //         obj5.push(objList4[i]); // 각 객체를 배열에 추가
+            //         // console.log(`Item ${i}:`, obj5); // 각 객체 출력
+            //         // console.log(obj5.originimgurl); // 'someField'는 객체 내 필드 이름
+            //         // console.log(obj5.smallimageurl);
+            //     }
+            // }
 
             obj1 = objList1[0];
             obj2 = objList2[0];
             obj3 = objList3[0];
             obj4 = objList3[1];
+            obj5 = objList4[0];
 
 
             sendToServer();
@@ -144,7 +146,8 @@
                 ...obj2,
                 ...obj3,
                 ...obj4,
-                obj5 // 배열로 추가
+                ...obj5
+                // obj5 // 배열로 추가
             };
             console.log("dataAll", dataAll);
 
@@ -212,7 +215,7 @@
         }
 
         function makeImgBox(responseBody) {
-            // 이미지 취합 및 추출
+            // 이미지 취합 및 추출하려는 시도들
             // let imageData = responseBody.obj5.map(item => ({
             //     originimgurl: item.originimgurl,
             //     imgname: item.imgname
@@ -339,14 +342,13 @@
         });
     });
 
-    // areaCode, sigunguCode 핫플레이스로 데이터 보내기
-    async function sendToHotplace() {
+    // 동기방식으로 areaCode, sigunguCode 보내기
+    function sendToHotplace() {
         console.log(areaCode);
         console.log(sigunguCode);
 
-       let response = await fetch(`/hotplace/choice?area=${areaCode}&sigungu=${sigunguCode}`);
-       let responseBody = await response.json();
-       console.log(responseBody);
+        let url = `/hotplace?area=${areaCode}&sigungu=${sigunguCode}`; // url 에 데이터 추가
+        window.location.href = url; // 해당 url 로 이동
     }
 </script>
 
