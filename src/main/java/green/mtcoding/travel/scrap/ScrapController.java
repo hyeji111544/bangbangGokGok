@@ -72,8 +72,8 @@ public class ScrapController {
     @PostMapping("/api/scrapOnOff/{contentId}")
     public @ResponseBody Resp scrapOnOff(@PathVariable String contentId, HttpServletRequest request) {
         User user = (User) session.getAttribute("sessionUser");
-        scrapService.scrapOnOff(user, contentId);
-        return Resp.ok("성공");
+        String result = scrapService.scrapOnOff(user, contentId);
+        return Resp.ok(result);
     }
 
     /*           myPage-end             */
