@@ -336,7 +336,7 @@ function toggleActive(activeLink, inactiveLink) {
 }
 
 // 인기 여행지, 맛집 데이터를 AJAX로 불러오기
-function printList(page) {
+function printList(page, keyword) {
     console.log("category", category);
     console.log("areaCode", areaCode);
 
@@ -352,6 +352,10 @@ function printList(page) {
 
     if (page) {
         url += '&page=' + page;
+    }
+
+    if (keyword) {
+        url += '&keyword=' + keyword;
     }
 
     $.ajax({
@@ -397,8 +401,9 @@ function makePageList(response) {
         // 계산한 페이지를 그리기
         $(".page__box").prepend(printPageList(pageInfo));
         let pageArr = pageInfo.numbers;
+        let keyword = pageInfo.keyword;
         for (let i = pageArr[0]; i <= pageArr[pageArr.length - 1]; i++) {
-            $(".page__count__box").append(printPageListNumber(i));
+            $(".page__count__box").append(printPageListNumber(i, keyword));
         }
         if (pageInfo.first == true) {
             // remove로 첫 페이지에서는 화살표 지워도 괜찮은 것 같다. prop은 button, input에만 적용돼서 add클래스로 추가하고 css에서 opacity와 이벤트 클릭방지 처리
@@ -428,18 +433,18 @@ function makePageList(response) {
 function printPageList(pageInfo) {
     return `
                         <ul class="pagination justify-content-center">
-                        <li class="page-item prev__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.prev});'>&lt;</a></li>
+                        <li class="page-item prev__btn"><a class="page-link" onClick='printList(${pageInfo.prev}, '${pageInfo.keyword}');'>&lt;</a></li>
                         
                         <li class="page-item page__count__box"></li>
                         
-                        <li class="page-item next__btn"><a class="page-link" href="#" onClick='printList(${pageInfo.next});'>&gt;</a></li>
+                        <li class="page-item next__btn"><a class="page-link" onClick='printList(${pageInfo.next}, '${pageInfo.keyword}');'>&gt;</a></li>
                     </ul>
     `;
 }
 
-function printPageListNumber(number) {
+function printPageListNumber(number, keyword) {
     return `
-                <a class="page-link" onClick="printList(${number});">${number}</a>
+                <a class="page-link" onClick="printList(${number}, '${keyword}');">${number}</a>
     `;
 }
 

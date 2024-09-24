@@ -228,11 +228,13 @@
 
 
                     <ul class="pagination justify-content-center">
-                        <li class="page-item {{#model.first}}disabled{{/model.first}}"><a class="page-link" href="#" onClick='printList({{model.prev}});'>&lt;</a></li>
-                        {{#model.numbers}}
-                            <li class="page-item"><a class="page-link" onClick='printList({{.}});'>{{.}}</a></li>
-                        {{/model.numbers}}
-                        <li class="page-item {{#model.last}}disabled{{/model.last}}"><a class="page-link" href="#" onClick='printList({{model.next}});'>&gt;</a></li>
+                        <li class="page-item {{#model.first}}disabled{{/model.first}}"><a class="page-link" onClick='printList({{model.prev}},'{{model.keyword}}');'>&lt;</a></li>
+                        {{#model}}
+                            {{#numbers}}
+                            <li class="page-item"><a class="page-link" onClick='printList({{.}},"{{model.keyword}}");'>{{.}}</a></li>
+                            {{/numbers}}
+                        {{/model}}
+                        <li class="page-item {{#model.last}}disabled{{/model.last}}"><a class="page-link" onClick='printList({{model.next}}, "{{model.keyword}}");'>&gt;</a></li>
                     </ul>
 
 

@@ -69,6 +69,7 @@ public class ContentResponse {
 
     @Data
     public static class HotPlacePageDTO {
+        private String keyword;
         private Integer number; //현재 페이지
         private Integer totalPage; // 전체페이지 개수
         private Long itemCount; //현재 페이지 아이템 개수
@@ -84,10 +85,11 @@ public class ContentResponse {
         private List<Integer> numbers = new ArrayList<>();
         private List<HotPlaceDTO> contents = new ArrayList<>(); //일단 빈 객체를 만들어서 초기화 해둔다.
 
-        public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount) {
+        public HotPlacePageDTO(List<Content> contents, int perPage, int page, Long totalCount, String keyword) {
 
             this.number = page;
             this.totalCount = totalCount;
+            this.keyword = keyword;
 
 
 
@@ -102,11 +104,12 @@ public class ContentResponse {
             } else if (totalCount % perPage != 0) {
                 this.totalPage = (int) (totalCount / perPage) + 1;
             }
+            
+            //검색결과 없을 때 보고 있는 페이지의 현재 페이지가 1이므로 전체 페이지도 그냥 1처리
+            if(totalPage==0) {
+                totalPage = 1;
+            }
 
-            System.out.println("page = " + number);
-            System.out.println("perPage = " + size);
-            System.out.println("totalCount = " + totalCount);
-            System.out.println("totalPage = " + totalPage);
 
             if (number == 1) {
                 this.prev = 1;
