@@ -35,7 +35,7 @@ public class Review {
     private boolean isDeleted;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Content contentId;
+    private Content content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;  // 회원 ID (외래 키로 참조)
@@ -50,11 +50,11 @@ public class Review {
     private RestaurantInfo restaurantInfo;
 
     @Builder
-    public Review(Integer id, String context, User user, Content contentId, double rating){
+    public Review(Integer id, String context, User user, Content content, double rating){
         this.id = id;
         this.context = context;
         this.user = user;
-        this.contentId = contentId;
+        this.content = content;
         this.rating = rating;
     }
 

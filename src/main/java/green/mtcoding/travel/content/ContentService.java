@@ -29,7 +29,14 @@ public class ContentService {
 
     /*           hotPlace-start             */
 
-    public ContentResponse.HotPlacePageDTO 핫플목록보기(String category, String area, List<String> sigungu, int page, String keyword) {
+    public ContentResponse.HotPlacePageDTO 핫플목록보기(ContentRequest.HotplaceDTO hotplaceDTO) {
+        System.out.println(hotplaceDTO);
+        int page = hotplaceDTO.getPage();
+        String category = hotplaceDTO.getCategory();
+        String area = hotplaceDTO.getArea();
+        List<String> sigungu = hotplaceDTO.getSigungu();
+        String keyword = hotplaceDTO.getKeyword();
+
         List<Content> contents = new ArrayList<>();
         String list = "";
         Long totalCount = 0L;
@@ -81,12 +88,6 @@ public class ContentService {
             }
 
         }
-
-
-      /*  List<ContentResponse.HotPlaceDTO> hotPlaceDtos = new ArrayList<>();
-        for (Content content : contents) {
-            hotPlaceDtos.add(new ContentResponse.HotPlaceDTO(content));
-        }*/
         return new ContentResponse.HotPlacePageDTO(contents, perPage, page, totalCount, keyword);
     }
     

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -54,8 +55,9 @@ public class ReviewController {
         return "/mypage/my-review";
     }
 
-    @GetMapping("/api/review/write")
+    @PostMapping("/api/review/write")
     public ResponseEntity<?> reviewWrite(@RequestBody ReviewRequest.SaveDTO saveDTO) {
+        System.out.println(saveDTO);
         User sessionUser = (User) session.getAttribute("sessionUser");
         reviewService.reviewWrite(saveDTO, sessionUser);
         return ResponseEntity.ok("댓글이 성공적으로 저장되었습니다.");
