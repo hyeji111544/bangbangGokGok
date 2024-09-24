@@ -54,30 +54,30 @@ public class ContentService {
         if (area == null && sigungu == null) {
             if (list.equals("ta")) {
                 contents = contentRepository.findHotTaAll(first, perPage, keyword);
-                totalCount = contentRepository.findHotTaAllCount();
+                totalCount = contentRepository.findHotTaAllCount(keyword);
             } else if (list.equals("food")) {
                 contents = contentRepository.findHotFoodAll(first, perPage, keyword);
-                totalCount = contentRepository.findHotFoodAllCount();
+                totalCount = contentRepository.findHotFoodAllCount(keyword);
             }
 
             //지역 리스트
         } else if (area != null && sigungu == null) {
             if (list.equals("ta")) {
                 contents = contentRepository.findHotTaByArea(area, first, perPage, keyword);
-                totalCount = contentRepository.findHotTaByAreaCount(area);
+                totalCount = contentRepository.findHotTaByAreaCount(area, keyword);
             } else if (list.equals("food")) {
                 contents = contentRepository.findHotFoodByArea(area, first, perPage, keyword);
-                totalCount = contentRepository.findHotFoodByAreaCount(area);
+                totalCount = contentRepository.findHotFoodByAreaCount(area, keyword);
             }
 
             //지역 + 시군구 상세지역 리스트
         } else if (area != null && sigungu != null) {
             if (list.equals("ta")) {
                 contents = contentRepository.findHotTaByAreaAndSigungu(area, sigungu, first, perPage, keyword);
-                totalCount = contentRepository.findHotTaByAreaAndSigunguCount(area, sigungu);
+                totalCount = contentRepository.findHotTaByAreaAndSigunguCount(area, sigungu, keyword);
             } else if (list.equals("food")) {
                 contents = contentRepository.findHotFoodByAreaAndSigungu(area, sigungu,first, perPage, keyword);
-                totalCount = contentRepository.findHotFoodByAreaAndSigunguCount(area, sigungu);
+                totalCount = contentRepository.findHotFoodByAreaAndSigunguCount(area, sigungu, keyword);
             }
 
         }
