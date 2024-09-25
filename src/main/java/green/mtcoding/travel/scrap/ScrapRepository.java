@@ -72,7 +72,7 @@ public class ScrapRepository {
 
         // Query query = em.createQuery("select s.id, s.isScrap,s.content.title, s.content.contentId, s.content.contentTypeId, s.content.addr1, s.content.firstImage from Scrap s where s.user.id = :userId and s.isScrap = true", Scrap.class);
         Query query = em.createNativeQuery("select s.id, s.is_scrap, s.content_content_id, c.addr1, c.content_type_id, c.title, c.first_image from scrap_tb s join user_tb u on s.user_id = u.id join content_tb c on s.content_content_id = c.content_id where u.id = ? and s.is_scrap = true");
-        query.setParameter(id, id);
+        query.setParameter(1, id);
         query.setMaxResults(8);
         JpaResultMapper mapper = new JpaResultMapper(); // 이게 없으면 List를 불러올때 객체로 받아서 인식이 안됨
         List<ScrapResponse.ScrapListDTO> scrapList = mapper.list(query, ScrapResponse.ScrapListDTO.class);
