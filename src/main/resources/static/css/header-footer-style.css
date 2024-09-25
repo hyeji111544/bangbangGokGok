@@ -18,6 +18,7 @@
  /* Logo Style */
  .logo img {
      width: 50px;
+     cursor:pointer;
  /*
      font-size: 24px;
      font-weight: bold;

@@ -114,7 +114,7 @@
             </div>
         </article>
         <section class="comment__box" id="commentSection">
-            <div class="comment__title">여행톡 8</div>
+            <div class="comment__title">여행톡</div>
             <div class="comment__write">
                 <div class="form__group">
                     <input type="text" class="form__control" placeholder="댓글을 입력하세요" id="review__context" required>
@@ -159,30 +159,8 @@
 
                 </div>
             </div>
+
             {{/reviewList}}
-            <div class="comment__content">
-                <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-                <div class="comment__wrapper">
-                    <div class="comment__text">
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                        40년 전통의 손맛을 자랑하고 있는 손두부전문점이라 그런지 너무 맛있고 다음에 또 가고싶어여 짱
-                    </div>
-                    <div class="comment__footer">
-                        <span class="comment__username">아*디 </span>
-                        <span class="comment__date">24.05.11</span>
-                    </div>
-                    <!--
-                    <div class="button__area1">
-                        <button type="button" class="btn submit-button">수정</button>
-                        <button type="button" class="btn cancel-button">삭제</button>
-                    </div>
-                    -->
-                </div>
-            </div>
-            <!--for-->
             <ul class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
@@ -190,6 +168,13 @@
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">&gt;</a></li>
             </ul>
+            {{^reviewList}}
+                <div class="comment__content">
+                    리뷰를 달아주세요!!!
+                </div>
+            {{/reviewList}}
+            <!--for-->
+
 
         </section>
         <script>
