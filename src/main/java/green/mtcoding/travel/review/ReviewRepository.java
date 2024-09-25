@@ -1,8 +1,8 @@
 package green.mtcoding.travel.review;
 
-import green.mtcoding.travel.scrap.ScrapResponse;
+import green.mtcoding.travel.content.Content;
+import green.mtcoding.travel.user.User;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.qlrm.mapper.JpaResultMapper;
@@ -16,13 +16,22 @@ public class ReviewRepository {
 
     private final EntityManager em;
 
+    // content_id 리뷰 가져오기
+    public List<ReviewResponse.detailReviewDTO> reviewFindByContentId(String contentId) {
+        Query query = em.createNativeQuery("select r.id, r.context, r.created_at, r.rating, u.nick_name, u.profile from review_tb r join user_tb u on r.user_id = u.id where r.content_id_content_id = ?1");
+        query.setParameter(1, contentId);
+        JpaResultMapper mapper = new JpaResultMapper();
+        List<ReviewResponse.detailReviewDTO> detailReview = mapper.list(query, ReviewResponse.detailReviewDTO.class);
+        return detailReview;
+    }
+
     // 리뷰 쓰기
-    public void reviewWrite(Review review) {
-        Query query = em.createNativeQuery("insert into review_tb(user_id, is_deleted, context, content_id_content_id, rating)values(?1, false, ?2, ?3, ?4)");
-        query.setParameter(1, review.getUser().getId());
-        query.setParameter(2, review.getContext());
-        query.setParameter(3, review.getContentId());
-        query.setParameter(4, review.getRating());
+    public void reviewWrite(int contentId, String context, double rating, int id) {
+        Query query = em.createNativeQuery("insert into review_tb(user_id, is_deleted, context, content_id_content_id, rating, created_at)values(?1, false, ?2, ?3, ?4, now())");
+        query.setParameter(1, id);
+        query.setParameter(2, context);
+        query.setParameter(3, contentId);
+        query.setParameter(4, rating);
         query.executeUpdate();
     }
 
@@ -47,4 +56,11 @@ public class ReviewRepository {
     }
 
 
+    public Content findById(int id) {
+        Query query = em.createNativeQuery("select * from content_tb  where content_id = ?");
+        query.setParameter(1, id);
+        JpaResultMapper mapper = new JpaResultMapper();
+        Content content = (Content) mapper.list(query, Content.class);
+        return content;
+    }
 }

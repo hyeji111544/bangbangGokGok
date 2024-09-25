@@ -13,6 +13,8 @@ values (true, 1, 2863965);
 insert into scrap_tb(is_scrap, user_id, content_content_id)
 values (true, 1, 2781669);
 
+insert into review_tb(user_id, is_deleted, context, content_id_content_id, rating, created_at)values(1, false, '22222', 126289, 4.5, now());
+    insert into review_tb(user_id, is_deleted, context, content_id_content_id, rating, created_at)values(1, false, '감사합니다', 126289, 4, now());
 -- insert into festivalinfo_tb (content_id, content_type_id) values (3021762, 15);
 -- insert into festivalinfo_tb (content_id, content_type_id) values (3020141, 15);
 --
