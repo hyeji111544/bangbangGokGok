@@ -1,5 +1,6 @@
 package green.mtcoding.travel.festivalInfo;
 
+import green.mtcoding.travel.content.ContentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 public class FestivalInfoService {
 
     private final FestivalInfoRepository festivalInfoRepository;
+    private final ContentRepository contentRepository;
 
     /*           main-start             */
     /*           main-end             */
@@ -51,6 +53,22 @@ public class FestivalInfoService {
             return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         }
         return null;
+    }
+    @Transactional
+    public void saveFestivalDataForScrap(FestivalInfoRequest.SaveDTO saveDTO) {
+        // 1. 조회 후 없으면 등록
+        try {
+           if (contentRepository.findByContentTypeIdAndContentId(saveDTO.getContentTypeId(), saveDTO.getContentId()) == null) {
+               System.out.println("null 임, Content_TB 에 없는 축제정보임");
+               contentRepository.save(saveDTO.getContentId(), saveDTO.getAddr1(), saveDTO.getAreaCode(), saveDTO.getContentTypeId(), saveDTO.getFirstImage(), saveDTO.getSigunguCode(), saveDTO.getTitle());
+           } else {
+               System.out.println("Content_TB 에 있는 축제정보, 스크랩에 문제 없음");
+           }
+        } catch (Exception e) {
+            // String contentId, String addr1, String areaCode, String contentTypeId, String firstImage, String sigunguCode, String title
+            System.out.println("Null Exception 발생, Content_TB 에 축제정보 저장");
+            contentRepository.save(saveDTO.getContentId(), saveDTO.getAddr1(), saveDTO.getAreaCode(), saveDTO.getContentTypeId(), saveDTO.getFirstImage(), saveDTO.getSigunguCode(), saveDTO.getTitle());
+        }
     }
     /*           festival-end             */
 

@@ -1,7 +1,9 @@
 package green.mtcoding.travel.festivalInfo;
 
+import green.mtcoding.travel.content.ContentService;
 import green.mtcoding.travel.global.util.Resp;
 import green.mtcoding.travel.user.User;
+import green.mtcoding.travel.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class FestivalInfoController {
 
     private final HttpSession session;
     private final FestivalInfoService festivalInfoService;
+
 
     /*           main-start             */
     /*           main-end             */
@@ -54,6 +57,10 @@ public class FestivalInfoController {
     @PostMapping("/festival/save-festival-data")
     public ResponseEntity<?> save(@RequestBody FestivalInfoRequest.SaveDTO saveDTO) {
         FestivalInfoResponse.FestivalDetailDTO detailDTO = festivalInfoService.saveFestivalData(saveDTO);
+
+        // 추가 (스크랩 저장용)
+        festivalInfoService.saveFestivalDataForScrap(saveDTO);
+
         return ResponseEntity.ok(Resp.ok(detailDTO));
     }
 

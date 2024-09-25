@@ -183,5 +183,20 @@ public class ContentRepository {
 
 
     /*           hotPlace-end            */
+    /*           festival-start             */
+    // 축제 스크랩 연결 용도
+    public Content findByContentTypeIdAndContentId(String contentTypeId, String contentId) {
+        Query query = em.createQuery("select c from Content c where c.contentTypeId=:contentTypeId and c.contentId=:contentId", Content.class);
+        query.setParameter("contentTypeId", contentTypeId);
+        query.setParameter("contentId", contentId);
+
+        Content content = (Content) query.getSingleResult();
+        return content;
+    }
+    public void save(String contentId, String addr1, String areaCode, String contentTypeId, String firstImage, String sigunguCode, String title) {
+        Content content = new Content(contentId, addr1, areaCode, contentTypeId, firstImage, sigunguCode, title);
+        em.persist(content);
+    }
+    /*           festival-end             */
 
 }

@@ -151,7 +151,7 @@
             };
             console.log("dataAll", dataAll);
 
-            // 서버로 POST 요청 보내기
+            // 서버로 POST 요청 보내기 (DB FESTIVALINFO_TB + CONTENT_TB)
             let response = await fetch(`/festival/save-festival-data`, {
                 method: 'POST',
                 body: JSON.stringify(dataAll),

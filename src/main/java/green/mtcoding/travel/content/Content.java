@@ -2,12 +2,15 @@ package green.mtcoding.travel.content;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name="content_tb")
-public class Content {
+public class  Content {
 
     @Id
     @JsonAlias("contendid")
@@ -47,7 +50,23 @@ public class Content {
     private String viewCount;
     private String likeCount;
 
+    @Builder
+    public Content(String contentId, String addr1, String areaCode, String contentTypeId, String firstImage, String sigunguCode, String title) {
+        this.contentId = contentId;
+        this.addr1 = addr1;
+        this.areaCode = areaCode;
+        this.contentTypeId = contentTypeId;
+        this.firstImage = firstImage;
+        this.sigunguCode = sigunguCode;
+        this.title = title;
+    }
+
 }
+
+
+
+
+
 
 
 
