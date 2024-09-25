@@ -2,6 +2,8 @@ package green.mtcoding.travel.content;
 
 import green.mtcoding.travel.area.Area;
 import green.mtcoding.travel.area.AreaRepository;
+import green.mtcoding.travel.global.error.ex.Exception404;
+import green.mtcoding.travel.global.error.ex.ExceptionApi404;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.PageRequest;
@@ -103,7 +105,7 @@ public class ContentService {
     public ContentResponse.infoListDTO infoContentList(ContentRequest.InfoRequestDTO requestDTO){
         Pageable pageable = PageRequest.of(requestDTO.getPage(), 16);
         long count = contentRepository.countByContentTypeIdWithOption(requestDTO.getContentTypeId(), requestDTO.getArea(), requestDTO.getSigungu());
-        List<Content> contentList = contentRepository.findByContentTypeId(requestDTO.getContentTypeId(), pageable);
+        List<Content> contentList = contentRepository.findByContentTypeId(requestDTO.getContentTypeId(),requestDTO.getSortBy(), pageable);
         List<Area> areaList = areaRepository.findAll();
         return new ContentResponse.infoListDTO(contentList, count, areaList);
     }
@@ -117,9 +119,12 @@ public class ContentService {
         Pageable pageable = PageRequest.of(requestDTO.getPage(), 16);
 
         if(requestDTO.getArea().equals("all")){
-            contentList = contentRepository.findByContentTypeId(requestDTO.getContentTypeId(), pageable);
+            contentList = contentRepository.findByContentTypeId(requestDTO.getContentTypeId(),requestDTO.getSortBy(), pageable);
         }else {
             contentList = contentRepository.findByContentTypeIdAndOption(requestDTO.getContentTypeId(), requestDTO.getArea(), requestDTO.getSigungu(), requestDTO.getSortBy(), pageable);
+        }
+        if (contentList.isEmpty()) {
+            throw new ExceptionApi404("결과가 없습니다.");
         }
         List<Area> areaList = new ArrayList<>();
         return new ContentResponse.infoListDTO(contentList, count,areaList);

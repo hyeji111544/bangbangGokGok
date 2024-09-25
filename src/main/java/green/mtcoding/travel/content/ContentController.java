@@ -117,6 +117,7 @@ public class ContentController {
 
     @GetMapping("/get-info")
     public ResponseEntity<?> Infoilter(@ModelAttribute ContentRequest.InfoRequestDTO requestDTO) {
+        System.out.println(requestDTO);
         ContentResponse.infoListDTO infoListDTO= contentService.infoContentListWithArea(requestDTO);
         return ResponseEntity.ok(Resp.ok(infoListDTO));
     }
