@@ -256,6 +256,7 @@
             });
 
 
+            //리뷰작성
             async function review__write(){
                 // contentId 가져오기
                 const contentId = document.getElementById('contentId').value;
@@ -277,10 +278,11 @@
                 console.log(response)
                 let result = response.status;
                 if(result == 200) {
-                    alert("댓글 작성이 완료되었습니다.");
+                    //alert("댓글 작성이 완료되었습니다.");
                     window.location.reload();
                 } else {
-                    alert("오류 발생");
+                    //alert("오류 발생");
+                    location.href="/login-form";
                 }
 
 
