@@ -2,6 +2,8 @@ package green.mtcoding.travel.festivalInfo;
 
 import green.mtcoding.travel.content.ContentService;
 import green.mtcoding.travel.global.util.Resp;
+import green.mtcoding.travel.review.ReviewResponse;
+import green.mtcoding.travel.review.ReviewService;
 import green.mtcoding.travel.user.User;
 import green.mtcoding.travel.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ public class FestivalInfoController {
 
     private final HttpSession session;
     private final FestivalInfoService festivalInfoService;
+    private final ReviewService reviewService;
 
 
     /*           main-start             */
@@ -49,7 +52,8 @@ public class FestivalInfoController {
         request.setAttribute("festivalContentId", contentId);
         // 축제 댓글 유저용
         User sessionUser = (User) session.getAttribute("sessionUser");
-
+        List<ReviewResponse.detailReviewDTO> reviewList = reviewService.getReviewList(contentId);
+        request.setAttribute("reviewList", reviewList);
         return "/festival/festival-detail";
     }
 

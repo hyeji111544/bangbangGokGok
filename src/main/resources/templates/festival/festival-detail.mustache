@@ -26,41 +26,69 @@
             </div>
         </div>
     </article>
-    <section class="comment__box">
-        <div class="comment__title" id="talkSection">축제톡</div>
-        <!-- 댓글등록 -->
+    <section class="comment__box" id="commentSection">
+        <div class="comment__title">여행톡</div>
         <div class="comment__write">
             <div class="form__group">
-                <textarea class="form__control" placeholder="댓글을 입력하세요" id="comment"></textarea>
+                <input type="text" class="form__control" placeholder="댓글을 입력하세요" id="review__context" required>
+                <input type="hidden" value="{{festivalContentId}}" id="contentId">
                 <div class="button__area">
-                    <button type="submit" class="btn submit-button">작성</button>
+                    <select name="rating" id="review__rating">
+                        <option value="0.5">0.5</option>
+                        <option value="1.0">1.0</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2.0">2.0</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3.0">3.0</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4.0">4.0</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5.0">5.0</option>
+                    </select>
+                    <button type="submit" class="btn submit-button" onclick="review__write()">작성</button>
                     <button type="button" class="btn cancel-button">취소</button>
                 </div>
             </div>
         </div>
 
-        <!-- 댓글목록 -->
-        <div class="comment__content">
-            <img src="/images/userImg1.png" alt="이미지" class="comment__avatar">
-            <div class="comment__wrapper">
-                <div class="comment__text">
-                    가족들과 다녀오기 좋았습니다. ^^
-                </div>
-                <div class="comment__footer">
-                    <span class="comment__username">아*디 </span>
-                    <span class="comment__date">24.09.25</span>
-                </div>
-                <div class="button__area1">
-                    <button type="button" class="btn submit-button" style="display: none;">수정</button>
-                    <button type="button" class="btn cancel-button" style="display: none;">삭제</button>
+        <!--for-->
+        {{#reviewList}}
+            <div class="comment__content">
+                <img src="{{profile}}" alt="이미지" class="comment__avatar">
+                <div class="comment__wrapper">
+                    <div class="comment__text">
+                        {{context}}
+                    </div>
+                    <div class="comment__footer">
+                        <span class="comment__username">{{nickname}} </span>
+                        <span class="comment__date">{{formattedCreatedAt}}</span>
+                    </div>
+
+                    <div class="button__area1">
+                        <span class="comment__rating">{{{starRating}}}</span>
+                        <!--  <button type="button" class="btn submit-button">수정</button>
+                          <button type="button" class="btn cancel-button">삭제</button> -->
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <!--for-->
+
+        {{/reviewList}}
         <ul class="pagination justify-content-center">
             <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
             <li class="page-item"><a class="page-link" href="javascript:void(0);">&gt;</a></li>
         </ul>
+        {{^reviewList}}
+            <div class="comment__content">
+                리뷰를 달아주세요!!!
+            </div>
+        {{/reviewList}}
+        <!--for-->
+
+
     </section>
 </section>
 
@@ -376,6 +404,36 @@
             }
         });
     });
+
+    async function review__write(){
+        // contentId 가져오기
+        const contentId = document.getElementById('contentId').value;
+        // 댓글 입력란에서 값 가져오기
+        const context = document.getElementById('review__context').value;
+        // 선택한 평점 가져오기
+        const rating = document.getElementById('review__rating').value;
+
+        let formData = new FormData();  // 이 부분에서 formData 객체를 정의
+        formData.append('contentId', contentId);
+        formData.append('context', context);
+        formData.append('rating', rating);
+
+        console.log(formData);
+        let response = await fetch(`/api/review/write`, {
+            method : "post",
+            body : formData
+        });
+        console.log(response)
+        let result = response.status;
+        if(result == 200) {
+            alert("댓글 작성이 완료되었습니다.");
+            window.location.reload();
+        } else {
+            alert("오류 발생");
+        }
+
+
+    }
 
 </script>
 
