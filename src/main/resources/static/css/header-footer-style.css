@@ -321,3 +321,7 @@
      margin-top: 20px;
      /* 위 요소와 간격 */
  }
+
+ @media (max-width: 1300px) {
+
+ }
