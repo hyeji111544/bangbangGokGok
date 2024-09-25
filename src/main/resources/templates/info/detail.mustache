@@ -34,19 +34,18 @@
         </div>
         <article>
             <div class="article__title__box">
-                <div>사진보기</div>
-                <div>상세정보</div>
-                <div>여행톡</div>
-                <div>추천여행</div>
+                <div id="viewPhotos">사진보기</div>
+                <div id="viewDetails">상세정보</div>
+                <div id="viewTravelTalk">여행톡</div>
             </div>
-            <div class="article__img__box">
+            <div class="article__img__box" id="photosSection">
                 <img class="article__img__1" src="{{model.common.firstImage}}">
                 {{#model.imgs}}
-                        <img class="article__img__2" src="{{infoName}}">
+                    <img class="article__img__2" src="{{infoName}}">
                 {{/model.imgs}}
             </div>
 
-            <div class="article__info__box">
+            <div class="article__info__box"  id="detailsSection">
                 <div>상세정보</div>
                 <div>{{model.common.overview}}
                 </div>
@@ -114,7 +113,7 @@
                 </div>
             </div>
         </article>
-        <section class="comment__box">
+        <section class="comment__box" id="commentSection">
             <div class="comment__title">여행톡 8</div>
             <div class="comment__write">
                 <div class="form__group">
@@ -184,8 +183,6 @@
                 </div>
             </div>
             <!--for-->
-
-            <!--delete-->
             <ul class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">&lt;</a></li>
                 <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
@@ -196,6 +193,23 @@
 
         </section>
         <script>
+            var navHeight = $('Header').outerHeight();
+            $('#viewPhotos').on('click', function () {
+                $('html, body').animate({
+                    scrollTop: $('#photosSection').offset().top-navHeight
+                }, 500);
+            })
+            $('#viewDetails').on('click', function() {
+                $('html, body').animate({
+                    scrollTop: $('#detailsSection').offset().top-navHeight
+                }, 500);
+            });
+            $('#viewTravelTalk').on('click', function() {
+                $('html, body').animate({
+                    scrollTop: $('#commentSection').offset().top-navHeight
+                }, 500);
+            });
+
             document.addEventListener("DOMContentLoaded", function() {
                 let mapX = document.querySelector('.map__X').textContent;
                 let mapY = document.querySelector('.map__Y').textContent;
@@ -293,13 +307,8 @@
 
 
             }
-
-
-
         </script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c0506e6121b3109708a1cd1662360473"></script>
-
-
     </section>
 
 

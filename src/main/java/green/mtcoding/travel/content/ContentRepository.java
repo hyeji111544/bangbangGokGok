@@ -41,8 +41,16 @@ public class ContentRepository {
         return (Long) query.getSingleResult();
     }
 
-    public List<Content> findByContentTypeId(String contentTypeId, Pageable pageable) {
-        Query query = em. createQuery("select c from Content c where c.contentTypeId = :contentTypeId", Content.class);
+    public List<Content> findByContentTypeId(String contentTypeId,String sortBy, Pageable pageable) {
+        StringBuilder queryStr = new StringBuilder("select c from Content c where c.contentTypeId = :contentTypeId");
+        if (sortBy != null && !sortBy.isEmpty()) {
+            if (sortBy.equals("createdTime")) {
+                queryStr.append(" order by c.createdTime desc");
+            } else if (sortBy.equals("viewCount")) {
+                queryStr.append(" order by c.viewCount desc");
+            }
+        }
+        Query query = em.createQuery(queryStr.toString(), Content.class);
         query.setParameter("contentTypeId", contentTypeId);
 
         query.setFirstResult((int) pageable.getOffset());  // 시작 위치

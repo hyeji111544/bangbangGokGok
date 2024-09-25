@@ -77,7 +77,6 @@
     }
 
     function sigunguItem(responseBody, area){
-        console.log("item : ",responseBody);
         return ` <div onclick="sigunguClick('${responseBody.code}','${area}',this)" class="place__name2__item">${responseBody.name}</div>`;
     }
 
@@ -125,6 +124,9 @@
     }
 
     async function fetchArea(areaCode, areaName){
+        if (areaCode==='all'){
+            return;
+        }
         console.log(areaCode, areaName);
         let response = await fetch(`get-sigungu?area=${areaCode}`);
         console.log(response);
@@ -139,9 +141,7 @@
         let sigunguDtos = sigunguList.sigunguDtos;
         let placeName2Div = $("<div>").addClass("place__name2");
         for(let sigungu of sigunguDtos){
-            console.log(sigungu);
             let dom = sigunguItem(sigungu, sigunguList.code);
-            console.log("dom : ",dom);
             placeName2Div.append(dom);
         }
 
