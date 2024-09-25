@@ -48,28 +48,17 @@ public class ContentController {
     /*           hotPlace-start             */
     @GetMapping("/hotplace")
     public String hotPlace(
-            @RequestParam(value = "category", required = false, defaultValue = "touristAttractions") String category,
-            @RequestParam(value = "area", required = false) String area,
-            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
-            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(name="keyword", required = false, defaultValue = "")String keyword,
-
+            @ModelAttribute ContentRequest.HotplaceDTO hotplaceDTO,
             HttpServletRequest request) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(category, area, sigungu, page, keyword);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(hotplaceDTO);
         System.out.println(hotPlacePageDTO);
         request.setAttribute("model", hotPlacePageDTO);
         return "/hotplace/hotplace";
     }
 
     @GetMapping("/get-hotplace")
-    public ResponseEntity<?> hotPlaceFilter(
-            @RequestParam(value = "category", required = false) String category,
-            @RequestParam(value = "area", required = false) String area,
-            @RequestParam(value = "sigungu", required = false) List<String> sigungu,
-            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(name="keyword", required = false, defaultValue = "")String keyword
-    ) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(category, area, sigungu, page, keyword);
+    public ResponseEntity<?> hotPlaceFilter(@ModelAttribute ContentRequest.HotplaceDTO hotplaceDTO    ) {
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(hotplaceDTO);
         return ResponseEntity.ok(Resp.ok(hotPlacePageDTO));
     }
 
