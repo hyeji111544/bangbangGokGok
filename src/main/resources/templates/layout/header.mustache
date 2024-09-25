@@ -31,32 +31,29 @@
         <div><a href="/festival">축제</a></div>
         <div><a href="/info">정보</a></div>
         <div><a href="/tourmap">지도</a></div>
-
     </div>
-
-<div class="user__info">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="검색">
-        <button class="btn btn-outline-secondary" type="submit">Go</button>
-    </div>
-<div class="info__login">
-    {{#sessionUser}}
-
-        <div class="user__img"><img src="{{sessionUser.profile}}">
-            <div class="dropdown__menu">
-                <div><a href="/api/my-page">마이페이지</a></div>
-                <div><a href="/logout">로그아웃</a></div>
+    <div class="user__info">
+        <div class="input-group mb-3" id="search__box">
+            <input type="text" class="form-control" placeholder="검색">
+            <button class="btn btn-outline-secondary" type="submit">Go</button>
+        </div>
+        {{#sessionUser}}
+            <div class="info__login">
+                    <div class="user__img"><img src="{{sessionUser.profile}}">
+                        <div class="dropdown__menu">
+                            <div><a href="/api/my-page">마이페이지</a></div>
+                            <div><a href="/logout">로그아웃</a></div>
+                        </div>
+                    </div>
             </div>
-        </div>
-    {{/sessionUser}}
-    {{^sessionUser}}
+        {{/sessionUser}}
+        {{^sessionUser}}
+            <div class="info__logout">
+                <div><a href="/login-form">로그인</a></div>
+                <div><a href="/join-form">회원가입</a></div>
+            </div>
+        {{/sessionUser}}
     </div>
-        <div class="info__logout">
-            <div><a href="/login-form">로그인</a></div>
-            <div><a href="/join-form">회원가입</a></div>
-        </div>
-    </div>
-    {{/sessionUser}}
 
     <!--검색 모달창-->
     <div id="search__modal" class="search__modal" style="display: none">
