@@ -1,9 +1,12 @@
 package green.mtcoding.travel.review;
 
+import green.mtcoding.travel.content.Content;
+import green.mtcoding.travel.content.ContentRepository;
 import green.mtcoding.travel.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -12,6 +15,7 @@ import java.util.List;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
+    private final ContentRepository contentRepository;
 
     /*           main-start             */
     /*           main-end             */
@@ -50,9 +54,14 @@ public class ReviewService {
 
     // 리뷰 쓰기
     @Transactional
-    public void reviewWrite(ReviewRequest.SaveDTO saveDTO, User sessionUser) {
-        Review review = saveDTO.toEntity(sessionUser);
-        reviewRepository.reviewWrite(review);
+    public void reviewWrite(int contentId, String context, double rating, User sessionUser) {
+        int id = sessionUser.getId();
+        reviewRepository.reviewWrite(contentId, context, rating, id);
+    }
+
+    public List<ReviewResponse.detailReviewDTO> getReviewList(String contentId) {
+        List<ReviewResponse.detailReviewDTO> reviewList = reviewRepository.reviewFindByContentId(contentId);
+        return reviewList;
     }
     /*           myPage-end             */
 }

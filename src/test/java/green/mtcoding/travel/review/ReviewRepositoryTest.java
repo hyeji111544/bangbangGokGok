@@ -2,6 +2,7 @@ package green.mtcoding.travel.review;
 
 
 
+import green.mtcoding.travel.content.Content;
 import green.mtcoding.travel.scrap.ScrapRepository;
 import green.mtcoding.travel.scrap.ScrapResponse;
 import org.junit.jupiter.api.Test;
@@ -26,10 +27,10 @@ public class ReviewRepositoryTest {
     }
 
     @Test
-    public void ssTest(){
-         Boolean a = (4.5 % 1 != 0);
-        System.out.println(a);
-
+    public void test2(){
+        String id = "126289";
+        List<ReviewResponse.detailReviewDTO> detailReview = reviewRepository.reviewFindByContentId(id);
+        System.out.println(detailReview);
     }
 
 
