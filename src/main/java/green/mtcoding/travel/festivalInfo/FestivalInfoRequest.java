@@ -64,6 +64,8 @@ public class FestivalInfoRequest {
         private String areaCode;
         @JsonAlias("sigungucode")
         private String sigunguCode;
+        @JsonAlias("contenttypeid")
+        private String contentTypeId;
 
 
         public FestivalInfo toEntity() { // insert 할때만 필요
@@ -98,6 +100,7 @@ public class FestivalInfoRequest {
                     .zipCode(zipCode)
                     .areaCode(areaCode)
                     .sigunguCode(sigunguCode)
+                    .contentTypeId(contentTypeId)
                     .build();
         }
 
