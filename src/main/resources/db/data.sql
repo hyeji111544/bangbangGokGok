@@ -18,8 +18,7 @@ insert into review_tb(user_id, is_deleted, context, content_id_content_id, ratin
 -- insert into festivalinfo_tb (content_id, content_type_id) values (3021762, 15);
 -- insert into festivalinfo_tb (content_id, content_type_id) values (3020141, 15);
 --
--- insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
--- values(1,false, '반갑습니다', 734219, 734219, 4.5);
+insert into review_tb(user_id, is_deleted, context, content_id_content_id, rating, created_at)values(1, false, '감사합니다',734219, 4.5, now());
 -- insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)
 -- values(1,false, '감사합니다', 3021762, 3021762, 3.5);
 -- insert into review_tb(user_id, is_deleted, context, content_id_content_id, festival_info_content_id, rating)

@@ -55,6 +55,7 @@ public class UserResponse {
         private String context;
         private Timestamp createdAt;
         private double rating;
+        private boolean isFestival;
 
         public MypageReviewDTO(int id, String contentId, String contentTypeId, String title, String addr1, String context, Timestamp createdAt, double rating) {
             this.id = id;
@@ -65,6 +66,10 @@ public class UserResponse {
             this.context = context;
             this.createdAt = createdAt;
             this.rating = rating;
+            this.isFestival = false;
+            if(contentTypeId.equals("15")){
+                this.isFestival = true;
+            }
         }
 
         // 별점 문자열 생성 메서드 추가
