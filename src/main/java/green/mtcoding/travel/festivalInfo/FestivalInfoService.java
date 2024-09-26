@@ -58,10 +58,7 @@ public class FestivalInfoService {
     public void saveFestivalDataForScrap(FestivalInfoRequest.SaveDTO saveDTO) {
         // 1. 조회 후 없으면 등록
         try {
-           if (contentRepository.findByContentTypeIdAndContentId(saveDTO.getContentTypeId(), saveDTO.getContentId()) == null) {
-               System.out.println("null 임, Content_TB 에 없는 축제정보임");
-               contentRepository.save(saveDTO.getContentId(), saveDTO.getAddr1(), saveDTO.getAreaCode(), saveDTO.getContentTypeId(), saveDTO.getFirstImage(), saveDTO.getSigunguCode(), saveDTO.getTitle());
-           } else {
+           if (contentRepository.findByContentTypeIdAndContentId(saveDTO.getContentTypeId(), saveDTO.getContentId()) != null) {
                System.out.println("Content_TB 에 있는 축제정보, 스크랩에 문제 없음");
            }
         } catch (Exception e) {
