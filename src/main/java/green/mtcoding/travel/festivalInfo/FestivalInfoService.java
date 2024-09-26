@@ -44,19 +44,20 @@ public class FestivalInfoService {
     }
     @Transactional
     public FestivalInfoResponse.FestivalDetailDTO saveFestivalData(FestivalInfoRequest.SaveDTO saveDTO) {
-        // 1. 조회 후 없으면 등록
+        // 1. 조회 후 festivalInfo_tb 에 존재하면 데이터 리턴 / 없으면 저장 후 저장한 데이터 리턴
         try {
             FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
+            System.out.println(festivalInfoPS);
+            return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         } catch (Exception e) {
             festivalInfoRepository.save(saveDTO.toEntity()); // 담궈지는 순간, 만들어진다.
             FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
             return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         }
-        return null;
     }
     @Transactional
     public void saveFestivalDataForScrap(FestivalInfoRequest.SaveDTO saveDTO) {
-        // 1. 조회 후 없으면 등록
+        // 1. 조회 후 content_TB 에 없는 축제 정보면 등록
         try {
            if (contentRepository.findByContentTypeIdAndContentId(saveDTO.getContentTypeId(), saveDTO.getContentId()) != null) {
                System.out.println("Content_TB 에 있는 축제정보, 스크랩에 문제 없음");
