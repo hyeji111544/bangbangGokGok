@@ -44,10 +44,9 @@ public class FestivalInfoService {
     }
     @Transactional
     public FestivalInfoResponse.FestivalDetailDTO saveFestivalData(FestivalInfoRequest.SaveDTO saveDTO) {
-        // 1. 조회 후 festivalInfo_tb 에 존재하면 데이터 리턴 / 없으면 저장 후 저장한 데이터 리턴
+        // 1. festival_tb 조회 후 없는 정보면 등록 후 리턴 / 있는 정보면 있는 정보 리턴
         try {
             FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
-            System.out.println(festivalInfoPS);
             return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         } catch (Exception e) {
             festivalInfoRepository.save(saveDTO.toEntity()); // 담궈지는 순간, 만들어진다.
