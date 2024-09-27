@@ -1,4 +1,4 @@
-# 프로젝트 이름 🌟
+# 대한민국 방방곡곡 🌟
 
 ![GitHub Stars](https://img.shields.io/github/stars/사용자명/저장소명?style=social)
 ![GitHub Forks](https://img.shields.io/github/forks/사용자명/저장소명?style=social)
