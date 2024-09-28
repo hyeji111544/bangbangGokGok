@@ -75,7 +75,7 @@
                         <div class="row">
 
                             {{#model.scrapList}}
-                                <div class="col-md-3 text-center hsy2" onclick="location.href=`/info/detail?contentId={{contentId}}`;">
+                                <div class="col-md-3 text-center hsy2" onclick="moveDetailPage({{contentId}},{{contentTypeId}});">
                                     <input type="hidden" value="{{contentId}}">
                                     <input type="hidden" value="{{contentTypeId}}">
                                     <div class="icon-box">
@@ -169,6 +169,15 @@
     }
     // 2. 성공적으로 완료되면 display:none으로 변경 + alter "스크랩이 취소되었습니다"
 
+
+    function moveDetailPage(contentId, contentTypeId) {
+        if(contentTypeId == 12) {
+            location.href=`/info/detail?contentId=${contentId}`
+        }
+        if(contentTypeId == 15) {
+            location.href=`/festival/detail/${contentId}`
+        }
+    }
 </script>
 
 {{>layout/footer}}

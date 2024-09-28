@@ -74,6 +74,7 @@ public class ScrapController {
         return Resp.ok(result);
     }
 
+
     /*           myPage-end             */
 
 }
