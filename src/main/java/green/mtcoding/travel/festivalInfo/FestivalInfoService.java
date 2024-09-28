@@ -47,10 +47,12 @@ public class FestivalInfoService {
         // 1. festival_tb 조회 후 없는 정보면 등록 후 리턴 / 있는 정보면 있는 정보 리턴
         try {
             FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
+            System.out.println("festival_tb 에 있는 데이터로, DB 에서 데이터 가져옴");
             return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         } catch (Exception e) {
             festivalInfoRepository.save(saveDTO.toEntity()); // 담궈지는 순간, 만들어진다.
             FestivalInfo festivalInfoPS = festivalInfoRepository.findByContentId(saveDTO.getContentId());
+            System.out.println("festival_tb 에 없는 데이터로, DB 에 저장하고 저장한 데이터 가져옴");
             return new FestivalInfoResponse.FestivalDetailDTO(festivalInfoPS);
         }
     }
