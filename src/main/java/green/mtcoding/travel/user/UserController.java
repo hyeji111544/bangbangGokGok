@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Controller
@@ -76,7 +77,7 @@ public class UserController {
     }
     //회원가입
     @PostMapping("/join")
-    public String join(@Valid UserRequest.JoinDTO joinDTO, @RequestParam(value = "profile", required = false) MultipartFile profile , Errors errors) {
+    public String join(@Valid UserRequest.JoinDTO joinDTO, @RequestParam(value = "profile", required = false) MultipartFile profile , Errors errors) throws NoSuchAlgorithmException {
 
         // Validation 에러 체크
         if (errors.hasErrors()) {
