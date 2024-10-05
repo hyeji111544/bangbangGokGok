@@ -2,7 +2,6 @@ package green.mtcoding.travel.content;
 
 import green.mtcoding.travel.area.Area;
 import green.mtcoding.travel.area.AreaRepository;
-import green.mtcoding.travel.global.error.ex.Exception404;
 import green.mtcoding.travel.global.error.ex.ExceptionApi404;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -31,8 +30,7 @@ public class ContentService {
 
     /*           hotPlace-start             */
 
-    public ContentResponse.HotPlacePageDTO 핫플목록보기(ContentRequest.HotplaceDTO hotplaceDTO) {
-        System.out.println(hotplaceDTO);
+    public ContentResponse.HotPlacePageDTO hotplaceList(ContentRequest.HotplaceDTO hotplaceDTO) {
         int page = hotplaceDTO.getPage();
         String category = hotplaceDTO.getCategory();
         String area = hotplaceDTO.getArea();
@@ -55,7 +53,7 @@ public class ContentService {
 
         //관광지는 대분류 cat1=A01 +  cat1=A02 & cat2!=A208
         //음식점은 대분류 cat1=A05
-        //이렇게 분류코드 개수가 차이나서 아예 메서드를 따로 만든다.
+
 
 
         //리팩토링 필요

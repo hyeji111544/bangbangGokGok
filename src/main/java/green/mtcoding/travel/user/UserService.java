@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +62,7 @@ public class UserService {
 
     //회원가입
     @Transactional
-    public void registuser(UserRequest.JoinDTO joinDTO, MultipartFile profile) {
+    public void registuser(UserRequest.JoinDTO joinDTO, MultipartFile profile) throws NoSuchAlgorithmException {
         Optional<User> loginId = userRepository.findByUserId(joinDTO.getLoginId());
         Optional<User> nickName = userRepository.findByUsernickName(joinDTO.getNickName());
         System.out.println("123123213132"+nickName.isPresent());

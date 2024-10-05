@@ -1,18 +1,12 @@
 package green.mtcoding.travel.content;
 
-import green.mtcoding.travel.area.AreaService;
-
-import green.mtcoding.travel.sigungu.SigunguService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import green.mtcoding.travel.global.util.Resp;
-import green.mtcoding.travel.sigungu.SigunguService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -50,7 +44,7 @@ public class ContentController {
     public String hotPlace(
             @ModelAttribute ContentRequest.HotplaceDTO hotplaceDTO,
             HttpServletRequest request) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(hotplaceDTO);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.hotplaceList(hotplaceDTO);
         System.out.println(hotPlacePageDTO);
         request.setAttribute("model", hotPlacePageDTO);
         return "/hotplace/hotplace";
@@ -58,10 +52,9 @@ public class ContentController {
 
     @GetMapping("/get-hotplace")
     public ResponseEntity<?> hotPlaceFilter(@ModelAttribute ContentRequest.HotplaceDTO hotplaceDTO    ) {
-        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.핫플목록보기(hotplaceDTO);
+        ContentResponse.HotPlacePageDTO hotPlacePageDTO = contentService.hotplaceList(hotplaceDTO);
         return ResponseEntity.ok(Resp.ok(hotPlacePageDTO));
     }
-
     /*           hotPlace-end             */
 
     /*           festival-start             */

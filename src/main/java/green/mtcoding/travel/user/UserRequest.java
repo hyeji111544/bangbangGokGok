@@ -1,22 +1,31 @@
 package green.mtcoding.travel.user;
 
 
+import green.mtcoding.travel.global.util.SHA256;
 import jakarta.validation.constraints.NotEmpty;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.Getter;
+
+import java.security.NoSuchAlgorithmException;
 
 //DTO
 public class UserRequest {
 
     //로그인 기능 DTO
-    @Data
+    @Getter
     public static class LoginDTO{
 
         @NotEmpty
         private String loginId;
         @NotEmpty
         private String password;
+
+        LoginDTO(String loginId, String password) throws NoSuchAlgorithmException {
+            this.loginId = loginId;
+            this.password = SHA256.encrypt(password);
+        }
     }
 
 
@@ -35,8 +44,8 @@ public class UserRequest {
         private String email;
         private String phone;
 
-        public User toEntity() {
-            return User.builder().loginId(loginId).password(password).nickName(nickName).email(email).phone(phone).build();
+        public User toEntity() throws NoSuchAlgorithmException {
+            return User.builder().loginId(loginId).password(SHA256.encrypt(password)).nickName(nickName).email(email).phone(phone).build();
         }
     }
 
