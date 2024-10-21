@@ -1,11 +1,8 @@
-# 프로젝트 이름 🌟
+# 대한민국 방방곡곡 🌟
 
-![GitHub Stars](https://img.shields.io/github/stars/사용자명/저장소명?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/사용자명/저장소명?style=social)
-
-프로젝트에 대한 간단한 설명과 목표를 적습니다. 예를 들어:
-
-> 이 프로젝트는 XYZ 문제를 해결하기 위해 만든 간단한 솔루션입니다. 사용자가 간단하게 **ABC**를 할 수 있도록 돕는 도구입니다.
+> 이 프로젝트는 한국관광공사가 운영하는 국내 여행 정보 서비스 '대한민국 구석구석' 사이트를 모방하여 만든
+>
+> 국내 여행 정보 웹 프로젝트 입니다. 
 
 ---
 
@@ -13,39 +10,56 @@
 
 - [프로젝트 소개](#프로젝트-소개)
 - [기능](#기능)
-- [설치 방법](#설치-방법)
-- [사용 방법](#사용-방법)
-- [기여 방법](#기여-방법)
-- [라이선스](#라이선스)
-- [기타 정보](#기타-정보)
-
+- [실행 방법](#실행-방법)
+- [PPT](#PPT)
 ---
 
 ## 🚀 프로젝트 소개 <a name="프로젝트-소개"></a>
 
-이 프로젝트는 [프로그래밍 언어]을(를) 사용하여 만들어졌으며, 주요 기능은 다음과 같습니다:
+이 프로젝트는 [Java - Spring] 을 사용하여 만들어졌으며, 
 
-- 간단하고 빠른 성능
-- 모듈화된 코드
-- 누구나 쉽게 사용 가능
-
-프로젝트의 목표는 **X 문제를 해결하는 것**입니다.
+프로젝트의 목표는 실무에서 재활용 가능한 기술로 **대한민국 구석구석 웹 사이트의 핵심인 '관광지/축제/맛집 정보' 를 서비스 하는 웹사이트를 만드는 것**입니다.
 
 ---
 
 ## ✨ 기능 <a name="기능"></a>
 
-- **기능 1**: 데이터를 손쉽게 처리합니다.
-- **기능 2**: 사용자 친화적인 인터페이스 제공
-- **기능 3**: 확장성이 높은 아키텍처
+- **로그인 및 회원가입**
+- **마이페이지** : 사용자 정보 및 내가 쓴 후기, 스크랩 조회
+- **통합 검색** : 고정 배너에서 키워드로 관광지 통합 검색 
+- **메인/테마/핫플/축제/정보** : 각 카테고리에서 지역/기간별 관광지/축제 정보 조회
+- **지도** : 지도/날씨 api 활용하여 근처 편의시설 조회 
 
 ---
 
-## 🛠️ 설치 방법 <a name="설치-방법"></a>
+## 🛠️ 실행 방법 <a name="실행-방법"></a>
 
-프로젝트를 설치하려면 아래 명령어를 사용하세요:
+https://github.com/KimSoapSoap/travel.git 를 실행하고, 
 
-```bash
-git clone https://github.com/사용자명/저장소명.git
-cd 저장소명
-npm install  # 혹은 yarn install
+http://localhost:8080 으로 접속 
+
+---
+
+## 🎥 시연 영상
+<p align="center">
+  <a href="" target="_blank">
+    <img src="https://img.shields.io/badge/방방곡곡-red?style=for-the-badge&logo=youtube&logoColor=white" alt="방방곡곡">
+  </a>
+</p>
+
+
+---
+## 📊 PPT 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1d240608-3dd7-4b4d-813d-188d57b3760b" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/e6222685-59ad-479c-8415-31a1a1e2bbeb" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/46d4ad33-d5fb-4de5-ad75-f221a5bf2eaa" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/0effdab6-ef4f-4b56-83d2-a2495e2bb3ad" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/175f0c82-9b0a-4dbe-87bc-36f9e45e4cf0" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/9ce5f542-5f75-4141-96a5-c4aa4b359141" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/0cc74a08-0184-4664-ae61-f5b443f3e10c" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/1010594d-b0c9-478d-a3cc-4085e3ba6447" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/c0c95817-0e16-4046-9bc7-3761c824118a" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/63011d75-ac75-4bb7-9767-7d64e8353989" alt="Screenshot" width="400"/>
+  <img src="https://github.com/user-attachments/assets/734e5825-ad19-495a-b7d1-fc1326409298" alt="Screenshot" width="400"/>
+</p>
