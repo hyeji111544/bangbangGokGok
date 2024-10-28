@@ -106,7 +106,7 @@
 
 - **테마&지도** : 테마별 관련 홈페이지 및 지도에서 각종 편의시설 등 확인 가능
 <br>
-  <img src = "https://github.com/user-attachments/assets/9c4c2344-35ad-45ea-921b-2244b1222287" width="80%">
+  <img src = "https://github.com/user-attachments/assets/8885cb17-a78a-4912-b8d3-ee5c8ac49c5d" width="80%">
 <hr>
 
 - **핫플** : 지역별 인기 관광지 및 음식점 정보
@@ -126,7 +126,7 @@
 
 
 
----
+
 
 
 ## 🎥 시연 영상
