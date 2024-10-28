@@ -56,7 +56,9 @@
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
 <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+<img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+<img src="https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white">
+
 
 ### Version Control
 
@@ -83,10 +85,44 @@
 ## ✨ 기능 <a name="기능"></a>
 
 - **로그인 및 회원가입**
-- **마이페이지** : 사용자 정보 및 내가 쓴 후기, 스크랩 조회
-- **통합 검색** : 고정 배너에서 키워드로 관광지 통합 검색 
-- **메인/테마/핫플/축제/정보** : 각 카테고리에서 지역/기간별 관광지/축제 정보 조회
-- **지도** : 지도/날씨 api 활용하여 근처 편의시설 조회 
+   <br>
+    <img src = "https://github.com/user-attachments/assets/bd3c444c-3b62-42fe-9795-c5e446d79206" width="80%">
+<hr>
+
+- **마이페이지** : 내가 쓴 후기 및 스크랩 조회
+<br>
+    <img src = "https://github.com/user-attachments/assets/a285ad80-6da3-496c-9101-052cfb179cc1" width="80%">
+<hr>
+
+- **검색** : 키워드로 관광지 및 음식점 검색 
+<br>
+    <img src = "https://github.com/user-attachments/assets/b4976aa0-2f0c-4f36-92b7-4fd0cbc66fef" width="80%">
+<hr>
+
+- **메인** : 오늘의 추천 여행지 & 가볼만한 계절 축제
+<br>
+  <img src = "https://github.com/user-attachments/assets/9c4c2344-35ad-45ea-921b-2244b1222287" width="80%">
+<hr>
+
+- **테마&지도** : 테마별 관련 홈페이지 및 지도에서 각종 편의시설 등 확인 가능
+<br>
+  <img src = "https://github.com/user-attachments/assets/9c4c2344-35ad-45ea-921b-2244b1222287" width="80%">
+<hr>
+
+- **핫플** : 지역별 인기 관광지 및 음식점 정보
+  <br>
+  <img src = "https://github.com/user-attachments/assets/00ab633d-ad62-478d-84ec-cb7fff99e339" width="80%">
+<hr>
+
+- **축제** : 지역별로 시기별 축제 정보 확인
+  <br>
+  <img src = "https://github.com/user-attachments/assets/a5192ffa-2558-4df8-94eb-b38f88bd51e3" width="80%">
+<hr>
+
+- **정보** : 지역별 관광지 정보
+  <br>
+  <img src = "https://github.com/user-attachments/assets/035ddbd4-763e-4df1-96b2-e3a7f5017e77" width="80%">
+<hr>
 
 
 
