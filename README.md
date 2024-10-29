@@ -1,10 +1,7 @@
 <div align="center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&height=150&color=gradient&text=BangBangGokGok%20Project&descAlign=60&fontAlign=50&descAlignY=0&animation=fadeIn&fontSize=45" width="80%" />
+    <img src="https://capsule-render.vercel.app/api?type=waving&height=150&color=gradient&text=BangBangGokGok%20Project&descAlign=60&fontAlign=50&descAlignY=0&animation=fadeIn&fontSize=45" />
 </div>
 
-<div align="center">
-    <img src="https://github.com/KimSoapSoap/travel/blob/dev/src/main/resources/static/images/header/logo1.jpeg" width="80%">
-</div>
 
 
 ## 프로젝트 소개
