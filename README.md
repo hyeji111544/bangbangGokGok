@@ -127,11 +127,9 @@
 
 
 ## 🎥 시연 영상
-<p align="center">
-  <a href="https://file.notion.so/f/f/079fd135-2d90-4bdf-b746-cdd6f990ba6a/c57fdb67-70b1-41f8-9744-887aaecc1757/1%EC%A1%B0_%EB%B0%A9%EB%B0%A9%EA%B3%A1%EA%B3%A1_%EC%8B%9C%EC%97%B0_%EC%98%81%EC%83%81_(1).mp4?table=block&id=3c0d4da3-daaa-4ce7-bb3d-3c591fd4f7f2&spaceId=079fd135-2d90-4bdf-b746-cdd6f990ba6a&expirationTimestamp=1730203200000&signature=xDFd9oWaMK8od4qLfFz3kkET4zGo0wSDhdU9vwv4zt8&downloadName=1%EC%A1%B0+%EB%B0%A9%EB%B0%A9%EA%B3%A1%EA%B3%A1+%EC%8B%9C%EC%97%B0+%EC%98%81%EC%83%81+%281%29.mp4" target="_blank">
-    <img src="https://img.shields.io/badge/방방곡곡-red?style=for-the-badge&logo=youtube&logoColor=white" alt="방방곡곡">
-  </a>
-</p>
+
+  [![Video Label](https://img.youtube.com/vi/3B2B9fFRCs8/0.jpg)](https://www.youtube.com/watch?v=3B2B9fFRCs8)
+
 
 
 ---
